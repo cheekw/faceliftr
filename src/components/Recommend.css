@@ -1,4 +1,39 @@
+font
+
+h2 {
+	text-align: center;
+ 	width: 200px;
+	margin: auto;
+	padding: auto;
+	color: OrangeRed;
+
+}
+
 img {
 	max-width: 175px;
-	max-height: 2175px;
+	max-height: 175px;
+	float: left;
+	margin: 2vw;
+}
+
+.recommend-component {
+	margin: auto;
+}
+
+.regimen-box {
+	margin: auto;
+	padding: 3vw;
+	border: 3px solid OrangeRed;
+	border-radius: 20px;
+	width: 50vw;
+}
+
+.product-details {
+	padding: 1vw;
+}
+
+.product-divider { 
+	 border-top: 3px solid OrangeRed;
+	 border-radius: 100%;
+	 margin: 2vw;
 }

@@ -16,10 +16,9 @@ class Recommend extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Recommend</h1>
-                <div>
-                    <h2>Regimen</h2>
+            <div className='recommend-component'>
+                <h2>RECOMMENDED REGIMEN</h2>
+                <div className='regimen-box'>
                     <div>
                         {   
                             this.state.regimenProducts.map((product, index) =>
@@ -85,20 +84,18 @@ class Product extends Component {
     render() {
         return (
             <div>
-                <h3>{
-                    this.props.index == 0 ? 'Face Wash' : 
-                    this.props.index == 1 ? 'Moisturizer':
-                    'Acne Product'}</h3>
-                <h4>{this.props.productName}</h4>
-                <div>{this.props.brand}</div>
                 <img src={this.props.imageSrc}></img>
-                <div>{this.props.price}</div>
-                <div>Rating: {this.props.rating} / 5</div>
-                <div>Ingredients</div>
+                <h4>{this.props.productName}</h4>
+                <div className='product-details'>{this.props.brand}</div>
+                <div className='product-details'>{this.props.price}</div>
+                <div className='product-details'>Rating: {this.props.rating} / 5</div>
+                <div className='product-details'>Ingredients:</div>
                 <div>{this.props.ingredients}</div>
+                <div className='product-divider' />
             </div>
         );
     }
+    
 }
 
 export default Recommend;
