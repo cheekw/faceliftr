@@ -88,7 +88,7 @@ div.appContainer {
 .mainNav div.analyticsContainer div.graph {
   height:20rem;
   width:50vw;
-  background-color:#6975A7;
+  background:repeating-linear-gradient(90deg, #ecf0f1, #ecf0f1 50px, #6975A7 10px, #6975A7 95px);
   border-radius: 20px;
   margin: auto;
 	padding: 3vw;
