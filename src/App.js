@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from './components/Navbar';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Setting from './components/Setting';
 import Analytics from './components/Analytics';
 import './App.css';
@@ -10,12 +10,14 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <div className="appContainer">
+          <div id="appContainer" className="appContainer">
             <div className="mainNav">
               <Navbar />
-              <Route path='/camera'/>
-              <Route path='/analytics' component= { Analytics }/>
-              <Route path='/setting' component= { Setting }/>
+							<Switch>
+								<Route path='/camera'/>
+								<Route path='/analytics' component= { Analytics }/>
+								<Route path='/setting' component= { Setting }/>
+							</Switch>
             </div>
           </div>
         </div>

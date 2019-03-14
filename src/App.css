@@ -65,14 +65,20 @@ div.appContainer {
 
 .mainNav div.container ul li a div.circle.one {
   background-color:#DE5134;
+  background-size:contain;
+  background-image:url('./images/icon_camera.png');
 }
 
 .mainNav div.container ul li a div.circle.two {
   background-color:#6975A7;
+  background-size:contain;
+  background-image:url('./images/icon_analytics.png');
 }
 
 .mainNav div.container ul li a div.circle.three {
   background-color:#F3EA6B;
+  background-size:contain;
+  background-image:url('./images/icon_setting.png');
 }
 
 .mainNav div.analyticsContainer {
@@ -81,9 +87,11 @@ div.appContainer {
 
 .mainNav div.analyticsContainer div.graph {
   height:20rem;
-  width:50rem;
+  width:50vw;
   background-color:#6975A7;
-  border-radius:.5rem;
+  border-radius: 20px;
+  margin: auto;
+	padding: 3vw;
 }
 
 .mainNav div.analyticsContainer div.subtitle {
@@ -113,4 +121,8 @@ div.appContainer {
   padding-bottom:2rem;
   padding-top:2rem;
   border-bottom:2px solid #F3EA6B;
+}
+
+.mainNav div.settingContainer ul li:hover {
+  background-color:#F3EA6B;
 }

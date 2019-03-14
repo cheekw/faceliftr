@@ -1,4 +1,5 @@
 import React from 'react';
+import Recommend from './Recommend';
 
 class Analytics extends React.Component {
     constructor() {
@@ -33,19 +34,7 @@ class Analytics extends React.Component {
         return (
             <div className="analyticsContainer">
                 <div className="graph"></div>
-                <div className="subtitle">
-                    <h2>Regimen #1</h2>
-                </div>
-                <div className="regimen">
-                    <div className="regimenRow">
-                        <div className="imgProduct"></div>
-                        <div className="content">
-                            <h3>Product Name</h3>
-                            <h6>Price</h6>
-                            <p>Content</p>
-                        </div>
-                    </div>
-                </div>
+                <Recommend />
             </div>
         );
     }
