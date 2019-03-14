@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Navbar from './components/Navbar';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Setting from './components/Setting';
+import Analytics from './components/Analytics';
 import './App.css';
 
 /*
@@ -101,22 +104,20 @@ function FACEPP(apikey, apisecret, isChina) {
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <div id="appContainer" className="appContainer">
+            <div className="mainNav">
+              <Navbar />
+							<Switch>
+								<Route path='/camera'/>
+								<Route path='/analytics' component= { Analytics }/>
+								<Route path='/setting' component= { Setting }/>
+							</Switch>
+            </div>
+          </div>
+        </div>
+      </BrowserRouter>
     );
   }
 }
@@ -300,5 +301,6 @@ class FaceCapture extends Component {
     )
   }
 }
+
 
 export default App;

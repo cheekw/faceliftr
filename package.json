@@ -6,8 +6,10 @@
     "boostrap": "^2.0.0",
     "bootstrap": "^4.3.1",
     "material-kit": "^2.0.4",
+    "firebase": "^5.8.6",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.8"
   },
   "scripts": {
