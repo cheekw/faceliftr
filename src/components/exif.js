@@ -841,7 +841,7 @@
 
    function findXMPinJPEG(file) {
 
-        if (!('DOMParser' in self)) {
+        if (!('DOMParser' in window.self)) {
             // console.warn('XML parsing not supported without DOMParser');
             return;
         }
@@ -974,9 +974,8 @@
     }
 
     EXIF.getData = function(img, callback) {
-        //eslint-disable-next-line
-        if (((self.Image && img instanceof self.Image)
-            || (self.HTMLImageElement && img instanceof self.HTMLImageElement))
+        if (((window.self.Image && img instanceof window.self.Image)
+            || (window.self.HTMLImageElement && img instanceof window.self.HTMLImageElement))
             && !img.complete)
             return false;
 
@@ -1051,10 +1050,10 @@
         return findEXIFinJPEG(file);
     }
 
-    if (typeof define === 'function' && define.amd) {
+    /*if (typeof define === 'function' && define.amd) {
         define('exif-js', [], function() {
             return EXIF;
         });
-    }
+    }*/
 }.call(this));
 
