@@ -36,6 +36,9 @@ class Analytics extends React.Component {
                 <svg viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg">
                     <rect fill="#6975A7" rx="10" ry="10" x="0" y="0" height="100%" width="100%" />
                     <text fill="#ecf0f1" x="240" y="30">AUG 1ST, 2018 - MAR 24TH, 2019</text>
+                    <text fill="#e74c3c"x="460" y="485">ACNE</text>
+                    <text fill="#2ecc71" x="510" y="485">DARK SPOTS</text>
+                    <text fill="#f1c40f" x="610" y="485">STAINS</text>
                     <text fill="#ecf0f1" x="20" y="460">0</text>
                     <text fill="#ecf0f1" x="20" y="380">20</text>
                     <line x1="40" y1="375" x2="660" y2="380" stroke="#ecf0f1"
