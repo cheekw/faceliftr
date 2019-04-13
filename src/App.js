@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import Navbar from './components/Navbar';
-import { BrowserRouter as Router, IndexRoute, Route, Switch, Redirect } from 'react-router-dom';
-import Settings from './components/Settings';
-import Analytics from './components/Analytics';
-import FaceCapture from './components/FaceCapture';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Landing from './components/Landing';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
