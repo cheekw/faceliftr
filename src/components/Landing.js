@@ -8,6 +8,7 @@ class Landing extends Component {
         <div className="landing-header">
           {/* TODO: Change to actual logo*/}
           <div className="landing-logo">FaceLiftr</div>
+          <div className="round-button">Coming Soon</div>
         </div>
         <div className="landing-cards-container">
           <div className="landing-card slogan">

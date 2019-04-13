@@ -7,6 +7,8 @@
 
 .App .landing-header {
     position: relative;
+    display: flex;
+    justify-content: space-between;
     max-width: 100%;
     padding: 20px;
     text-align: left;
@@ -54,4 +56,11 @@
 .track {
     background: #29339B;
     color: white;
+}
+
+.round-button{
+    padding: 10px;
+    border-style: solid;
+    border-width: medium;
+    border-radius: 10px;
 }
