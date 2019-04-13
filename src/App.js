@@ -1,29 +1,29 @@
 import React, { Component } from 'react';
 import Navbar from './components/Navbar';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Setting from './components/Setting';
+import { BrowserRouter as Router, IndexRoute, Route, Switch, Redirect } from 'react-router-dom';
+import Settings from './components/Settings';
 import Analytics from './components/Analytics';
 import FaceCapture from './components/FaceCapture';
+import Landing from './components/Landing';
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
+import Home from './components/Home';
+import * as ROUTES from './constants/routes'
 import './App.css';
-import { fail } from 'assert';
- 
+
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <Router>
         <div className="App">
-          <div id="appContainer" className="appContainer">
-            <div className="mainNav">
-              <Navbar />
-							<Switch>
-                <Route path='/camera' render={() => {window.location.href="detectFace.html"}} />
-								<Route path='/analytics' component= { Analytics }/>
-								<Route path='/setting' component= { Setting }/>
-							</Switch>
-            </div>
-          </div>
+          <Switch>
+            <Route exact path="/" component={Landing}/>
+            <Route path={ROUTES.SIGN_IN} component={SignIn}/>
+            <Route path={ROUTES.SIGN_UP} component={SignUp}/>
+            <Route path={ROUTES.HOME} component={Home}/>
+          </Switch>
         </div>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
