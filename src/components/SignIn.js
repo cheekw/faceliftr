@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import firebase from './firebase.js';
-import SignUp from './SignUp.js'
+import * as ROUTES from '../constants/routes';
+import "./SignIn.css";
 
 class SignIn extends Component {
   constructor() {
@@ -17,11 +18,15 @@ class SignIn extends Component {
   }
 
   componentDidMount() {
-    // TODO: create unsubscribe
+    // this.unsubscribe = firebase.auth().onAuthStateChanged(user => {
+    //   if (user) {
+    //     this.props.history.push(ROUTES.HOME);
+    //   }
+    // });
   }
 
   componentWillUnmount() {
-    // TODO: unsubscribe
+    // this.unsubscribe();
   }
 
   handleInputEmail(event) {
@@ -42,7 +47,7 @@ class SignIn extends Component {
   render() {
     return (
       <div className="account">
-        <h1>FaceLiftr</h1>
+        <h1>faceliftr.</h1>
         <form onSubmit={this.handleSubmit}>
           <div className="container">
             <input id="user" type="Email" placeholder="Email" autoComplete="off" required
@@ -58,7 +63,7 @@ class SignIn extends Component {
         </form>
         <div className="links">
           <span>Don't have an account?</span>
-          <Link to={SignUp}>Sign up</Link>
+          <Link to={ROUTES.SIGN_UP}>Sign up</Link>
         </div>
       </div>
     );

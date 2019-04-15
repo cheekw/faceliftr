@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import firebase from './firebase.js';
 import { Link } from 'react-router-dom';
 import md5 from 'blueimp-md5';
-import SignIn from './SignIn.js'
+import * as ROUTES from '../constants/routes';
+import "./SignIn.css";
 
 class SignUp extends Component {
     constructor() {
@@ -62,7 +63,7 @@ class SignUp extends Component {
         return (
             <div className="account">
                 {/* {this.state.errorMessage ? <Alert errorMessage={this.state.errorMessage} /> : undefined}  */}
-                <h1>FaceLiftr</h1>
+                <h1>faceliftr.</h1>
                 <form onSubmit={event => this.handleSubmitForm(event)}>
                     <div className="container">
                         <input id="displayName" type="text" placeholder="Display Name" autoComplete="off" required
@@ -85,7 +86,7 @@ class SignUp extends Component {
                     </div>
                     <div className="links">
                         <span>Already have an account?</span>
-                        <Link to={SignIn}>Sign in</Link>
+                        <Link to={ROUTES.SIGN_IN}>Sign in</Link>
                     </div>
                 </form>
             </div>
