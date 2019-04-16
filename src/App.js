@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Setting from './components/Setting';
 import Analytics from './components/Analytics';
-import FaceCapture from './components/FaceCapture';
+import FaceCapture from './components/test';
 import './App.css';
 import { fail } from 'assert';
  
@@ -16,7 +16,7 @@ class App extends Component {
             <div className="mainNav">
               <Navbar />
 							<Switch>
-                <Route path='/camera' render={() => {window.location.href="detectFace.html"}} />
+                <Route path='/camera' component={FaceCapture} />
 								<Route path='/analytics' component= { Analytics }/>
 								<Route path='/setting' component= { Setting }/>
 							</Switch>
