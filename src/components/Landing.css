@@ -1,0 +1,66 @@
+.App .landing-container {
+    width: 100%;
+    max-width: none;
+    overflow-x: hidden;
+    font-family: Futura;
+}
+
+.App .landing-header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    padding: 20px;
+    text-align: left;
+    font-size: 30px;
+    background-color: #2CD6A9;
+    color: white;
+}
+
+.landing-cards-container {
+    margin: auto;
+    max-width: 1820px;
+}
+
+.landing-card {
+    font-size: 50px;
+    height: 720px;
+    line-height: 720px;
+    background: whitesmoke;
+    color: DimGray;
+}
+
+
+.slogan {
+    font-size: 80px;
+    font-style: bold;
+    background-color: #2CD6A9;
+    color: white;
+}
+
+.recommendation {
+    background: whitesmoke;
+    color: DimGray;
+}
+
+.build {
+    background: tomato;
+    color: white;
+}
+
+.customize {
+    background: whitesmoke;
+    color: DimGray;
+}
+
+.track {
+    background: #29339B;
+    color: white;
+}
+
+.round-button{
+    padding: 10px;
+    border-style: solid;
+    border-width: medium;
+    border-radius: 10px;
+}

@@ -53,7 +53,7 @@ div.appContainer {
   font-size:5rem;
 }
 
-.mainNav div.container ul, .mainNav div.settingContainer ul {
+.mainNav div.container ul, .mainNav div.settingsContainer ul {
   list-style-type: none;
   margin:0;
   padding:0;
@@ -87,7 +87,7 @@ div.appContainer {
 .mainNav div.container ul li a div.circle.three {
   background-color:#F3EA6B;
   background-size:contain;
-  background-image:url('./images/icon_setting.png');
+  background-image:url('./images/icon_settings.png');
 }
 
 .mainNav div.analyticsContainer {
@@ -117,7 +117,7 @@ div.appContainer {
   border-radius:.5rem;
 }
 
-.mainNav div.settingContainer {
+.mainNav div.settingsContainer {
   height:30rem;
   width:50rem;
   border:5px solid #F3EA6B;
@@ -125,14 +125,14 @@ div.appContainer {
   margin:50px;
 }
 
-.mainNav div.settingContainer ul li {
+.mainNav div.settingsContainer ul li {
   font-size:1.5rem;
   padding-bottom:2rem;
   padding-top:2rem;
   border-bottom:2px solid #F3EA6B;
 }
 
-.mainNav div.settingContainer ul li:hover {
+.mainNav div.settingsContainer ul li:hover {
   background-color:#F3EA6B;
 }
 
