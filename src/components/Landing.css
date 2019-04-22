@@ -1,4 +1,221 @@
-.App .landing-container {
+.App div.landing-title-container {
+    background-color:#A5D38C;
+    width:100%;
+    height:90vh;
+}
+
+.App div.landing-title-container div.landing-header{
+    width:100%;
+    display:flex;
+    flex-wrap:nowrap;
+}
+
+.App div.landing-title-container div.landing-logo-text {
+    width:50%;
+    display:flex;
+    justify-content: flex-start;
+}
+
+.App div.landing-title-container div.landing-logo-text h1 {
+    font-family: "Roboto thin";
+    color:white;
+    margin:1rem;
+}
+
+.App div.landing-title-container div.landing-signin-container {
+    width:50%;
+    display:flex;
+    justify-content:flex-end;
+}
+
+.App div.landing-title-container div.landing-signin-container div.landing-signin-button h3 {
+    color:white;
+    background-color:#A5D38C;
+    border:2px solid white;
+    border-radius:10%;
+    padding-left:1rem;
+    padding-right:1rem;
+    padding-top:.3rem;
+    padding-bottom:.3rem;
+    margin:1rem;
+}
+
+.App div.landing-title-container div.landing-signin-container div.landing-signin-button h3:hover {
+    background-color:white;
+    color:#A5D38C;
+}
+
+.App div.landing-title-container div.landing-mission {
+    height:75%;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.App div.landing-title-container div.landing-mission h1 {
+    font-family: "Roboto thin";
+    color:white;
+    font-size:3rem;
+}
+/* .App div.landing-title-container div.landing-header div.landing-signin-button {
+    color:#A5D38C;
+    border:2px solid #A5D38C;
+    border-radius:10%;
+    padding-left:1rem;
+    padding-right:1rem;
+    padding-top:.3rem;
+    padding-bottom:.3rem;
+    margin:1rem;
+}
+
+.App div.landing-title-container div.landing-header div.landing-signin-button:hover {
+    color:white;
+    background-color:#A5D38C;
+}
+
+.App div.landing-title-container div.flex {
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    height:100%;
+    width:100%;
+}
+
+.App div.landing-title-container div.landing-logo-container {
+    width:50%;
+    height:50%;
+    display:flex;
+    flex-wrap:nowrap;
+}
+
+.App div.landing-title-container div.landing-logo-container div.landing-logo {
+    height:100%;
+    width:30%;
+    background-size:contain;
+    background-image:url('../images/landing_images/Logo.png');
+    background-repeat:no-repeat;
+    background-position: center;
+}
+
+.App div.landing-title-container div.landing-logo-container div.landing-logo-text {
+    height:100%;
+    width:70%;
+    display:flex;
+    align-items:center;
+}
+
+.App div.landing-title-container div.flex div.landing-logo-container div.landing-logo-text h1.landing-logo-h1 {
+    font-family:Roboto thin;
+    color:#A5D38C;
+    margin:0;
+    text-align: left;
+    font-size:6rem;
+} */
+
+.App strong.bolden {
+    font-family: "Roboto";
+}
+
+.App div.landing-container.snapshot {
+    height:90vh;
+    width:100%;
+    background-color:#D0E6BE;
+    display:flex;
+    flex-wrap:nowrap;
+    position:relative;
+}
+
+.App div.landing-container div.landing-content {
+    padding:5rem;
+}
+
+.App div.landing-container div.landing-content p {
+    text-align:left;
+    font-size:2rem;
+    color:white;
+    line-height:1.5em;
+}
+
+.App div.landing-container div.landing-content h1.landing-h1.snapshot {
+    font-family: "Roboto thin";
+    color:white;
+}
+
+.App div div.landing-image-container,
+.App div div.landing-content {
+    width:50%;
+    height:100%;
+}
+
+.App div.landing-container div.landing-image-container div.landing-image {
+    background-repeat:no-repeat;
+    background-size:contain;
+    position:absolute;
+    height:100%;
+    width:90%;
+    top:3rem;
+    z-index:1;
+}
+
+.App div.landing-container.snapshot div.landing-image-container div.landing-image.snapshot {
+    background-image:url('../images/landing_images/Computer_LRG.png');
+}
+
+.App div.landing-container.track {
+    height:90vh;
+    width:100%;
+    background-color:#A5D38C;
+    display:flex;
+    flex-wrap:nowrap;
+    position:relative;
+    padding-top:3rem;
+}
+
+.App div.landing-container.track div.landing-image-container {
+    position:relative;
+    display:flex;
+}
+
+.App div.landing-container.track div.landing-image-container div.landing-image.track {
+    background-image:url('../images/landing_images/Graph.png');
+    background-size:contain;
+    top:7rem;
+}
+
+.App div.landing-container.track div.landing-content h1.landing-h1.track {
+    font-family: "Roboto thin";
+    color:white;
+}
+
+.App div.landing-container.track div.landing-content p.landing-content-track {
+    color:white;
+}
+
+.App div.landing-container.customize {
+    height:90vh;
+    width:100%;
+    background-color:#D0E6BE;
+    display:flex;
+    flex-wrap:nowrap;
+}
+
+.App div.landing-container.customize div.landing-content h1.landing-h1.customize {
+    font-family: "Roboto thin";
+    color:white;
+}
+
+.App div.landing-container.customize div.landing-image-container {
+    position:relative;
+}
+
+.App div.landing-container.customize div.landing-image-container div.landing-image.customize {
+    background-image:url('../images/landing_images/Routine.png');
+    background-position:center;
+    top:0;
+}
+
+/* .App .landing-container {
     width: 100%;
     max-width: none;
     overflow-x: hidden;
@@ -63,4 +280,4 @@
     border-style: solid;
     border-width: medium;
     border-radius: 10px;
-}
+} */
