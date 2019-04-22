@@ -1,6 +1,7 @@
 import React from 'react';
 import EXIF from './exif';
 import $ from 'jquery'; 
+import firebase from './firebase.js';
 
 class FaceCapture extends React.Component { 
     clickInput = e => {
@@ -116,14 +117,28 @@ class FaceCapture extends React.Component {
         let success = e => {
             console.log(e);
             let textView = document.getElementById('text');
-            alert('dark circles: ' + e['faces'][0]['attributes']['skinstatus']['dark_circle'] 
-            + ' acne: ' + e['faces'][0]['attributes']['skinstatus']['acne'] +
-            ' stain: ' + e['faces'][0]['attributes']['skinstatus']['stain'] + 
-            ' health ' + e['faces'][0]['attributes']['skinstatus']['health']);
+            let darkCircles = e['faces'][0]['attributes']['skinstatus']['dark_circle'];
+            let acne = e['faces'][0]['attributes']['skinstatus']['acne'];
+            let stain = e['faces'][0]['attributes']['skinstatus']['stain'];
+            let health = e['faces'][0]['attributes']['skinstatus']['health'];
+            alert('dark circles: ' + darkCircles 
+            + ' acne: ' + acne +
+            ' stain: ' + stain + 
+            ' health ' + health);
             textView.innerText = JSON.stringify(e,null,"\t");
         
             let imageView = document.getElementById('preview');
-        
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+
+            today = mm + '/' + dd + '/' + yyyy;
+            firebase.database().ref('test/' + today + '/Results/Face Scans').set({
+              acne:acne,
+              stain: stain,
+              health:health
+            });
             const faces = e.faces;
         
             for (const index in faces){
