@@ -4,11 +4,11 @@ import './Landing.css';
 class Landing extends Component {
   render() {
     return (
-      <div>
+      <div className="landing">
         <div className="landing-title-container">
           <div className="landing-header">
             <div className="landing-logo-text">
-              <h1><strong className="bolden">Face</strong>liftr</h1>
+              <h1>Faceliftr</h1>
             </div>
             <div className="landing-signin-container">
               <div className="landing-signin-button">
@@ -19,14 +19,6 @@ class Landing extends Component {
           <div className="landing-mission">
             <h1>Become your picture perfect you</h1>
           </div>
-          {/* <div className="flex">
-            <div className="landing-logo-container">
-              <div className="landing-logo"></div>
-              <div className="landing-logo-text">
-                <h1 className="landing-logo-h1"><strong className="bolden">FACE</strong>LIFTR</h1>
-              </div>
-            </div>
-          </div> */}
         </div>
 
         <div className="landing-container snapshot">
@@ -35,7 +27,7 @@ class Landing extends Component {
           </div>
           <div className="landing-content">
             <h1 className="landing-h1 snapshot">
-              <strong className="bolden">SNAPSHOT</strong> AND ANALYZE
+              SNAPSHOT AND ANALYZE
             </h1>
             <p>
               Take a quick selfie and a supplementary questionnaire. Then, 
@@ -48,7 +40,7 @@ class Landing extends Component {
         <div className="landing-container track">
           <div className="landing-content">
             <h1 className="landing-h1 track">
-              TRACK <strong className="bolden">SKIN</strong> PROGRESS
+              TRACK SKIN PROGRESS
             </h1>
             <p className="landing-content-track">
               Save your skin data after each snapshot, so you can see how your skin reacts to your 
@@ -66,7 +58,7 @@ class Landing extends Component {
           </div>
           <div className="landing-content">
             <h1 className="landing-h1 customize">
-              CUSTOMIZE <strong className="bolden">SKINCARE</strong> ROUTINE
+              CUSTOMIZE SKINCARE ROUTINE
             </h1>
             <p className="landing-content-customize">
               You can either create your own routine or modify 

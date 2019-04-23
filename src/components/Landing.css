@@ -1,3 +1,11 @@
+.App div.landing {
+    font-family:"Futura";
+}
+
+.App div.landing p {
+    font-family:"Futura Medium";
+}
+
 .App div.landing-title-container {
     background-color:#A5D38C;
     width:100%;
@@ -17,9 +25,10 @@
 }
 
 .App div.landing-title-container div.landing-logo-text h1 {
-    font-family: "Roboto thin";
+    font-family: "Futura";
     color:white;
     margin:1rem;
+    font-size:3rem;
 }
 
 .App div.landing-title-container div.landing-signin-container {
@@ -38,6 +47,8 @@
     padding-top:.3rem;
     padding-bottom:.3rem;
     margin:1rem;
+    font-family:"Futura";
+    font-size:1.4rem;
 }
 
 .App div.landing-title-container div.landing-signin-container div.landing-signin-button h3:hover {
@@ -54,7 +65,7 @@
 }
 
 .App div.landing-title-container div.landing-mission h1 {
-    font-family: "Roboto thin";
+    font-family: "Futura";
     color:white;
     font-size:3rem;
 }
@@ -113,14 +124,10 @@
     font-size:6rem;
 } */
 
-.App strong.bolden {
-    font-family: "Roboto";
-}
-
 .App div.landing-container.snapshot {
     height:90vh;
     width:100%;
-    background-color:#D0E6BE;
+    background-color:#DBD8B3;
     display:flex;
     flex-wrap:nowrap;
     position:relative;
@@ -138,7 +145,7 @@
 }
 
 .App div.landing-container div.landing-content h1.landing-h1.snapshot {
-    font-family: "Roboto thin";
+    font-family: "Futura";
     color:white;
 }
 
@@ -146,6 +153,8 @@
 .App div div.landing-content {
     width:50%;
     height:100%;
+    padding:3em;
+    
 }
 
 .App div.landing-container div.landing-image-container div.landing-image {
@@ -160,12 +169,13 @@
 
 .App div.landing-container.snapshot div.landing-image-container div.landing-image.snapshot {
     background-image:url('../images/landing_images/Computer_LRG.png');
+    width:40%;
 }
 
 .App div.landing-container.track {
     height:90vh;
     width:100%;
-    background-color:#A5D38C;
+    background-color:#FCC8B2;
     display:flex;
     flex-wrap:nowrap;
     position:relative;
@@ -180,11 +190,10 @@
 .App div.landing-container.track div.landing-image-container div.landing-image.track {
     background-image:url('../images/landing_images/Graph.png');
     background-size:contain;
-    top:7rem;
 }
 
 .App div.landing-container.track div.landing-content h1.landing-h1.track {
-    font-family: "Roboto thin";
+    font-family: "Futura";
     color:white;
 }
 
@@ -195,13 +204,13 @@
 .App div.landing-container.customize {
     height:90vh;
     width:100%;
-    background-color:#D0E6BE;
+    background-color:#EFA48B;
     display:flex;
     flex-wrap:nowrap;
 }
 
 .App div.landing-container.customize div.landing-content h1.landing-h1.customize {
-    font-family: "Roboto thin";
+    font-family: "Futura";
     color:white;
 }
 
