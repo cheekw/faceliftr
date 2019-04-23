@@ -57,7 +57,7 @@
     font-size: 1rem;
 }
 
-.account .input[type=text], input[type=email], input[type=password] {
+.account input[type=text], input[type=email], input[type=password] {
     width: 100%;
     border-radius: 3px;
     font: inherit;
