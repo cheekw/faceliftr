@@ -48,39 +48,39 @@ class SignUp extends Component {
             this.setState({ errorMessage: 'Passwords do not match.' })
         } else {
             let hash = this.getEmailHash();
-            firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then(user => {
-                user.updateProfile({
-                    displayName: this.state.displayName,
-                }).then(() => {
-                    // this.props.history.push(landingPage);
-                    window.location.reload()
-                }).catch(error => this.setState({ errorMessage: error.message }));
-            }).catch(error => this.setState({ errorMessage: error.message }));
+            firebase.auth()
+                .createUserWithEmailAndPassword(this.state.email, this.state.password)
+                .then(user => {
+                    user.updateProfile({ displayName: this.state.displayName })
+                    // .then(() => { this.props.history.push('/'); window.location.reload() })
+                    // .catch(error => this.setState({ errorMessage: error.message }));
+                })
+                .catch(error => this.setState({ errorMessage: error.message }));
         }
     }
 
     render() {
         return (
             <div className="account">
-                {/* {this.state.errorMessage ? <Alert errorMessage={this.state.errorMessage} /> : undefined}  */}
                 <h1>faceliftr.</h1>
+                <p className="error-message">{this.state.errorMessage}</p>
                 <form onSubmit={event => this.handleSubmitForm(event)}>
                     <div className="container">
                         <input id="displayName" type="text" placeholder="Display Name" autoComplete="off" required
                             value={this.state.displayName}
-                            onInput={event => this.handleInputDisplayName(event)}
+                            onChange={event => this.handleInputDisplayName(event)}
                         />
                         <input id="user" type="Email" placeholder="Email" autoComplete="off" required
                             value={this.state.email}
-                            onInput={event => this.handleInputEmail(event)}
+                            onChange={event => this.handleInputEmail(event)}
                         />
                         <input id="password" type="password" placeholder="Password" required minLength="6"
                             value={this.state.password}
-                            onInput={event => this.handleInputPassword(event)}
+                            onChange={event => this.handleInputPassword(event)}
                         />
                         <input id="confirmPassword" type="password" placeholder="Confirm Password" required minLength="6"
                             value={this.state.confirmPassword}
-                            onInput={event => this.handleInputPasswordConfirmation(event)}
+                            onChange={event => this.handleInputPasswordConfirmation(event)}
                         />
                         <button type="submit" className="btn">CREATE ACCOUNT</button>
                     </div>

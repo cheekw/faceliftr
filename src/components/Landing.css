@@ -1,43 +1,241 @@
-.App div.landing {
-    font-family:"Futura";
+html {
+    width: 100%;
+    height: 100%;
+    background: whitesmoke;
 }
 
-.App div.landing p {
-    font-family:"Futura Medium";
+body {
+    margin: 0;
 }
 
-.App div.landing-title-container {
-    background-color:#A5D38C;
-    width:100%;
-    height:90vh;
+.App .landing {
+    font-family: Futura, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 100%;
+    height: 100%;
+    text-align: left;
 }
 
-.App div.landing-title-container div.landing-header{
-    width:100%;
-    display:flex;
-    flex-wrap:nowrap;
+.App .landing-header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
-.App div.landing-title-container div.landing-logo-text {
-    width:50%;
-    display:flex;
-    justify-content: flex-start;
+.App .landing-container {
+    width: 100%;
+    height: 95vh;
+    margin: none;
+    padding: none;
+    display: flex;
 }
 
-.App div.landing-title-container div.landing-logo-text h1 {
-    font-family: "Futura";
+.App .landing-logo-text, .landing-signin-button {
+    color: white;
+    margin: 1em;
+    font-size: 1.8em;
+}
+
+.App .landing-logo-text {
+    font-size: 2em;
+}
+
+Link {
+    text-decoration: none; 
+}
+
+.App .landing-signin-button {
+    font-size: 1.5em;
+    padding: 0.5rem;
+    border-style: solid;
+    border-width: medium;
+    border-radius: 10px;
+}
+
+.App .landing-signin-button:hover {
+    background: white;
+    color: #2CD6A9;
+}
+
+.App .mission {
+    background: #2CD6A9;
+    position: relative;
+    flex-direction: column;
+}
+
+.App .snapshot {
+    background: whitesmoke;
+    color: DimGray;
+    justify-content: flex-end;
+}
+
+.App .recommend {
+    background: tomato;
+    color: white;
+}
+
+.App .customize {
+    background: whitesmoke;
+    color: DimGray;
+    justify-content: flex-end;
+}
+
+.App .track {
+    background: #29339B;
+    color: white;
+}
+
+.App .landing-mission {
+    margin-top: 7vh;
+    text-align: left;
+    align-items: center;
+    font-size: 2.5rem;
+}
+
+.App .landing-mission-subtitle {
+    margin-top: 2vh;
+    text-align: left;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.App .landing-mission, .landing-mission-subtitle {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.App .landing-content {
+    padding: 3em;
+    margin-top: 10vh;
+    max-width: 70vw;
+}
+
+.App .landing-content-title {
+    font-size: 2rem;
+}
+
+.App .landing-content-text {
+    margin-top: 2em;
+    font-size: 1.2em;
+}
+
+.App .circle-image {
+    width: 10em;
+    height: 10em;
+    position: absolute;
+    top: 60vh;
+    left: 6vh
+}
+
+.App .mission-image {
+    max-width: 8em;
+    position: absolute;
+    top: 60vh;
+    left: 10vh
+}
+
+.App .snapshot-image {
+    max-width: 12em;
+    position: absolute;
+    top: 150vh;
+    left: 25vw;
+}
+.App .recommend-image {
+    max-width: 40vh;
+    position: absolute;
+    top: 250vh;
+    left: 8vw;
+}
+.App .customize-image {
+    max-width: 40vh;
+    position: absolute;
+    top: 340vh;
+    left: 12vh;
+}
+.App .track-image {
+    max-width: 40vh;
+    position: absolute;
+    top: 430vh;
+    left: 8vw;
+}
+
+@media (min-width: 1024px) {
+    .App .landing-mission {
+        margin-top: 20vh;
+        font-size: 4vw;
+    }
+    .App .landing-mission-subtitle {
+        font-size: 2.5vw;
+    }
+    .App .landing-mission, .landing-mission-subtitle {
+        margin-left: 80px;
+    }
+    .App .landing-content {
+        padding: 4em;
+        margin-top: 35vh;
+        max-width: 40vw;
+    }
+    .App .landing-content-title {
+        font-size: 4vw;
+    }
+    .App .landing-content-text {
+        margin-top: 1em;
+        font-size: 2vw;
+        font-weight: lighter;
+    }
+    .App .circle-image {
+        width: 30vw;
+        height: 30vw;
+        position: absolute;
+        top: 25%;
+        left: 65%;
+    }
+    .App .mission-image {
+        max-width: 25vw;
+        position: absolute;
+        top: 30%;
+        left: 70%;
+    }
+    .App .snapshot-image {
+        max-width: 25vw;
+        position: absolute;
+        top: 120%;
+        left: 8%;
+    }
+    .App .recommend-image {
+        max-width: 40vw;
+        position: absolute;
+        top: 200%;
+        left: 50%;
+    }
+    .App .customize-image {
+        max-width: 40vw;
+        position: absolute;
+        top: 300%;
+        left: 5%;
+    }
+    .App .track-image {
+        max-width: 40vw;
+        position: absolute;
+        top: 390%;
+        left: 50%;
+    }
+}
+
+/* 
+.landing-title-container .landing-logo-text h1 {
     color:white;
     margin:1rem;
     font-size:3rem;
 }
 
-.App div.landing-title-container div.landing-signin-container {
+.landing-title-container .landing-signin-container {
     width:50%;
     display:flex;
     justify-content:flex-end;
 }
 
-.App div.landing-title-container div.landing-signin-container div.landing-signin-button h3 {
+.landing-title-container .landing-signin-container .landing-signin-button h3 {
     color:white;
     background-color:#A5D38C;
     border:2px solid white;
@@ -47,16 +245,15 @@
     padding-top:.3rem;
     padding-bottom:.3rem;
     margin:1rem;
-    font-family:"Futura";
     font-size:1.4rem;
 }
 
-.App div.landing-title-container div.landing-signin-container div.landing-signin-button h3:hover {
+.landing-title-container .landing-signin-container .landing-signin-button h3:hover {
     background-color:white;
     color:#A5D38C;
 }
 
-.App div.landing-title-container div.landing-mission {
+.landing-title-container .landing-mission {
     height:75%;
     width:100%;
     display:flex;
@@ -64,67 +261,12 @@
     align-items: center;
 }
 
-.App div.landing-title-container div.landing-mission h1 {
-    font-family: "Futura";
+.landing-title-container .landing-mission h1 {
     color:white;
     font-size:3rem;
 }
-/* .App div.landing-title-container div.landing-header div.landing-signin-button {
-    color:#A5D38C;
-    border:2px solid #A5D38C;
-    border-radius:10%;
-    padding-left:1rem;
-    padding-right:1rem;
-    padding-top:.3rem;
-    padding-bottom:.3rem;
-    margin:1rem;
-}
 
-.App div.landing-title-container div.landing-header div.landing-signin-button:hover {
-    color:white;
-    background-color:#A5D38C;
-}
-
-.App div.landing-title-container div.flex {
-    display:flex;
-    align-items:center;
-    justify-content: center;
-    height:100%;
-    width:100%;
-}
-
-.App div.landing-title-container div.landing-logo-container {
-    width:50%;
-    height:50%;
-    display:flex;
-    flex-wrap:nowrap;
-}
-
-.App div.landing-title-container div.landing-logo-container div.landing-logo {
-    height:100%;
-    width:30%;
-    background-size:contain;
-    background-image:url('../images/landing_images/Logo.png');
-    background-repeat:no-repeat;
-    background-position: center;
-}
-
-.App div.landing-title-container div.landing-logo-container div.landing-logo-text {
-    height:100%;
-    width:70%;
-    display:flex;
-    align-items:center;
-}
-
-.App div.landing-title-container div.flex div.landing-logo-container div.landing-logo-text h1.landing-logo-h1 {
-    font-family:Roboto thin;
-    color:#A5D38C;
-    margin:0;
-    text-align: left;
-    font-size:6rem;
-} */
-
-.App div.landing-container.snapshot {
+.landing-container.snapshot {
     height:90vh;
     width:100%;
     background-color:#DBD8B3;
@@ -133,31 +275,30 @@
     position:relative;
 }
 
-.App div.landing-container div.landing-content {
+.landing-container .landing-content {
     padding:5rem;
 }
 
-.App div.landing-container div.landing-content p {
+.landing-container .landing-content p {
     text-align:left;
     font-size:2rem;
     color:white;
     line-height:1.5em;
 }
 
-.App div.landing-container div.landing-content h1.landing-h1.snapshot {
-    font-family: "Futura";
+.landing-container .landing-content h1.landing-h1.snapshot {
     color:white;
 }
 
-.App div div.landing-image-container,
-.App div div.landing-content {
+.landing-image-container,
+.landing-content {
     width:50%;
     height:100%;
     padding:3em;
     
 }
 
-.App div.landing-container div.landing-image-container div.landing-image {
+.landing-container .landing-image-container .landing-image {
     background-repeat:no-repeat;
     background-size:contain;
     position:absolute;
@@ -167,12 +308,7 @@
     z-index:1;
 }
 
-.App div.landing-container.snapshot div.landing-image-container div.landing-image.snapshot {
-    background-image:url('../images/landing_images/Computer_LRG.png');
-    width:40%;
-}
-
-.App div.landing-container.track {
+.landing-container.track {
     height:90vh;
     width:100%;
     background-color:#FCC8B2;
@@ -182,26 +318,20 @@
     padding-top:3rem;
 }
 
-.App div.landing-container.track div.landing-image-container {
+.landing-container.track .landing-image-container {
     position:relative;
     display:flex;
 }
 
-.App div.landing-container.track div.landing-image-container div.landing-image.track {
-    background-image:url('../images/landing_images/Graph.png');
-    background-size:contain;
-}
-
-.App div.landing-container.track div.landing-content h1.landing-h1.track {
-    font-family: "Futura";
+.landing-container.track .landing-content h1.landing-h1.track {
     color:white;
 }
 
-.App div.landing-container.track div.landing-content p.landing-content-track {
+.landing-container.track .landing-content p.landing-content-track {
     color:white;
 }
 
-.App div.landing-container.customize {
+.landing-container.customize {
     height:90vh;
     width:100%;
     background-color:#EFA48B;
@@ -209,84 +339,10 @@
     flex-wrap:nowrap;
 }
 
-.App div.landing-container.customize div.landing-content h1.landing-h1.customize {
-    font-family: "Futura";
+.landing-container.customize .landing-content h1.landing-h1.customize {
     color:white;
 }
 
-.App div.landing-container.customize div.landing-image-container {
+.landing-container.customize .landing-image-container {
     position:relative;
-}
-
-.App div.landing-container.customize div.landing-image-container div.landing-image.customize {
-    background-image:url('../images/landing_images/Routine.png');
-    background-position:center;
-    top:0;
-}
-
-/* .App .landing-container {
-    width: 100%;
-    max-width: none;
-    overflow-x: hidden;
-    font-family: Futura;
-}
-
-.App .landing-header {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    max-width: 100%;
-    padding: 20px;
-    text-align: left;
-    font-size: 30px;
-    background-color: #2CD6A9;
-    color: white;
-}
-
-.landing-cards-container {
-    margin: auto;
-    max-width: 1820px;
-}
-
-.landing-card {
-    font-size: 50px;
-    height: 720px;
-    line-height: 720px;
-    background: whitesmoke;
-    color: DimGray;
-}
-
-
-.slogan {
-    font-size: 80px;
-    font-style: bold;
-    background-color: #2CD6A9;
-    color: white;
-}
-
-.recommendation {
-    background: whitesmoke;
-    color: DimGray;
-}
-
-.build {
-    background: tomato;
-    color: white;
-}
-
-.customize {
-    background: whitesmoke;
-    color: DimGray;
-}
-
-.track {
-    background: #29339B;
-    color: white;
-}
-
-.round-button{
-    padding: 10px;
-    border-style: solid;
-    border-width: medium;
-    border-radius: 10px;
 } */

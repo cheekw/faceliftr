@@ -3,7 +3,7 @@
     text-align: center;
     margin-bottom: 2rem;
     font-size: 4rem;
-    font-weight: bolder;
+    font-weight: normal;
     color: #2CD6A9;
     font-family: "Futura";
 }
@@ -11,7 +11,7 @@
 .account {
     height: 100%;
     margin: 4rem auto 0;
-    max-width: 350px;
+    max-width: 300px;
 }
 
 .account .a {
@@ -66,4 +66,8 @@
     margin: 8px 0;
     border: 1px solid rgb(157, 157, 157);
     box-sizing: border-box;
+}
+
+.account .error-message {
+    color: #f75b5b;
 }
