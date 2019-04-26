@@ -1,15 +1,12 @@
-font
-
-h2 {
+.recommend-component h2 {
 	text-align: center;
  	width: 200px;
 	margin: auto;
 	padding: auto;
 	color: OrangeRed;
-
 }
 
-img {
+.recommend-component img {
 	max-width: 175px;
 	max-height: 175px;
 	float: left;

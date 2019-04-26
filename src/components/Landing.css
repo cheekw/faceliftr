@@ -1,7 +1,6 @@
 html {
     width: 100%;
     height: 100%;
-    background: whitesmoke;
 }
 
 body {
@@ -181,8 +180,8 @@ Link {
         margin-left: 80px;
     }
     .App .landing-content {
-        padding: 4em;
-        margin-top: 35vh;
+        padding: 5em;
+        margin-top: 10vh;
         max-width: 40vw;
     }
     .App .landing-content-title {
