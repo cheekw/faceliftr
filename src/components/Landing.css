@@ -64,3 +64,7 @@
     border-width: medium;
     border-radius: 10px;
 }
+
+.card-deck-short{
+    height: 18rem;
+}

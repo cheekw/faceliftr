@@ -1,13 +1,11 @@
-import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
 import EXIF from './exif';
 import $ from 'jquery'; 
-import firebase from './firebase.js';
-import './Landing.css';
-
 
 class FaceCapture extends React.Component { 
     clickInput = e => {
+        alert("lol");
+        alert(e);
         e.preventDefault();
         document.getElementById('input').click();
     } 
@@ -22,10 +20,14 @@ class FaceCapture extends React.Component {
 
     reader.onload = function (e) {
 
+        //移除之前的人脸框
         $("#facesContainer div").remove();
 
+        //图片的base64数据
         const base64Image = e.target.result;
 
+        //显示图片
+        //修复显示方向不对问题
         //fixOrientention(base64Image,imageView);
         const image = new Image();
         image.onload = () => {
@@ -39,16 +41,19 @@ class FaceCapture extends React.Component {
             const ctx = canvas.getContext('2d');
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+            // 旋转图片操作
             EXIF.getData(image, function () {
                 const orientation = EXIF.getTag(this, 'Orientation');
                 console.log(`orientation:${orientation}`);
                 switch (orientation) {
+                    // 正常状态
                     case 1:
                         console.log('旋转0°');
                         canvas.height = height;
                         canvas.width = width;
                         ctx.drawImage(image, 0, 0, width, height);
                         break;
+                    // 旋转90度
                     case 6:
                         console.log('旋转90°');
                         canvas.height = width;
@@ -57,6 +62,7 @@ class FaceCapture extends React.Component {
                         ctx.translate(0, -height);
                         ctx.drawImage(image, 0, 0, width, height);
                         break;
+                    // 旋转180°
                     case 3:
                         console.log('旋转180°');
                         canvas.height = height;
@@ -65,6 +71,7 @@ class FaceCapture extends React.Component {
                         ctx.translate(-width, -height);
                         ctx.drawImage(image, 0, 0, width, height);
                         break;
+                    // 旋转270°
                     case 8:
                         console.log('旋转270°');
                         canvas.height = width;
@@ -89,12 +96,15 @@ class FaceCapture extends React.Component {
         image.src = base64Image;
 
         /*
+        //base64方式上传图片
         let dic = {'image_base64' : base64Image};
 
         facepp.detectFace(dic,success,failed);
 
         */
 
+        // 以二进制的方式上传图片
+        // 将base64转为二进制
         //let imageData = facepp.dataURItoBlob(base64Image);
         const byteString = atob(base64Image.split(',')[1]);
         const mimeString = base64Image.split(',')[0].split(':')[1].split(';')[0];
@@ -104,41 +114,34 @@ class FaceCapture extends React.Component {
             ia[i] = byteString.charCodeAt(i);
         }
         let imageData = new Blob([ab], {type: mimeString});
+        //根据个人需求填写的参数,这里全部写上了,包括年龄性别等,详情看官方文档
         let attributes = 'gender,age,smiling,headpose,facequality,blur,eyestatus,emotion,ethnicity,beauty,mouthstatus,eyegaze,skinstatus';
+        //上传图片,获取结果
         let dataDic = {'image_file':imageData,'return_landmark':2,'return_attributes':attributes};
 
 
+        //调用接口，检测人脸
         const url = "https://api-us.faceplusplus.com/facepp/v3/detect";
         const formData = new FormData();
+
         formData.append('api_key','6zcDRWAnl78-csAxH_OR53WzJ87xHsfb');
         formData.append('api_secret','0_dzAPk2kZVbdiUvy_Tf0KXaGvkDRK8I');
 
-        for (var key in dataDic){
+        for (var key in dataDic){//遍历拼接
             formData.append(key,dataDic[key]);
         }
 
         let success = e => {
             console.log(e);
-            let darkCircles = e['faces'][0]['attributes']['skinstatus']['dark_circle'];
-            let acne = e['faces'][0]['attributes']['skinstatus']['acne'];
-            let stain = e['faces'][0]['attributes']['skinstatus']['stain'];
-            let health = e['faces'][0]['attributes']['skinstatus']['health'];
-            alert('dark circles: ' + darkCircles 
-            + ' acne: ' + acne +
-            ' stain: ' + stain + 
-            ' health ' + health);        
+            let textView = document.getElementById('text');
+            alert('dark circles: ' + e['faces'][0]['attributes']['skinstatus']['dark_circle'] 
+            + ' acne: ' + e['faces'][0]['attributes']['skinstatus']['acne'] +
+            ' stain: ' + e['faces'][0]['attributes']['skinstatus']['stain'] + 
+            ' health ' + e['faces'][0]['attributes']['skinstatus']['health']);
+            textView.innerText = JSON.stringify(e,null,"\t");
+        
             let imageView = document.getElementById('preview');
-            var today = new Date();
-            var dd = String(today.getDate()).padStart(2, '0');
-            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-            var yyyy = today.getFullYear();
-
-            today = mm + '/' + dd + '/' + yyyy;
-            firebase.database().ref('test/' + today + '/Results/Face Scans').set({
-              acne:acne,
-              stain: stain,
-              health:health
-            });
+        
             const faces = e.faces;
         
             for (const index in faces){
@@ -179,7 +182,7 @@ class FaceCapture extends React.Component {
                 const offsetY = (height - imageH)*0.5;
         
                 console.log('offsetX：' + offsetX + 'offsetY' + offsetY);
-                /*
+        
                 $('<div/>').css({
                     position: 'absolute',
                     top: faceY * scale + offsetY,
@@ -188,17 +191,22 @@ class FaceCapture extends React.Component {
                     width: faceW * scale,
                     border: '2px solid ' + borderColor,
                     transform: 'rotate(' + roll + 'deg)'
-                }).appendTo($("#facesContainer")); */
+                }).appendTo($("#facesContainer"));
             }
           }
           
         let failed =  e => {
             console.log(e);
+            for (var k in e) {
+                //alert(k);
+            }
             alert(JSON.stringify(e));
+            let textView = document.getElementById('text');
+            textView.innerText = JSON.stringify(e);
         }
         
-        setTimeout(() => {
-          $.ajax({
+        alert(url);
+        $.ajax({
             url: url,
             type: 'POST',
             cache: false,
@@ -206,76 +214,37 @@ class FaceCapture extends React.Component {
             data: formData,
             processData: false,
             contentType: false,
-            timeout: 100000000000000,
-          }).done(success).fail(failed);
-        }, (1000));
+            timeout: 100000000000000,//20秒超时时间
+        }).done(success).fail(failed);
     }
   }
 
   
   render() {
     return (
-      <div className='landing-container'>
-        <div className='align-self-center col-sm landing-container'>
-          <h1>
-            Take a picture and get instant results!
-          </h1>
-          <p className='w-75 mx-auto'>
-            Pictures help us keep track of your skin health, capturing all the information we need visually. They serve as 
-            progress pictures, that you can access yourself and see how your skin has changed. Our solution is unique as 
-            it uses facial recognition to gather skin-health related data. It is highly important to frequently come back and
-            take this visual assesment, as it allows us to use historical data to asses your progress and your currrent skincare
-            routine. Below is a break down of this process:
-          </p>
-        </div>
-        <div className="card-deck w-75 mx-auto" >
-          <div className="card mb-2">
-            <img className="mx-auto" src="./assets/img/selfie.png" alt="Card image cap"/>
-            <div className="card-body">
-              <h5 className="card-title text-primary">Upload a picture</h5>
-              <p className="card-text">
-              Select an image from your library, ensure that the picture shows your face clearly with proper lighting. 
-              As you come back for more assesments, try to recreate the same angle and lighting for each photo you upload,
-              we will always let you know if you need to retake a photo, and will always ask for permission before using your data!
-              </p>
+      <body>
+        <div className="container">
+            <button className="btn" onclick={this.clickInput}>Select Image</button>
+            <input id="input" className="form-control" type="file" accept="image/*" name="xaunz" onChange={this.selectImage}/>
+            <div id="facesContainer">
+                <img id="preview" />
             </div>
-          </div>
-          <div className="card mb-2">
-            <img className="mx-auto" src="./assets/img/facial-recognition.png" alt="Card image cap"/>
-            <div className="card-body">
-              <h5 className="card-title text-primary">Facial recognition scan</h5>
-              <p className="card-text">Using the Face++ API, your uploaded picture will be scanned to get skin-health data.
-              The scan will give us information related to the levels of acne, blemishes, dark circles, and general skin health.
-              </p>
+            <textarea id="text" readonly="readonly"></textarea>
+        </div>
+        <div className="container">
+            <div className="special card card-nav-tabs text-center">
+                <div className="card-header card-header-danger">
+                    Your results
+                </div>
+                <div className="card-body">
+                    <h4 className="card-title">Breakdown of values:</h4>
+                    <p className="card-text" id="new"></p>
+                </div>
+                <div className="card-footer text-muted">
+                </div>
             </div>
-          </div>
-          <div className="card mb-2">
-            <img className="mx-auto" src="./assets/img/cloud.png" alt="Card image cap"/>
-            <div className="card-body">
-              <h5 className="card-title text-primary">Push to our database</h5>
-              <p className="card-text">
-              We will always ask for your permission before uploading your images to our database. It is important for us to store 
-              this information as it allows us to look back on your skin health, and make better suggestions to your skincare routine.
-              You will alwyas be in the driver's seat when it comes to what we store, as you have the ability to clear your data.
-              </p>
-            </div>
-          </div>
         </div>
-        <br/>
-        <div className="mx-auto w-50">
-          <p>
-            Upload your own picture below, and press upload image once you're happy with the submission!
-          </p>
-          <div className="custom-file">
-            <input id="inputGroupFile01" className="custom-file-input" type="file" accept="image/*" name="xaunz" onChange={this.selectImage}/>
-            <label className="custom-file-label" for="inputGroupFile01">Choose file</label>
-          </div>
-        </div>
-        <div id="facesContainer" className='media'>
-          <img id="preview" className="border border-danger mw-100 mh-100 rounded mx-auto d-block"/>
-        </div>
-        <button type="button" class="btn btn-success mx-auto w-25">Upload image</button>
-      </div>
+      </body>
     )
   } 
 }
