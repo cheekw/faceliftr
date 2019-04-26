@@ -8,6 +8,12 @@
   pointer-events: none;
 }
 
+.face-capture-container img {
+	max-width: 175px;
+  max-height: 175px;
+  padding: 1em;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -43,6 +49,12 @@ div.appContainer {
   flex-wrap:wrap;
   justify-content: center;
   align-items: center;
+}
+
+.mainNav .sign-out {
+  text-align: end;
+  display: relative;
+  margin: 3em;
 }
 
 .mainNav div.container {

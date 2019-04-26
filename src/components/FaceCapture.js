@@ -215,8 +215,8 @@ class FaceCapture extends React.Component {
   
   render() {
     return (
-      <div className='landing-container'>
-        <div className='align-self-center col-sm landing-container'>
+      <div className='face-capture-container'>
+        <div className='align-self-center col-sm face-capture-container'>
           <h1>
             Take a picture and get instant results!
           </h1>

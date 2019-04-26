@@ -14,16 +14,16 @@ class Home extends Component {
       errorMessage: '',
       displayName: '',
     };
-    
+
     this.handleSignOut = this.handleSignOut.bind(this);
     this.getUserInfo = this.getUserInfo.bind(this);
   }
 
   getUserInfo(user) {
     this.setState({
-        displayName: user.displayName,
+      displayName: user.displayName,
     });
-}
+  }
 
   componentDidMount() {
     this.unsubscribe = firebase.auth().onAuthStateChanged(user => {
@@ -49,14 +49,16 @@ class Home extends Component {
     return (
       <Router>
         <div id="appContainer" className="appContainer">
-          <Link to={ROUTES.LANDING} onClick={() => this.handleSignOut()}>
-            Sign out
-          </Link>
+          <div className="sign-out">
+            <Link to={ROUTES.LANDING} onClick={() => this.handleSignOut()}>
+              Sign out
+              </Link>
+          </div>
           <div className="mainNav">
-            <Navbar />
+          <Navbar />
             <Switch>
-              <Route path={ROUTES.FACECAPTURE} component={FaceCapture} />
-              <Route path={ROUTES.ANALYTICS} component={Analytics} />
+              < Route path={ROUTES.FACECAPTURE} component={FaceCapture} />
+              < Route path={ROUTES.ANALYTICS} component={Analytics} />
               <Route path={ROUTES.SETTINGS} component={Settings} />
             </Switch>
           </div>
