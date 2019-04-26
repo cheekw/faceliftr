@@ -18,15 +18,15 @@ class SignIn extends Component {
   }
 
   componentDidMount() {
-    // this.unsubscribe = firebase.auth().onAuthStateChanged(user => {
-    //   if (user) {
-    //     this.props.history.push(ROUTES.HOME);
-    //   }
-    // });
+    this.unsubscribe = firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.props.history.push(ROUTES.HOME);
+      }
+    });
   }
 
   componentWillUnmount() {
-    // this.unsubscribe();
+    this.unsubscribe();
   }
 
   handleInputEmail(event) {
@@ -52,11 +52,11 @@ class SignIn extends Component {
           <div className="container">
             <input id="user" type="Email" placeholder="Email" autoComplete="off" required
               value={this.state.email}
-              onInput={this.handleInputEmail}
+              onChange={this.handleInputEmail}
             />
             <input id="password" type="password" placeholder="Password" required
               value={this.state.password}
-              onInput={this.handleInputPassword}
+              onChange={this.handleInputPassword}
             />
             <button type="submit" className="btn">SIGN IN</button>
           </div>

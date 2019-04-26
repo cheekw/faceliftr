@@ -1,59 +1,86 @@
-.App .landing-container {
+html {
     width: 100%;
-    max-width: none;
-    overflow-x: hidden;
-    font-family: Futura;
+    height: 100%;
+    background: whitesmoke;
+}
+
+body {
+    margin: 0;
+}
+
+.App .landing {
+    font-family: Futura, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 100%;
+    height: 100%;
+    text-align: left;
 }
 
 .App .landing-header {
     position: relative;
     display: flex;
     justify-content: space-between;
-    max-width: 100%;
-    padding: 20px;
-    text-align: left;
-    font-size: 30px;
-    background-color: #2CD6A9;
+    width: 100%;
+}
+
+.App .landing-container {
+    width: 100%;
+    height: 95vh;
+    margin: none;
+    padding: none;
+    display: flex;
+}
+
+.App .landing-logo-text, .landing-signin-button {
     color: white;
+    margin: 1em;
+    font-size: 1.8em;
 }
 
-.landing-cards-container {
-    margin: auto;
-    max-width: 1820px;
+.App .landing-logo-text {
+    font-size: 2em;
 }
 
-.landing-card {
-    font-size: 50px;
-    height: 720px;
-    line-height: 720px;
+Link {
+    text-decoration: none; 
+}
+
+.App .landing-signin-button {
+    font-size: 1.5em;
+    padding: 0.5rem;
+    border-style: solid;
+    border-width: medium;
+    border-radius: 10px;
+}
+
+.App .landing-signin-button:hover {
+    background: white;
+    color: #2CD6A9;
+}
+
+.App .mission {
+    background: #2CD6A9;
+    position: relative;
+    flex-direction: column;
+}
+
+.App .snapshot {
     background: whitesmoke;
     color: DimGray;
+    justify-content: flex-end;
 }
 
-
-.slogan {
-    font-size: 80px;
-    font-style: bold;
-    background-color: #2CD6A9;
-    color: white;
-}
-
-.recommendation {
-    background: whitesmoke;
-    color: DimGray;
-}
-
-.build {
+.App .recommend {
     background: tomato;
     color: white;
 }
 
-.customize {
+.App .customize {
     background: whitesmoke;
     color: DimGray;
+    justify-content: flex-end;
 }
 
-.track {
+.App .track {
     background: #29339B;
     color: white;
 }
@@ -68,3 +95,264 @@
 .card-deck-short{
     height: 18rem;
 }
+.App .landing-mission {
+    margin-top: 7vh;
+    text-align: left;
+    align-items: center;
+    font-size: 2.5rem;
+}
+
+.App .landing-mission-subtitle {
+    margin-top: 2vh;
+    text-align: left;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.App .landing-mission, .landing-mission-subtitle {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.App .landing-content {
+    padding: 3em;
+    margin-top: 10vh;
+    max-width: 70vw;
+}
+
+.App .landing-content-title {
+    font-size: 2rem;
+}
+
+.App .landing-content-text {
+    margin-top: 2em;
+    font-size: 1.2em;
+}
+
+.App .circle-image {
+    width: 10em;
+    height: 10em;
+    position: absolute;
+    top: 60vh;
+    left: 6vh
+}
+
+.App .mission-image {
+    max-width: 8em;
+    position: absolute;
+    top: 60vh;
+    left: 10vh
+}
+
+.App .snapshot-image {
+    max-width: 12em;
+    position: absolute;
+    top: 150vh;
+    left: 25vw;
+}
+.App .recommend-image {
+    max-width: 40vh;
+    position: absolute;
+    top: 250vh;
+    left: 8vw;
+}
+.App .customize-image {
+    max-width: 40vh;
+    position: absolute;
+    top: 340vh;
+    left: 12vh;
+}
+.App .track-image {
+    max-width: 40vh;
+    position: absolute;
+    top: 430vh;
+    left: 8vw;
+}
+
+@media (min-width: 1024px) {
+    .App .landing-mission {
+        margin-top: 20vh;
+        font-size: 4vw;
+    }
+    .App .landing-mission-subtitle {
+        font-size: 2.5vw;
+    }
+    .App .landing-mission, .landing-mission-subtitle {
+        margin-left: 80px;
+    }
+    .App .landing-content {
+        padding: 4em;
+        margin-top: 35vh;
+        max-width: 40vw;
+    }
+    .App .landing-content-title {
+        font-size: 4vw;
+    }
+    .App .landing-content-text {
+        margin-top: 1em;
+        font-size: 2vw;
+        font-weight: lighter;
+    }
+    .App .circle-image {
+        width: 30vw;
+        height: 30vw;
+        position: absolute;
+        top: 25%;
+        left: 65%;
+    }
+    .App .mission-image {
+        max-width: 25vw;
+        position: absolute;
+        top: 30%;
+        left: 70%;
+    }
+    .App .snapshot-image {
+        max-width: 25vw;
+        position: absolute;
+        top: 120%;
+        left: 8%;
+    }
+    .App .recommend-image {
+        max-width: 40vw;
+        position: absolute;
+        top: 200%;
+        left: 50%;
+    }
+    .App .customize-image {
+        max-width: 40vw;
+        position: absolute;
+        top: 300%;
+        left: 5%;
+    }
+    .App .track-image {
+        max-width: 40vw;
+        position: absolute;
+        top: 390%;
+        left: 50%;
+    }
+}
+
+/* 
+.landing-title-container .landing-logo-text h1 {
+    color:white;
+    margin:1rem;
+    font-size:3rem;
+}
+
+.landing-title-container .landing-signin-container {
+    width:50%;
+    display:flex;
+    justify-content:flex-end;
+}
+
+.landing-title-container .landing-signin-container .landing-signin-button h3 {
+    color:white;
+    background-color:#A5D38C;
+    border:2px solid white;
+    border-radius:10%;
+    padding-left:1rem;
+    padding-right:1rem;
+    padding-top:.3rem;
+    padding-bottom:.3rem;
+    margin:1rem;
+    font-size:1.4rem;
+}
+
+.landing-title-container .landing-signin-container .landing-signin-button h3:hover {
+    background-color:white;
+    color:#A5D38C;
+}
+
+.landing-title-container .landing-mission {
+    height:75%;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing-title-container .landing-mission h1 {
+    color:white;
+    font-size:3rem;
+}
+
+.landing-container.snapshot {
+    height:90vh;
+    width:100%;
+    background-color:#DBD8B3;
+    display:flex;
+    flex-wrap:nowrap;
+    position:relative;
+}
+
+.landing-container .landing-content {
+    padding:5rem;
+}
+
+.landing-container .landing-content p {
+    text-align:left;
+    font-size:2rem;
+    color:white;
+    line-height:1.5em;
+}
+
+.landing-container .landing-content h1.landing-h1.snapshot {
+    color:white;
+}
+
+.landing-image-container,
+.landing-content {
+    width:50%;
+    height:100%;
+    padding:3em;
+    
+}
+
+.landing-container .landing-image-container .landing-image {
+    background-repeat:no-repeat;
+    background-size:contain;
+    position:absolute;
+    height:100%;
+    width:90%;
+    top:3rem;
+    z-index:1;
+}
+
+.landing-container.track {
+    height:90vh;
+    width:100%;
+    background-color:#FCC8B2;
+    display:flex;
+    flex-wrap:nowrap;
+    position:relative;
+    padding-top:3rem;
+}
+
+.landing-container.track .landing-image-container {
+    position:relative;
+    display:flex;
+}
+
+.landing-container.track .landing-content h1.landing-h1.track {
+    color:white;
+}
+
+.landing-container.track .landing-content p.landing-content-track {
+    color:white;
+}
+
+.landing-container.customize {
+    height:90vh;
+    width:100%;
+    background-color:#EFA48B;
+    display:flex;
+    flex-wrap:nowrap;
+}
+
+.landing-container.customize .landing-content h1.landing-h1.customize {
+    color:white;
+}
+
+.landing-container.customize .landing-image-container {
+    position:relative;
+} */
