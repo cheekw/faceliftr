@@ -14,13 +14,21 @@ class Home extends Component {
       errorMessage: '',
       displayName: '',
     };
+    
     this.handleSignOut = this.handleSignOut.bind(this);
+    this.getUserInfo = this.getUserInfo.bind(this);
   }
+
+  getUserInfo(user) {
+    this.setState({
+        displayName: user.displayName,
+    });
+}
 
   componentDidMount() {
     this.unsubscribe = firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.getUserInfo(user);
+        // this.getUserInfo(user);
       } else {
         this.props.history.push(ROUTES.SIGN_IN);
       }

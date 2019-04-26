@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "aos": "^2.3.4",
     "blueimp-md5": "^2.10.0",
     "boostrap": "^2.0.0",
     "bootstrap": "^4.3.1",

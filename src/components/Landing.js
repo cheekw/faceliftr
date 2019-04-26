@@ -3,6 +3,11 @@ import './Landing.css';
 import { Link } from 'react-router-dom';
 import circle from '../images/landing_images/circle.png';
 import skincare from '../images/landing_images/skincare.png';
+import facescan from '../images/landing_images/face-scan.png';
+import recommend from '../images/landing_images/recommend.png';
+import customize from '../images/landing_images/customize.png';
+import track from '../images/landing_images/track.png';
+
 import * as ROUTES from '../constants/routes';
 
 
@@ -18,8 +23,8 @@ class Landing extends Component {
           </div>
           <div className="landing-mission">find the perfect routine</div>
           <div className="landing-mission-subtitle">become your picture perfect</div>
-          <img src={circle} className="circle-image"/>
-          <img src={skincare} data-aos="fade-left" className="mission-image"  />
+          <img src={circle}  data-aos="fade-left" className="circle-image" />
+          <img src={skincare} data-aos="fade-left" className="mission-image" />
         </div>
 
         <div className="landing-container snapshot">
@@ -28,7 +33,7 @@ class Landing extends Component {
             <div className="landing-content-text">
               a selfie and questionaire is all we need to analyze your skin profile.
                   </div>
-            <img data-aos="fade-right" className="snapshot-image" src="../images/landing_images/face-scan.png" />
+            <img src={facescan} data-aos="fade-right" className="snapshot-image"/>
           </div>
         </div>
 
@@ -38,7 +43,7 @@ class Landing extends Component {
             <div className="landing-content-text">
               skincare product recommendations tailored to your skin.
                   </div>
-            <img data-aos="fade-left" className="recommend-image" src="../images/landing_images/recommend.png" />
+            <img src={recommend} data-aos="fade-left" className="recommend-image" />
           </div>
         </div>
 
@@ -49,7 +54,7 @@ class Landing extends Component {
               build your own routine or modify
               your recommended routine.
                   </div>
-            <img data-aos="fade-right" className="customize-image" src="../images/landing_images/customize.png" />
+            <img src={customize} data-aos="fade-right" className="customize-image" />
           </div>
         </div>
 
@@ -60,7 +65,7 @@ class Landing extends Component {
               save your skin data overtime to keep track of your skin improvements.
                   </div>
           </div>
-          <img data-aos="fade-left" className="track-image" src="../images/landing_images/track.png" />
+          <img src={track} data-aos="fade-left" className="track-image" />
         </div>
       </div>
 
