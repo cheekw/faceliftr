@@ -2,21 +2,20 @@ import React, { Component } from 'react';
 import questions from '../questions/questions.json'
 import test from '../images/Questionnaire_images/skin_type/question.png'
 import './Questionnaire.scss'
+import firebase from './firebase'
 
 class Questionnaire extends Component {
     constructor(props) {
         super(props);
         this.state = {
             questionTemplate:questions.questionTemplate,
-            answer:'',
+            answer:[],
             index:0
         }
     }
 
     getData = (index, answer) => {
-        this.setState({
-            answer:answer
-        })
+        this.state.answer.push(answer);
     }
 
     next = () => {
@@ -27,7 +26,14 @@ class Questionnaire extends Component {
                 index:update + 1
             });
         } else {
-            console.log("Done")
+            var database = firebase.database();
+            var ref = database.ref('users/' + firebase.auth().currentUser.uid + "/questionnaire");
+            var data = {};
+            for(let i = 0; i < this.state.answer.length; i++) {
+                data["question " + i] = this.state.answer[i];
+            }
+            ref.set(data);
+            console.log("Sent to database.")
         }
     }
 
