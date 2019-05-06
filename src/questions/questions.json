@@ -1,0 +1,25 @@
+{
+    "questionTemplate":[
+        {
+            "question":"What is your skin type?",
+            "choices":[
+                {
+                    "title":"Oily",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"Dry",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"Combination",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"Unsure",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                }
+            ]    
+        }
+    ]
+}

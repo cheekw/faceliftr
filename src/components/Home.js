@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import Analytics from './Analytics';
 import FaceCapture from './FaceCapture';
 import Settings from './Settings';
+import Questionnaire from './Questionnaire'
 import * as ROUTES from '../constants/routes'
 
 class Home extends Component {
@@ -60,6 +61,7 @@ class Home extends Component {
               < Route path={ROUTES.FACECAPTURE} component={FaceCapture} />
               < Route path={ROUTES.ANALYTICS} component={Analytics} />
               <Route path={ROUTES.SETTINGS} component={Settings} />
+              <Route path={ROUTES.QUESTIONNAIRE} component={Questionnaire} />
             </Switch>
           </div>
         </div>

@@ -1,0 +1,65 @@
+div.QuestionnaireContainer{
+    div.Questionnaire {
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        div.QuestionnaireBody {
+            height:50%;
+            width:50%;
+            h2 {
+                padding:2rem;
+            }
+            ul{
+                columns: 2;
+                -webkit-columns: 2;
+                -moz-columns: 2;
+                list-style: none;
+                padding:0;
+                li {
+                    display:inline-block;
+                    div.QuestionnaireItem {
+                        filter:grayscale(100%);
+                        background-color:#e74c3c;
+                        border-radius: 5%;
+                        padding:1.5rem;
+                        margin:1rem;
+                        img {
+                            height:50%;
+                            width:50%;
+                        }
+                        h3 {
+                            color:white;
+                            padding:2rem;
+                        }
+                    }
+                    div.QuestionnaireItem:hover {
+                        animation:addColor .4s ease-in forwards
+                    }
+                    @keyframes addColor {
+                        0% {
+                            filter:grayscale(100%);
+                        } 100% {
+                            filter:grayscale(0);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    div.QuestionnaireButton {
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        div.Button {
+            font-size:1.5rem;
+            border-radius:5%;
+            margin:1.5rem;
+            padding-top:.5rem;
+            padding-bottom:.5rem;
+            padding-left:2rem;
+            padding-right:2rem;
+            color:white;
+            background-color:#e74c3c;
+        }
+    }
+}

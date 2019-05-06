@@ -5,3 +5,4 @@ export const SIGN_IN = '/signin';
 export const FACECAPTURE = '/facecapture';
 export const ANALYTICS = '/analytics';
 export const SETTINGS = '/settings';
+export const QUESTIONNAIRE = '/questionnaire';
