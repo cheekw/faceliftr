@@ -6,10 +6,10 @@ const settings = () => {
     return (
         <div className="settingsContainer">
             <ul>
-                <li><a>CLEAR DATA</a></li>
-                <li><a>SEND REPORT</a></li>
-                <li><a>PRIVACY</a></li>
-                <li><a><NavLink to={ROUTES.QUESTIONNAIRE}>QUESTIONNAIRE</NavLink></a></li>
+                <li>CLEAR DATA</li>
+                <li>SEND REPORT</li>
+                <li>PRIVACY</li>
+                <NavLink to={ROUTES.QUESTIONNAIRE}><li>QUESTIONNAIRE</li></NavLink>
             </ul>
         </div>
     );

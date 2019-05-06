@@ -3,6 +3,8 @@ import questions from '../questions/questions.json'
 import test from '../images/Questionnaire_images/skin_type/question.png'
 import './Questionnaire.scss'
 import firebase from './firebase'
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
 
 class Questionnaire extends Component {
     constructor(props) {
@@ -15,11 +17,19 @@ class Questionnaire extends Component {
     }
 
     getData = (index, answer) => {
-        this.state.answer.push(answer);
+        this.state.answer[this.state.index] = answer;
+    }
+
+    previous = () => {
+        let update = this.state.index;
+        if(update - 1 >= 0) {
+            this.setState({
+                index:update - 1
+            });
+        }
     }
 
     next = () => {
-        console.log(this.state.answer);
         let update = this.state.index;
         if(update + 1 < this.state.questionTemplate.length) {
             this.setState({
@@ -33,7 +43,7 @@ class Questionnaire extends Component {
                 data["question " + i] = this.state.answer[i];
             }
             ref.set(data);
-            console.log("Sent to database.")
+            window.confirm("Sent to database.")
         }
     }
 
@@ -48,6 +58,7 @@ class Questionnaire extends Component {
                     {questionItems}
                 </div>
                 <div className="QuestionnaireButton">
+                    <div onClick={this.previous} className="Button">Previous</div>
                     <div onClick={this.next} className="Button">Next</div>
                 </div>
             </div>
@@ -69,15 +80,15 @@ class QuestionnaireBody extends Component {
     }
 
     render() {
-        let choices = this.props.questionItem.choices.map(choice => {
+        let choices = this.props.questionItem.choices.map((choice, index) => {
             return (
-                <li><QuestionnaireItem sendData={this.getData} choice={choice}/></li>
+                <li><QuestionnaireItem key={index} sendData={this.getData} choice={choice}/></li>
             );
         });
         return(
             <div className="QuestionnaireBody">
                 <h2>{this.props.questionItem.question}</h2>
-                <ul>
+                <ul className="columns">
                     {choices}
                 </ul>
             </div>
@@ -90,14 +101,29 @@ class QuestionnaireItem extends Component {
         super(props);
     }
 
-    sendData = () => {
+    sendData = (event) => {
+        let el = document.getElementById(this.props.choice.title);
+        let otherChoices = document.getElementsByClassName("QuestionnaireItem");
+        let arr = Array.from(otherChoices);
+        arr.map(choice => {
+            choice.setAttribute("style", "filter:grayscale(100%");
+        });
+        el.setAttribute("style", "filter:grayscale(0)");
         this.props.sendData(1, this.props.choice.title);
     }
 
+    clear() {
+        let otherChoices = document.getElementsByClassName("QuestionnaireItem");
+        let arr = Array.from(otherChoices);
+        arr.map(choice => {
+            choice.setAttribute("style", "filter:grayscale(100%");
+        });
+    }
+
     render() {
-        console.log(this.props);
+        this.clear();
         return(
-            <div onClick={this.sendData} className="QuestionnaireItem">
+            <div id={this.props.choice.title} onClick={this.sendData} className="QuestionnaireItem">
                 <img alt="Choice" src={test} />
                 <h3>{this.props.choice.title}</h3>
             </div>

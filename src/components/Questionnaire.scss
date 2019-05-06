@@ -8,11 +8,10 @@ div.QuestionnaireContainer{
             width:50%;
             h2 {
                 padding:2rem;
+                font-size:3rem;
             }
-            ul{
+            ul.columns{
                 columns: 2;
-                -webkit-columns: 2;
-                -moz-columns: 2;
                 list-style: none;
                 padding:0;
                 li {
@@ -33,7 +32,8 @@ div.QuestionnaireContainer{
                         }
                     }
                     div.QuestionnaireItem:hover {
-                        animation:addColor .4s ease-in forwards
+                        animation:addColor .4s ease-in forwards;
+                        cursor:pointer;
                     }
                     @keyframes addColor {
                         0% {
@@ -60,6 +60,12 @@ div.QuestionnaireContainer{
             padding-right:2rem;
             color:white;
             background-color:#e74c3c;
+        }
+        div.Button:hover {
+            color:#e74c3c;
+            border:2px solid #e74c3c;
+            background-color:white;
+            cursor:pointer;
         }
     }
 }
