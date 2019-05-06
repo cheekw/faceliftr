@@ -7,16 +7,34 @@ class Questionnaire extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            questionTemplate:questions.questionTemplate
+            questionTemplate:questions.questionTemplate,
+            answer:'',
+            index:0
         }
     }
 
+    getData = (index, answer) => {
+        this.setState({
+            answer:answer
+        })
+    }
+
+    next = () => {
+        console.log(this.state.answer);
+        let update = this.state.index;
+        if(update + 1 < this.state.questionTemplate.length) {
+            this.setState({
+                index:update + 1
+            });
+        } else {
+            console.log("Done")
+        }
+    }
+
+
     render() {
-        const questionItems = this.state.questionTemplate.map(obj => {
-            return(
-                <QuestionnaireBody questionItem={obj} />
-            );
-        });
+        let obj = this.state.questionTemplate[this.state.index];
+        let questionItems = <QuestionnaireBody sendData={this.getData} questionItem={obj}/>;
 
         return(
             <div className="QuestionnaireContainer">
@@ -24,7 +42,7 @@ class Questionnaire extends Component {
                     {questionItems}
                 </div>
                 <div className="QuestionnaireButton">
-                    <div className="Button">Next</div>
+                    <div onClick={this.next} className="Button">Next</div>
                 </div>
             </div>
         );
@@ -34,12 +52,20 @@ class Questionnaire extends Component {
 class QuestionnaireBody extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            index:0,
+            answer:''
+        }
+    }
+
+    getData = (index, answer) => {
+        this.props.sendData(index, answer);
     }
 
     render() {
-        const choices = this.props.questionItem.choices.map(choice => {
+        let choices = this.props.questionItem.choices.map(choice => {
             return (
-                <li><QuestionnaireItem choice={choice}/></li>
+                <li><QuestionnaireItem sendData={this.getData} choice={choice}/></li>
             );
         });
         return(
@@ -56,24 +82,18 @@ class QuestionnaireBody extends Component {
 class QuestionnaireItem extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            logo:"",
-            title:""
-        }
     }
 
-    componentWillMount() {
-        this.setState({
-            logo:this.props.choice.logo,
-            title:this.props.choice.title
-        })
+    sendData = () => {
+        this.props.sendData(1, this.props.choice.title);
     }
 
     render() {
+        console.log(this.props);
         return(
-            <div className="QuestionnaireItem">
+            <div onClick={this.sendData} className="QuestionnaireItem">
                 <img alt="Choice" src={test} />
-                <h3>{this.state.title}</h3>
+                <h3>{this.props.choice.title}</h3>
             </div>
         );
     }

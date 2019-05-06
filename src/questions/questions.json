@@ -20,6 +20,19 @@
                     "logo":"../images/Questionnaire_images/skin_type/question.png"
                 }
             ]    
+        },
+        {
+            "question":"What is your gender?",
+            "choices":[
+                {
+                    "title":"Male",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"Female",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                }
+            ]    
         }
     ]
 }
