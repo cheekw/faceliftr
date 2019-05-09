@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import questions from '../questions/questions.json'
 import test from '../images/Questionnaire_images/skin_type/question.png'
-import './Questionnaire.scss'
+import './Questionnaire.css'
 import firebase from './firebase'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
@@ -71,7 +71,7 @@ class QuestionnaireBody extends Component {
         super(props);
         this.state = {
             index:0,
-            answer:''
+            answer:'',
         }
     }
 

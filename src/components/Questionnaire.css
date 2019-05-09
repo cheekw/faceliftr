@@ -1,0 +1,85 @@
+div.QuestionnaireContainer div.Questionnaire {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+div.QuestionnaireContainer div.Questionnaire div.QuestionnaireBody {
+    height:50%;
+    width:50%;
+}
+
+div.QuestionnaireContainer div.Questionnaire div.QuestionnaireBody h2 {
+    padding:2rem;
+    font-size:3rem;
+}
+
+div.QuestionnaireContainer div.Questionnaire div.QuestionnaireBody ul.columns {
+    columns:2;
+    list-style:none;
+    padding:0;
+}
+
+div.QuestionnaireContainer div.Questionnaire div.QuestionnaireBody ul.columns li {
+    display:inline-block;
+}
+
+div.QuestionnaireContainer div.Questionnaire div.QuestionnaireBody ul.columns li 
+    div.QuestionnaireItem {
+        filter:grayscale(100%);
+        background-color:#e74c3c;
+        border-radius: 5%;
+        padding:1.5rem;
+        margin:1rem;
+    }
+
+div.QuestionnaireContainer div.Questionnaire div.QuestionnaireBody ul.columns li 
+    div.QuestionnaireItem img {
+        height:50%;
+        width:50%;
+    }
+
+div.QuestionnaireContainer div.Questionnaire div.QuestionnaireBody ul.columns li 
+    div.QuestionnaireItem h3 {
+        color:white;
+        padding:2rem;
+    }
+
+div.QuestionnaireContainer div.Questionnaire div.QuestionnaireBody ul.columns li 
+    div.QuestionnaireItem:hover {
+        animation:addColor .4s ease-in forwards;
+        cursor:pointer;
+    }
+
+@keyframes addColor {
+    0% {
+        filter:grayscale(100%);
+    } 100% {
+        filter:grayscale(0);
+    }
+}
+
+div.QuestionnaireContainer div.QuestionnaireButton {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}    
+
+div.QuestionnaireContainer div.QuestionnaireButton div.Button {
+    font-size:1.5rem;
+    border-radius:5%;
+    margin:1.5rem;
+    padding-top:.5rem;
+    padding-bottom:.5rem;
+    padding-left:2rem;
+    padding-right:2rem;
+    color:white;
+    background-color:#e74c3c;
+}
+
+div.QuestionnaireContainer div.QuestionnaireButton div.Button:hover {
+    color:#e74c3c;
+    border:2px solid #e74c3c;
+    background-color:white;
+    cursor:pointer;
+}
