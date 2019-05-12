@@ -7,6 +7,16 @@ import './Landing.css';
 
 
 class FaceCapture extends React.Component { 
+  constructor(props) {
+    super(props);
+    window.acne = 0;
+    window.stain = 0;
+    window.darkCircles = 0;
+    window.health = 0;
+    window.isHidden = true;
+  }
+
+  var 
     clickInput = e => {
         e.preventDefault();
         document.getElementById('input').click();
@@ -118,29 +128,31 @@ class FaceCapture extends React.Component {
         }
 
         let success = e => {
-            console.log(e);
-            let darkCircles = e['faces'][0]['attributes']['skinstatus']['dark_circle'];
-            let acne = e['faces'][0]['attributes']['skinstatus']['acne'];
-            let stain = e['faces'][0]['attributes']['skinstatus']['stain'];
-            let health = e['faces'][0]['attributes']['skinstatus']['health'];
-            alert('dark circles: ' + darkCircles 
-            + ' acne: ' + acne +
-            ' stain: ' + stain + 
-            ' health ' + health);        
+            //alert(this.state.isHidden);
+            console.log(e); 
+            window.acne = e['faces'][0]['attributes']['skinstatus']['acne'];
+            window.darkCircles = e['faces'][0]['attributes']['skinstatus']['dark_circle'];
+            window.acne= e['faces'][0]['attributes']['skinstatus']['acne'];
+            window.stain= e['faces'][0]['attributes']['skinstatus']['stain'];
+            window.health= e['faces'][0]['attributes']['skinstatus']['health'];
+            alert('dark circles: ' + window.darkCircles +
+            ' acne: ' + window.acne +
+            ' stain: ' + window.stain + 
+            ' health ' + window.health);        
             let imageView = document.getElementById('preview');
-            var today = new Date();
+            /*var today = new Date();
             var dd = String(today.getDate()).padStart(2, '0');
             var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
             var yyyy = today.getFullYear();
 
             today = mm + '/' + dd + '/' + yyyy;
             firebase.database().ref('test/' + today + '/Results/Face Scans').set({
-              acne:acne,
-              stain: stain,
-              health:health
-            });
+              acne: this.acne,
+              stain: this.stain,
+              health: this.health
+            }); */
             const faces = e.faces;
-        
+            window.isHidden = false;
             for (const index in faces){
                 const face = faces[index];
                 const face_rectangle = face.face_rectangle;
@@ -195,6 +207,7 @@ class FaceCapture extends React.Component {
         let failed =  e => {
             console.log(e);
             alert(JSON.stringify(e));
+            alert("Failed upload, try again");
         }
         
         setTimeout(() => {
@@ -207,9 +220,29 @@ class FaceCapture extends React.Component {
             processData: false,
             contentType: false,
             timeout: 100000000000000,
-          }).done(success).fail(failed);
+          }).done(success.bind(this)).fail(failed);
         }, (1000));
+
     }
+  }
+
+  uploadImage = () => {
+    if(window.acne == 0 && window.stain == 0 && window.health == 0) {
+      alert("Must successfully upload picture first");
+      return;
+    }
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
+
+    today = mm + '\\' + dd + '\\' + yyyy;
+    alert(today);
+    firebase.database().ref('test/' + today + '/Results/Face Scans').set({
+      acne: window.acne,
+      stain: window.stain,
+      health: window.health
+    });
   }
 
   
@@ -267,14 +300,14 @@ class FaceCapture extends React.Component {
             Upload your own picture below, and press upload image once you're happy with the submission!
           </p>
           <div className="custom-file">
-            <input id="inputGroupFile01" className="custom-file-input" type="file" accept="image/*" name="xaunz" onChange={this.selectImage}/>
+            <input id="inputGroupFile01" className="custom-file-input" type="file" accept="image/*" name="xaunz" onChange={this.selectImage.bind(this)}/>
             <label className="custom-file-label" for="inputGroupFile01">Choose file</label>
           </div>
         </div>
         <div id="facesContainer" className='media'>
-          <img id="preview" className="border border-danger mw-100 mh-100 rounded mx-auto d-block"/>
+          <img id="preview" className="border mw-100 mh-100 rounded mx-auto d-block"/>
         </div>
-        <button type="button" class="btn btn-success mx-auto w-25">Upload image</button>
+        <button type="button" onClick={this.uploadImage} class="btn btn-success mx-auto w-25">Upload image</button>
       </div>
     )
   } 
