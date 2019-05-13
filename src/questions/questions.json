@@ -16,7 +16,7 @@
                     "logo":"../images/Questionnaire_images/skin_type/question.png"
                 },
                 {
-                    "title":"Unsure",
+                    "title":"Normal/Neither",
                     "logo":"../images/Questionnaire_images/skin_type/question.png"
                 }
             ]    
@@ -30,6 +30,210 @@
                 },
                 {
                     "title":"Female",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                }
+            ]    
+        }, 
+        {
+            "question":"Do you use sunscreen?",
+            "choices":[
+                {
+                    "title":"Yes",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"No",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                }
+            ]    
+        }, 
+        {
+            "question":"Do you get the daily recommended dosage of Vitamin A?",
+            "choices":[
+                {
+                    "title":"Yes",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"No",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"Unsure",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                }
+            ]    
+        }, 
+        {
+            "question":"Do you get the daily recommended dosage of Vitamin C?",
+            "choices":[
+                {
+                    "title":"Yes",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"No",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"Unsure",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                }
+            ]    
+        }, 
+        {
+            "question":"Do you get the daily recommended dosage of Vitamin E?",
+            "choices":[
+                {
+                    "title":"Yes",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"No",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"Unsure",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                }
+            ]    
+        }, 
+        {
+            "question":"Do you get the daily recommended dosage of Zinc?",
+            "choices":[
+                {
+                    "title":"Yes",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"No",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"Unsure",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                }
+            ]    
+        }, 
+        {
+            "question":"Do you get the daily recommended dosage of Omega-3?",
+            "choices":[
+                {
+                    "title":"Yes",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"No",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"Unsure",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                }
+            ]    
+        },
+        {
+            "question":"How much water do you drink a day?",
+            "choices":[
+                {
+                    "title":"0-2 glasses",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"4-7 glasses",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                }, 
+                {
+                    "title":"8+ glasses",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"Unsure",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                }
+            ]    
+        },
+        {
+            "question":"Do you have sensitive skin (easily irritated or inflamed)?",
+            "choices":[
+                {
+                    "title":"Yes",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"No",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"Unsure",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                }
+            ]    
+        },
+        {
+            "question":"Do you have pigmentation (Pimples leave pigmentation after healing, sun spots, tan easier)?",
+            "choices":[
+                {
+                    "title":"Yes",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"No",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"Unsure",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                }
+            ]    
+        },
+        {
+            "question":"Do you have wrinkles?",
+            "choices":[
+                {
+                    "title":"Yes",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"No",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"Unsure",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                }
+            ]    
+        },
+        {
+            "question":"Do you have acne?",
+            "choices":[
+                {
+                    "title":"Yes",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"No",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"Unsure",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                }
+            ]    
+        },
+        {
+            "question":"Is your skin dehydrated?",
+            "choices":[
+                {
+                    "title":"Yes",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"No",
+                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                },
+                {
+                    "title":"Unsure",
                     "logo":"../images/Questionnaire_images/skin_type/question.png"
                 }
             ]    
