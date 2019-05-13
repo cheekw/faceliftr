@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Products from './products.json'
 import './Recommend.css'
+import 'bootstrap/dist/css/bootstrap.css';
 
 class Recommend extends Component {
     constructor(props) {
@@ -16,8 +17,8 @@ class Recommend extends Component {
 
     render() {
         return (
-            <div className='recommend-component'>
-                <h2>RECOMMENDED REGIMEN</h2>
+            <div className='recommend-component tx'>
+                <h2 className='row mx-auto text-center'>RECOMMENDED REGIMEN</h2>
                 <div className='regimen-box'>
                     <div>
                         {   
@@ -83,8 +84,8 @@ class Product extends Component {
     }
     render() {
         return (
-            <div>
-                <img src={this.props.imageSrc}></img>
+            <div className='card'>
+                <img className='card-img-top mx-auto' src={this.props.imageSrc}></img>
                 <h4>{this.props.productName}</h4>
                 <div className='product-details'>{this.props.brand}</div>
                 <div className='product-details'>{this.props.price}</div>
@@ -92,6 +93,7 @@ class Product extends Component {
                 <div className='product-details'>Ingredients:</div>
                 <div>{this.props.ingredients}</div>
                 <div className='product-divider' />
+                <br/>
             </div>
         );
     }
