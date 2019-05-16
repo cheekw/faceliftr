@@ -11,52 +11,46 @@ class Analytics extends React.Component {
             date:['05/10/19', '05/11/19', '05/12/19', '05/13/19', '05/14/19', '05/15/19'],
             acne:[2, 2.2, 2.1, 1.8, 1.76, 1.65],
             health:[12.3, 10.2, 11, 9.34, 7.75, 8.2],
-            stain:[37.2, 37.54, 37.13, 38, 37.2, 38.42]
+            stain:[37.2, 37.54, 37.13, 38, 37.2, 38.42],
+            isLoaded:false
         }
     }
 
-    componentWillMount() {
-        this.setState({
-            regimen:[
-                {
-                    title:"title1",
-                    description:"description1",
-                    picture:"picture1"
-                },
-                {
-                    title:"title2",
-                    description:"description2",
-                    picture:"picture2"
-                },
-                {
-                    title:"title3",
-                    description:"description3",
-                    picture:"picture3"
-                }
-            ]
-        });
-
+    async componentDidMount() {
+        let dates = this.state.date;
+        let acne = this.state.acne;
+        let health = this.state.health;
+        let stain = this.state.stain;
         let gotData = (data) => {
             console.log(data.val());
             let x = data.val();
             for (let n in x) {
                 let date = x[n]
                 for(let key in date) {
-                    this.state.acne.push(date[key].acne);
-                    this.state.health.push(date[key].health);
-                    this.state.health.push(date[key].stain);
+                    acne.push(date[key].acne);
+                    health.push(date[key].health);
+                    stain.push(date[key].stain);
                 }
             }
-            let keys = Object.keys(data.val())
+            let keys = Object.keys(data.val());
             for(let i = 0; i < keys.length; i++) {
-                this.state.date.push(keys[i])
+                dates.push(keys[i])
             }
+            this.setState({
+                date:dates,
+                acne:acne,
+                health:health,
+                stain:stain,
+                isLoaded:true
+            });
+            console.log(this.state.acne);
         }
     
         let errData = (err) => {
             console.log(err);
         }
         const user = firebase.auth().currentUser.uid;
+        console.log(user)
         const ref = firebase.database().ref("users/" + user + '/Results');
         ref.on("value", gotData, errData);
 
@@ -68,6 +62,7 @@ class Analytics extends React.Component {
             datasets: [
                 {
                     label: 'Acne',
+                    fill:false,
                     lineTension: 0.1,
                     backgroundColor: '#e74c3c',
                     borderColor: '#DE5134',
@@ -94,6 +89,7 @@ class Analytics extends React.Component {
             datasets: [
                 {
                     label: 'Skin Health',
+                    fill:false,
                     lineTension: 0.1,
                     backgroundColor: '#6975A7',
                     borderColor: '#3498db',
@@ -120,6 +116,7 @@ class Analytics extends React.Component {
             datasets: [
                 {
                     label: 'Skin Stain',
+                    fill:false,
                     lineTension: 0.1,
                     backgroundColor: '#e67e22',
                     borderColor: '#f39c12',
@@ -143,13 +140,13 @@ class Analytics extends React.Component {
         return (
             <div className="analyticsContainer">
                 <div>
-                    <Line data={dataAcne} />
+                    {this.state.isLoaded && <Line data={dataAcne} />}
                 </div>
                 <div>
-                    <Line data={dataHealth} />
+                    {this.state.isLoaded && <Line data={dataHealth} />}
                 </div>
                 <div>
-                    <Line data={dataStain} />
+                    {this.state.isLoaded && <Line data={dataStain} />}
                 </div>
                 {/* <svg viewBox="0 0 700 500" xmlns="http://www.w3.org/2000/svg">
                     <rect fill="#6975A7" rx="10" ry="10" x="0" y="0" height="100%" width="100%" />
