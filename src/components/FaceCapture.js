@@ -238,7 +238,8 @@ class FaceCapture extends React.Component {
 
     today = mm + '\\' + dd + '\\' + yyyy;
     alert(today);
-    firebase.database().ref('test/' + today + '/Results/Face Scans').set({
+    const user = firebase.auth().currentUser.uid;
+    firebase.database().ref('users/' + user + '/Results/' + today + '/Face Scans').set({
       acne: window.acne,
       stain: window.stain,
       health: window.health
