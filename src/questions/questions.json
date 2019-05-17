@@ -5,19 +5,19 @@
             "choices":[
                 {
                     "title":"Oily",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./oil-spill.png"
                 },
                 {
                     "title":"Dry",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./desert.png"
                 },
                 {
                     "title":"Combination",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./intersection.png"
                 },
                 {
                     "title":"Normal/Neither",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./balance.png"
                 }
             ]    
         },
@@ -26,11 +26,11 @@
             "choices":[
                 {
                     "title":"Male",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./masculine.png"
                 },
                 {
                     "title":"Female",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./femenine.png"
                 }
             ]    
         }, 
@@ -39,11 +39,11 @@
             "choices":[
                 {
                     "title":"Yes",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./correct.png"
                 },
                 {
                     "title":"No",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./x-mark.png"
                 }
             ]    
         }, 
@@ -52,15 +52,15 @@
             "choices":[
                 {
                     "title":"Yes",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./correct.png"
                 },
                 {
                     "title":"No",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./x-mark.png"
                 },
                 {
                     "title":"Unsure",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./question.png"
                 }
             ]    
         }, 
@@ -69,15 +69,15 @@
             "choices":[
                 {
                     "title":"Yes",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./correct.png"
                 },
                 {
                     "title":"No",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./x-mark.png"
                 },
                 {
                     "title":"Unsure",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./question.png"
                 }
             ]    
         }, 
@@ -86,15 +86,15 @@
             "choices":[
                 {
                     "title":"Yes",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./correct.png"
                 },
                 {
                     "title":"No",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./x-mark.png"
                 },
                 {
                     "title":"Unsure",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./question.png"
                 }
             ]    
         }, 
@@ -103,15 +103,15 @@
             "choices":[
                 {
                     "title":"Yes",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./correct.png"
                 },
                 {
                     "title":"No",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./x-mark.png"
                 },
                 {
                     "title":"Unsure",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./question.png"
                 }
             ]    
         }, 
@@ -120,15 +120,15 @@
             "choices":[
                 {
                     "title":"Yes",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./correct.png"
                 },
                 {
                     "title":"No",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./x-mark.png"
                 },
                 {
                     "title":"Unsure",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./question.png"
                 }
             ]    
         },
@@ -137,19 +137,19 @@
             "choices":[
                 {
                     "title":"0-2 glasses",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./drop.png"
                 },
                 {
                     "title":"4-7 glasses",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./drop.png"
                 }, 
                 {
                     "title":"8+ glasses",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./drop.png"
                 },
                 {
                     "title":"Unsure",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./question.png"
                 }
             ]    
         },
@@ -158,15 +158,15 @@
             "choices":[
                 {
                     "title":"Yes",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./correct.png"
                 },
                 {
                     "title":"No",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./x-mark.png"
                 },
                 {
                     "title":"Unsure",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./question.png"
                 }
             ]    
         },
@@ -175,15 +175,15 @@
             "choices":[
                 {
                     "title":"Yes",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./correct.png"
                 },
                 {
                     "title":"No",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./x-mark.png"
                 },
                 {
                     "title":"Unsure",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./question.png"
                 }
             ]    
         },
@@ -192,15 +192,15 @@
             "choices":[
                 {
                     "title":"Yes",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./correct.png"
                 },
                 {
                     "title":"No",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./x-mark.png"
                 },
                 {
                     "title":"Unsure",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./question.png"
                 }
             ]    
         },
@@ -209,15 +209,15 @@
             "choices":[
                 {
                     "title":"Yes",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./correct.png"
                 },
                 {
                     "title":"No",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./x-mark.png"
                 },
                 {
                     "title":"Unsure",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./question.png"
                 }
             ]    
         },
@@ -226,15 +226,15 @@
             "choices":[
                 {
                     "title":"Yes",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./correct.png"
                 },
                 {
                     "title":"No",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./x-mark.png"
                 },
                 {
                     "title":"Unsure",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"./question.png"
                 }
             ]    
         }
