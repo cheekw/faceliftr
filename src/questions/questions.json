@@ -5,7 +5,7 @@
             "choices":[
                 {
                     "title":"Oily",
-                    "logo":"../images/Questionnaire_images/skin_type/question.png"
+                    "logo":"/images/Questionnaire_images/skin_type/oilyskin.png"
                 },
                 {
                     "title":"Dry",

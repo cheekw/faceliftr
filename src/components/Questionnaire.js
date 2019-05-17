@@ -131,7 +131,7 @@ class QuestionnaireItem extends Component {
         this.clear();
         return(
             <div id={this.props.choice.title} onClick={this.sendData} className="QuestionnaireItem">
-                <img alt="Choice" src={this.props.choice.logo} />
+                <img alt="Choice" src={process.env.PUBLIC_URL + this.props.choice.logo} />
                 <h3>{this.props.choice.title}</h3>
             </div>
         );
