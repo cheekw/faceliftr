@@ -3,6 +3,8 @@ import React from 'react';
 import EXIF from './exif';
 import $ from 'jquery'; 
 import firebase from './firebase.js';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import * as ROUTES from '../constants/routes'
 import './Landing.css';
 
 
@@ -237,12 +239,13 @@ class FaceCapture extends React.Component {
     var yyyy = today.getFullYear();
 
     today = mm + '\\' + dd + '\\' + yyyy;
-    alert(today);
-    firebase.database().ref('test/' + today + '/Results/Face Scans').set({
+    firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/Results/' + today + '/Face Scans').set({
       acne: window.acne,
       stain: window.stain,
       health: window.health
     });
+    alert('Upload successful!');
+    this.props.history.push('/questionnaire');
   }
 
   
