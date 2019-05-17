@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import questions from '../questions/questions.json'
+<<<<<<< HEAD
+=======
+import 'bootstrap/dist/css/bootstrap.css';
+import test from '../images/Questionnaire_images/skin_type/oilyskin.png'
+>>>>>>> 7d791025c30a2c4212b027d12f3b381ade3a5b75
 import './Questionnaire.css'
 import firebase from './firebase'
 import Modal from 'react-bootstrap/Modal'
@@ -36,7 +41,13 @@ class Questionnaire extends Component {
             });
         } else {
             var database = firebase.database();
-            var ref = database.ref('users/' + firebase.auth().currentUser.uid + "/questionnaire");
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0');
+            var yyyy = today.getFullYear();
+
+            today = mm + '\\' + dd + '\\' + yyyy;
+            var ref = database.ref('users/' + firebase.auth().currentUser.uid + "/Results/" + today + "/questionnaire");
             var data = {};
             for(let i = 0; i < this.state.answer.length; i++) {
                 data["question " + i] = this.state.answer[i];
@@ -56,9 +67,9 @@ class Questionnaire extends Component {
                 <div className="Questionnaire">
                     {questionItems}
                 </div>
-                <div className="QuestionnaireButton">
-                    <div onClick={this.previous} className="Button">Previous</div>
-                    <div onClick={this.next} className="Button">Next</div>
+                <div className="row mx-auto self-center text-center btn-group btn-group-lg">
+                    <div onClick={this.previous} className="btn btn-primary btn-lg">Previous</div>
+                    <div onClick={this.next} className="btn btn-primary btn-lg">Next</div>
                 </div>
             </div>
         );
@@ -125,7 +136,11 @@ class QuestionnaireItem extends Component {
         const image = images(this.props.choice.logo);
         return(
             <div id={this.props.choice.title} onClick={this.sendData} className="QuestionnaireItem">
+<<<<<<< HEAD
                 <img alt="Choice" src={image} />
+=======
+                <img alt="Choice" src={this.props.choice.logo} />
+>>>>>>> 7d791025c30a2c4212b027d12f3b381ade3a5b75
                 <h3>{this.props.choice.title}</h3>
             </div>
         );
