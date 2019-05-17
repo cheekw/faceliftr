@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import questions from '../questions/questions.json'
-<<<<<<< HEAD
-=======
 import 'bootstrap/dist/css/bootstrap.css';
-import test from '../images/Questionnaire_images/skin_type/oilyskin.png'
->>>>>>> 7d791025c30a2c4212b027d12f3b381ade3a5b75
 import './Questionnaire.css'
 import firebase from './firebase'
 import Modal from 'react-bootstrap/Modal'
@@ -136,11 +132,7 @@ class QuestionnaireItem extends Component {
         const image = images(this.props.choice.logo);
         return(
             <div id={this.props.choice.title} onClick={this.sendData} className="QuestionnaireItem">
-<<<<<<< HEAD
                 <img alt="Choice" src={image} />
-=======
-                <img alt="Choice" src={this.props.choice.logo} />
->>>>>>> 7d791025c30a2c4212b027d12f3b381ade3a5b75
                 <h3>{this.props.choice.title}</h3>
             </div>
         );
