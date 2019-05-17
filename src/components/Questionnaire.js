@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import questions from '../questions/questions.json'
 import 'bootstrap/dist/css/bootstrap.css';
-import test from '../images/Questionnaire_images/skin_type/oilyskin.png'
 import './Questionnaire.css'
 import firebase from './firebase'
 import Modal from 'react-bootstrap/Modal'
@@ -129,9 +128,11 @@ class QuestionnaireItem extends Component {
 
     render() {
         this.clear();
+        const images = require.context('../images/Questionnaire_images/skin_type', true);
+        const image = images(this.props.choice.logo);
         return(
             <div id={this.props.choice.title} onClick={this.sendData} className="QuestionnaireItem">
-                <img alt="Choice" src={process.env.PUBLIC_URL + this.props.choice.logo} />
+                <img alt="Choice" src={image} />
                 <h3>{this.props.choice.title}</h3>
             </div>
         );
