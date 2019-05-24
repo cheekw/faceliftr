@@ -143,7 +143,6 @@ class Analytics extends React.Component {
 
         return (
             <div className="analyticsContainer">
-                <Customization />
                 <div>
                     {this.state.isLoaded && <Line data={dataAcne} />}
                 </div>
@@ -153,6 +152,7 @@ class Analytics extends React.Component {
                 <div>
                     {this.state.isLoaded && <Line data={dataStain} />}
                 </div>
+                <Customization />
                 <Recommend />
             </div>
         );
