@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import firebase from './firebase.js';
 import './Customization.css';
-import {Modal, Button} from 'react-bootstrap';
+import {Modal, Button, Collapse} from 'react-bootstrap';
 
 class Customization extends Component {
     constructor(props) {
@@ -159,6 +159,9 @@ class Customization extends Component {
 class ProductItem extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            showInfo:false
+        }
     }
     render() {
         let product = this.props.productData;
@@ -167,15 +170,90 @@ class ProductItem extends Component {
             this.props.sendData(product.name);
         }
 
+        let getProductInfo = () => {
+            this.setState({
+                showInfo:true
+            });
+        }
+
+        let updateInfo = () => {
+            this.setState({
+                showInfo:false
+            });
+        }
+
         return(
-            <div className="productItemContainer">
-                <div className="productBox">
-                    <div className="remove" onClick={sendData}>
-                        X
+            <div>
+                {this.state.showInfo && <ProductInfo prodInfo={updateInfo} data={product}/>}
+                <div className="productItemContainer" onClick={getProductInfo}>
+                    <div className="productBox">
+                        <div className="remove" onClick={sendData}>
+                            X
+                        </div>
+                        <img src={product.img} className="productImg"/>
                     </div>
-                    <img src={product.img} className="productImg"/>
+                    <h6 className="productName">{product.name}</h6>
                 </div>
-                <h6 className="productName">{product.name}</h6>
+            </div>
+        );
+    }
+}
+
+class ProductInfo extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            show:true,
+            open:false
+        }
+    }
+
+    render() {
+        let product = this.props.data;
+        console.log(product);
+        let handleClose = () => {
+            this.props.prodInfo(false);
+            this.setState({
+                show:false
+            });
+        }
+
+        let openIngredients = () => {
+            this.setState({
+                open:!this.state.open
+            });
+        }
+
+        return(
+
+            <div>
+                <Modal show={this.state.show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Customization: Product Information</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <div className="prodInfo">
+                            <div className="prodImgContainer">
+                                <img src={product.img}/>
+                            </div>
+                            <div className="prodContent">
+                                <h2>{product.name}</h2>
+                                <p>{product.desc}</p>
+                                <Button onClick={openIngredients} variant="link">
+                                    Show Ingredients
+                                </Button>
+                                <Collapse in={this.state.open}>
+                                    <p>{product.ingre}</p>
+                                </Collapse>
+                            </div>
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="primary" onClick={handleClose}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
         );
     }

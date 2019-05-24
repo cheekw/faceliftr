@@ -37,6 +37,10 @@ div.customizationContainer div ul.productsList li {
     display:inline;
 }
 
+div.customizationContainer div ul.productsList li div.productItemContainer:hover {
+    cursor: pointer;
+}
+
 div.customizationContainer div ul.productsList li div.productItemContainer div.productBox {
     border:7px solid #6975A7;
     border-radius:10px;
@@ -62,6 +66,17 @@ div.customizationContainer div ul.productsList li div.productItemContainer div.p
     justify-content:center;
     align-items: center;
     color:white;
+}
+
+/*Modal Product Info*/
+
+div.prodInfo {
+    display:flex;
+    flex-direction: row;
+}
+
+div.prodInfo div.prodContent p {
+    font-weight:lighter;
 }
 
 div.customizationContainer div ul.productsList li div.productItemContainer div.productBox div.remove:hover {
