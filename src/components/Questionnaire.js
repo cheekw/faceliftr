@@ -3,8 +3,7 @@ import questions from '../questions/questions.json'
 import 'bootstrap/dist/css/bootstrap.css';
 import './Questionnaire.css'
 import firebase from './firebase'
-import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
+import {Modal} from 'react-bootstrap'
 
 class Questionnaire extends Component {
     constructor(props) {

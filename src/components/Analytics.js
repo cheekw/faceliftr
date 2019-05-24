@@ -1,6 +1,6 @@
 import React from 'react';
 import Recommend from './Recommend';
-import {Line} from 'react-chartjs-2';
+import {Line, Doughnut} from 'react-chartjs-2';
 import firebase from './firebase.js';
 import Customization from './Customization';
 import { Spinner } from 'react-bootstrap';
@@ -36,9 +36,14 @@ class Analytics extends React.Component {
                     }
                 }
             }
-            let keys = Object.keys(data.val());
-            for(let i = 0; i < keys.length; i++) {
-                dates.push(keys[i])
+            try {
+                let keys = Object.keys(data.val());
+                for(let i = 0; i < keys.length; i++) {
+                    dates.push(keys[i])
+                }
+            }   
+            catch(err) {
+
             }
             this.setState({
                 date:dates,
@@ -139,6 +144,27 @@ class Analytics extends React.Component {
                 }
             ]
         };
+
+        const dataDoughnut = {
+            labels: [
+                'Red',
+                'Green',
+                'Yellow'
+            ],
+            datasets: [{
+                data: [300, 50, 100],
+                backgroundColor: [
+                '#FF6384',
+                '#36A2EB',
+                '#FFCE56'
+                ],
+                hoverBackgroundColor: [
+                '#FF6384',
+                '#36A2EB',
+                '#FFCE56'
+                ]
+            }]
+        }
 
 
         return (
