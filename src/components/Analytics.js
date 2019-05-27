@@ -5,6 +5,9 @@ import firebase from './firebase.js';
 import Customization from './Customization';
 import { Spinner } from 'react-bootstrap';
 import './Analytics.css';
+import growth from '../images/analytics_img/growth.png';
+import decrease from '../images/analytics_img/statistics.png';
+import noChange from '../images/analytics_img/minus.png';
 
 class Analytics extends React.Component {
     constructor() {
@@ -15,7 +18,11 @@ class Analytics extends React.Component {
             acne:[2, 2.2, 2.1, 1.8, 1.76, 1.65],
             health:[12.3, 10.2, 11, 9.34, 7.75, 8.2],
             stain:[37.2, 37.54, 37.13, 38, 37.2, 38.42],
-            isLoaded:false
+            isLoaded:false,
+            acneDiff:0,
+            healthDiff:0,
+            stainDiff:0,
+            avgImg:[growth, noChange, decrease]
         }
     }
 
@@ -36,6 +43,12 @@ class Analytics extends React.Component {
                     }
                 }
             }
+            let acneDiff = acne[acne.length - 1] - acne[0];
+            acneDiff = acneDiff.toFixed(2);
+            let healthDiff = health[health.length - 1] - health[0];
+            healthDiff = healthDiff.toFixed(2);
+            let stainDiff = stain[stain.length - 1] - stain[0];
+            stainDiff = stainDiff.toFixed(2);
             try {
                 let keys = Object.keys(data.val());
                 for(let i = 0; i < keys.length; i++) {
@@ -50,7 +63,10 @@ class Analytics extends React.Component {
                 acne:acne,
                 health:health,
                 stain:stain,
-                isLoaded:true
+                isLoaded:true,
+                acneDiff:acneDiff,
+                healthDiff:healthDiff,
+                stainDiff:stainDiff
             });
         }
     
@@ -144,28 +160,61 @@ class Analytics extends React.Component {
                 }
             ]
         };
+        let acneImg = "";
+        let healthImg = "";
+        let stainImg = "";
+        if(this.state.isLoaded) {
+            if(this.state.acneDiff > 0) {
+                acneImg = this.state.avgImg[0];
+            } else if (this.state.acneDiff == 0) {
+                acneImg = this.state.avgImg[1];
+            } else if (this.state.acneDiff < 0) {
+                acneImg = this.state.avgImg[2];
+            }
 
-        const dataDoughnut = {
-            datasets: [{
-                data: [300, 50, 100],
-                backgroundColor: [
-                '#FF6384',
-                '#36A2EB',
-                '#FFCE56'
-                ],
-                hoverBackgroundColor: [
-                '#FF6384',
-                '#36A2EB',
-                '#FFCE56'
-                ],
-            }],
+            if(this.state.healthDiff > 0) {
+                healthImg = this.state.avgImg[0];
+            } else if (this.state.healthDiff == 0) {
+                healthImg = this.state.avgImg[1];
+            } else if (this.state.healthDiff < 0) {
+                healthImg = this.state.avgImg[2];
+            }
+
+            if(this.state.stainDiff > 0) {
+                stainImg = this.state.avgImg[0];
+            } else if (this.state.stainDiff == 0) {
+                stainImg = this.state.avgImg[1];
+            } else if (this.state.stainDiff < 0) {
+                stainImg = this.state.avgImg[2];
+            }
         }
-
 
         return (
             <div className="analyticsContainer">
                 <Customization />
-                <h3>Skin Progress</h3>
+                <div className="headerContainer">
+                    <h3>Skin Progress</h3>
+                    {   
+                        this.state.isLoaded &&
+                        <div className="avgContainer">
+                            <div className="avg">
+                                <img src={acneImg}/>
+                                <h4>Acne Change</h4>
+                                <h4>{this.state.acneDiff}</h4>
+                            </div>
+                            <div className="avg">
+                                <img src={healthImg}/>
+                                <h4>Health Change</h4>
+                                <h4>{this.state.healthDiff}</h4>
+                            </div>
+                            <div className="avg">
+                                <img src={stainImg}/>
+                                <h4>Stain Change</h4>
+                                <h4>{this.state.stainDiff}</h4>
+                            </div>
+                        </div>
+                    }
+                </div>
                 <div>
                     {this.state.isLoaded && <Line data={dataAcne} />}
                 </div>
