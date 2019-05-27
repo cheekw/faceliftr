@@ -7,11 +7,17 @@ import facescan from '../images/landing_images/face-scan.png';
 import recommend from '../images/landing_images/recommend.png';
 import customize from '../images/landing_images/customize.png';
 import track from '../images/landing_images/track.png';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 import * as ROUTES from '../constants/routes';
 
 
 class Landing extends Component {
+  componentDidMount() {
+    AOS.init();
+  }
+
   render() {
     return (
       // illustration by Ouch.pics
