@@ -8,3 +8,8 @@ div.analyticsContainer div.avgContainer {
     display:flex;
     flex-direction:row;
 }
+
+div.analyticsContainer h3 {
+    float:left;
+    color:#6975A7;
+}

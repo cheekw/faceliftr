@@ -73,6 +73,10 @@ div.customizationContainer div ul.productsList li div.productItemContainer div.p
     position:relative;
 }
 
+div.customizationContainer div ul.productsList li div.productItemContainer div.productBox:hover {
+    animation:moveUp .5s ease-in-out forwards;
+}
+
 div.customizationContainer div ul.productsList li div.productItemContainer h6 {
     color:#6975A7;
     font-size:1.2rem;;
@@ -106,6 +110,7 @@ div.prodInfo div.prodContent p {
 
 div.customizationContainer div ul.productsList li div.productItemContainer div.productBox div.remove:hover {
     cursor:pointer;
+    animation:scale 1s ease-in-out forwards;
 }
 
 div.customizationContainer div ul.productsList li.addContainer {
@@ -135,6 +140,16 @@ div.customizationContainer div ul.productsList li.addContainer div.addButton:hov
     transform-origin: center;
     animation:rotate 1s ease-in-out forwards;
 } */
+
+@keyframes moveUp {
+    0% {
+        transform:translateY(0);
+    } 60% {
+        transform:translateY(17px);
+    } 100% {
+        transform:translateY(-12px);
+    }
+}
 
 @keyframes scale {
     0%{

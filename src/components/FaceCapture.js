@@ -245,7 +245,6 @@ class FaceCapture extends React.Component {
       health: window.health
     });
     alert('Upload successful!');
-    this.props.history.push('/questionnaire');
   }
 
   

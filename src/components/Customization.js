@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import firebase from './firebase.js';
 import './Customization.css';
-import {Modal, Button, Collapse} from 'react-bootstrap';
+import {Modal, Button, Collapse, Spinner} from 'react-bootstrap';
 
 class Customization extends Component {
     constructor(props) {
