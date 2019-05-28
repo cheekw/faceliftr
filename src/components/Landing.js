@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Landing.css';
 import { Link } from 'react-router-dom';
-import circle from '../images/landing_images/circle.png';
 import skincare from '../images/landing_images/skincare.png';
 import facescan from '../images/landing_images/face-scan.png';
 import recommend from '../images/landing_images/recommend.png';
@@ -10,12 +9,36 @@ import track from '../images/landing_images/track.png';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+import firebase from '../components/firebase.js';
+
+
 import * as ROUTES from '../constants/routes';
 
 
 class Landing extends Component {
+  constructor() {
+    super();
+    this.state = {
+      buttonText : ''
+    };
+  }
+
   componentDidMount() {
+    this.setState({ buttonText: ''});
+
+    this.unsubscribe = firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ buttonText: 'Home' })
+      } else {
+        this.setState({ buttonText: 'Sign In' })
+      }
+    });
+
     AOS.init();
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
   }
 
   render() {
@@ -25,11 +48,15 @@ class Landing extends Component {
         <div className="landing-container mission">
           <div className="landing-header">
             <div className="landing-logo-text">faceliftr.</div>
-            <Link to={ROUTES.SIGN_IN} style={{ textDecoration: 'none', color: 'white' }}><div className="landing-signin-button">Sign in</div></Link>
+            <Link to={ROUTES.SIGN_IN} style={{ textDecoration: 'none', color: 'white' }}>
+              <div className="landing-signin-button">
+              {this.state.buttonText}
+              </div>
+            </Link>
           </div>
           <div className="landing-mission">find the perfect routine</div>
           <div className="landing-mission-subtitle">become your picture perfect</div>
-          <img src={circle}  data-aos="fade-left" className="circle-image" />
+          {/* <img src={circle}  data-aos="fade-left" className="circle-image" /> */}
           <img src={skincare} data-aos="fade-left" className="mission-image" />
         </div>
 
