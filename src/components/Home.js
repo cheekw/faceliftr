@@ -10,6 +10,8 @@ import * as ROUTES from '../constants/routes';
 import './Home.css';
 
 class Home extends Component {
+
+  
   constructor() {
     super();
     this.state = {
@@ -59,8 +61,8 @@ class Home extends Component {
           <div className="mainNav">
           <Navbar />
             <Switch>
-              < Route path={ROUTES.FACECAPTURE} component={FaceCapture} />
-              < Route path={ROUTES.ANALYTICS} component={Analytics} />
+              <Route path={ROUTES.FACECAPTURE} component={FaceCapture} />
+              <Route path={ROUTES.ANALYTICS} component={Analytics} />
               <Route path={ROUTES.SETTINGS} component={Settings} />
               <Route path={ROUTES.QUESTIONNAIRE} component={Questionnaire} />
             </Switch>

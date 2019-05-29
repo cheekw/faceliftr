@@ -4,8 +4,11 @@ import EXIF from './exif';
 import $ from 'jquery'; 
 import firebase from './firebase.js';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import * as ROUTES from '../constants/routes'
+import * as ROUTES from '../constants/routes';
 import './Landing.css';
+import selfie from '../images/facecapture/selfie.png';
+import facialRecognition from '../images/facecapture/facial-recognition.png';
+import cloud from '../images/facecapture/cloud.png';
 
 
 class FaceCapture extends React.Component { 
@@ -18,14 +21,40 @@ class FaceCapture extends React.Component {
     window.isHidden = true;
   }
 
-  var 
-    clickInput = e => {
+  componentWillMount() {
+    
+  }
+
+  snapPhoto = () => {
+    var video = document.getElementById('video');
+    // Get access to the camera!
+    if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        // Not adding `{ audio: true }` since we only want video now
+        navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+            //video.src = window.URL.createObjectURL(stream);
+            video.srcObject = stream;
+            video.play();
+        });
+    }
+      var canvas = document.getElementById('creot');
+      var context = canvas.getContext('2d');
+      var video = document.getElementById('video');
+
+      // Trigger photo take
+      document.getElementById("snap").addEventListener("click", function() {
+        context.drawImage(video, 0, 0, 640, 480);
+      });
+  } 
+
+ clickInput = e => {
         e.preventDefault();
         document.getElementById('input').click();
     } 
 
 
   selectImage = input => {
+    let canvas = document.getElementById('creot');
+    let base64Image = canvas.toDataURL('image/jpeg', 1.0);/*
     let imageView = document.getElementById('preview');
 
     const reader = new FileReader();
@@ -38,8 +67,9 @@ class FaceCapture extends React.Component {
 
         const base64Image = e.target.result;
 
-        //fixOrientention(base64Image,imageView);
-        const image = new Image();
+        //fixOrientention(base64Image,imageView);*/
+        //const image = new Image();
+        /*
         image.onload = () => {
             const canvas = document.createElement('canvas');
 
@@ -96,8 +126,9 @@ class FaceCapture extends React.Component {
             });
 
             var newBase64 = canvas.toDataURL('image/jpeg', 1.0);
-            imageView.src = newBase64;
-        };
+            imageView.src = newBase64;*/
+        //};
+        const image = new Image();
         image.src = base64Image;
 
         /*
@@ -140,70 +171,24 @@ class FaceCapture extends React.Component {
             alert('dark circles: ' + window.darkCircles +
             ' acne: ' + window.acne +
             ' stain: ' + window.stain + 
-            ' health ' + window.health);        
-            let imageView = document.getElementById('preview');
-            /*var today = new Date();
-            var dd = String(today.getDate()).padStart(2, '0');
-            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-            var yyyy = today.getFullYear();
-
-            today = mm + '/' + dd + '/' + yyyy;
-            firebase.database().ref('test/' + today + '/Results/Face Scans').set({
-              acne: this.acne,
-              stain: this.stain,
-              health: this.health
-            }); */
-            const faces = e.faces;
-            window.isHidden = false;
-            for (const index in faces){
-                const face = faces[index];
-                const face_rectangle = face.face_rectangle;
-        
-                var roll = face.attributes.headpose.roll_angle;
-        
-                var gender = face.attributes.gender.value;
-        
-                const borderColor = (gender == 'Male') ? 'blue' : 'red';
-        
-                console.log('人脸框颜色：' + borderColor);
-        
-                var faceX = face_rectangle.left;
-                var faceY = face_rectangle.top;
-                var faceW = face_rectangle.width;
-                var faceH = face_rectangle.height;
-        
-                var width = 320;
-                var height = 320;
-        
-                var imageW = imageView.width;
-                var imageH = imageView.height;
-        
-                var naturalWidth = imageView.naturalWidth;
-                var naturalHeight = imageView.naturalHeight;
-        
-                console.log('container尺寸' + width + '----' +  height);
-                console.log('img尺寸' + imageW + '----' + imageH);
-                console.log('图片实际尺寸' + naturalWidth + '----' + imageH);
-        
-                const scale = imageW / naturalWidth;
-        
-                console.log('scale > ' + scale);
-        
-                const offsetX = (width - imageW)*0.5;
-                const offsetY = (height - imageH)*0.5;
-        
-                console.log('offsetX：' + offsetX + 'offsetY' + offsetY);
-                /*
-                $('<div/>').css({
-                    position: 'absolute',
-                    top: faceY * scale + offsetY,
-                    left: faceX * scale + offsetX,
-                    height: faceH * scale,
-                    width: faceW * scale,
-                    border: '2px solid ' + borderColor,
-                    transform: 'rotate(' + roll + 'deg)'
-                }).appendTo($("#facesContainer")); */
+            ' health ' + window.health);   
+            if(window.acne == 0 && window.stain == 0 && window.health == 0) {
+              alert("Must successfully upload picture first");
+              return;
             }
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0');
+            var yyyy = today.getFullYear();
+        
+            today = mm + '\\' + dd + '\\' + yyyy;
+            firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/Results/' + today + '/Face Scans').set({
+              acne: window.acne,
+              stain: window.stain,
+              health: window.health
+            });
+            alert('Upload successful!');
+            this.props.history.push('/questionnaire');
           }
           
         let failed =  e => {
@@ -224,9 +209,8 @@ class FaceCapture extends React.Component {
             timeout: 100000000000000,
           }).done(success.bind(this)).fail(failed);
         }, (1000));
-
     }
-  }
+  //}
 
   uploadImage = () => {
     if(window.acne == 0 && window.stain == 0 && window.health == 0) {
@@ -265,7 +249,7 @@ class FaceCapture extends React.Component {
         </div>
         <div className="card-deck w-75 mx-auto" >
           <div className="card mb-2">
-            <img className="mx-auto" src="./assets/img/selfie.png" alt="Card image cap"/>
+            <img className="mx-auto" src={selfie} alt="Card image cap"/>
             <div className="card-body">
               <h5 className="card-title text-primary">Upload a picture</h5>
               <p className="card-text">
@@ -276,7 +260,7 @@ class FaceCapture extends React.Component {
             </div>
           </div>
           <div className="card mb-2">
-            <img className="mx-auto" src="./assets/img/facial-recognition.png" alt="Card image cap"/>
+            <img className="mx-auto" src={facialRecognition} alt="Card image cap"/>
             <div className="card-body">
               <h5 className="card-title text-primary">Facial recognition scan</h5>
               <p className="card-text">Using the Face++ API, your uploaded picture will be scanned to get skin-health data.
@@ -285,7 +269,7 @@ class FaceCapture extends React.Component {
             </div>
           </div>
           <div className="card mb-2">
-            <img className="mx-auto" src="./assets/img/cloud.png" alt="Card image cap"/>
+            <img className="mx-auto" src={cloud} alt="Card image cap"/>
             <div className="card-body">
               <h5 className="card-title text-primary">Push to our database</h5>
               <p className="card-text">
@@ -305,13 +289,19 @@ class FaceCapture extends React.Component {
             <input id="inputGroupFile01" className="custom-file-input" type="file" accept="image/*" name="xaunz" onChange={this.selectImage.bind(this)}/>
             <label className="custom-file-label" for="inputGroupFile01">Choose file</label>
           </div>
-        </div>
+        </div> {/*
         <div id="facesContainer" className='media'>
           <img id="preview" className="border mw-100 mh-100 rounded mx-auto d-block"/>
+        </div>*/}
+        <button type="button" onClick={this.snapPhoto} className="btn btn-success mx-auto w-25">Upload image</button>
+        <div className='row'>
+          <video className='row' id="video" width="640" height="480" autoplay></video>
+          <canvas id="creot" width="640" height="480"></canvas>
         </div>
-        <button type="button" onClick={this.uploadImage} class="btn btn-success mx-auto w-25">Upload image</button>
+        <br></br>
+        <button className="btn btn-success mx-auto w-25" onClick = {this.selectImage.bind(this)} id="snap">Snap Photo</button>
       </div>
     )
   } 
 }
-export default FaceCapture;
+export default FaceCapture; 

@@ -137,18 +137,19 @@ Link {
 }
 
 .App .mission-image {
-    max-width: 8em;
+    max-width: 15em;
     position: absolute;
-    top: 60vh;
+    top: 50vh;
     left: 10vh
 }
 
 .App .snapshot-image {
     max-width: 12em;
     position: absolute;
-    top: 150vh;
-    left: 25vw;
+    top: 155vh;
+    left: 30vw;
 }
+
 .App .recommend-image {
     max-width: 40vh;
     position: absolute;
@@ -180,10 +181,16 @@ Link {
         margin-left: 80px;
     }
     .App .landing-content {
-        padding: 5em;
+        padding: 4em;
         margin-top: 10vh;
-        max-width: 40vw;
+        max-width: 42vw;
     }
+
+    .App .snapshot-content {
+        max-width: 47vw;
+        text-align: right;
+    }
+
     .App .landing-content-title {
         font-size: 4vw;
     }
@@ -200,16 +207,16 @@ Link {
         left: 65%;
     }
     .App .mission-image {
-        max-width: 25vw;
+        max-width: 40vw;
         position: absolute;
-        top: 30%;
-        left: 70%;
+        top: 15%;
+        left: 55%;
     }
     .App .snapshot-image {
-        max-width: 25vw;
+        max-width: 40vw;
         position: absolute;
-        top: 120%;
-        left: 8%;
+        top: 115%;
+        left: 12%;
     }
     .App .recommend-image {
         max-width: 40vw;
@@ -221,7 +228,7 @@ Link {
         max-width: 40vw;
         position: absolute;
         top: 300%;
-        left: 5%;
+        left: 12%;
     }
     .App .track-image {
         max-width: 40vw;
