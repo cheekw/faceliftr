@@ -1,6 +1,6 @@
 import React from 'react';
 import Recommend from './Recommend';
-import {Line} from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import firebase from './firebase.js';
 import Customization from './Customization';
 import { Spinner } from 'react-bootstrap';
@@ -10,12 +10,12 @@ class Analytics extends React.Component {
     constructor() {
         super();
         this.state = {
-            regimen:[],
-            date:['05/10/19', '05/11/19', '05/12/19', '05/13/19', '05/14/19', '05/15/19'],
-            acne:[2, 2.2, 2.1, 1.8, 1.76, 1.65],
-            health:[12.3, 10.2, 11, 9.34, 7.75, 8.2],
-            stain:[37.2, 37.54, 37.13, 38, 37.2, 38.42],
-            isLoaded:false
+            regimen: [],
+            date: ['05/10/19', '05/11/19', '05/12/19', '05/13/19', '05/14/19', '05/15/19'],
+            acne: [2, 2.2, 2.1, 1.8, 1.76, 1.65],
+            health: [12.3, 10.2, 11, 9.34, 7.75, 8.2],
+            stain: [37.2, 37.54, 37.13, 38, 37.2, 38.42],
+            isLoaded: false
         }
     }
 
@@ -28,8 +28,8 @@ class Analytics extends React.Component {
             let x = data.val();
             for (let n in x) {
                 let date = x[n]
-                for(let key in date) {
-                    if(key != "questionnaire") {
+                for (let key in date) {
+                    if (key != "questionnaire") {
                         acne.push(date[key].acne);
                         health.push(date[key].health);
                         stain.push(date[key].stain);
@@ -37,25 +37,28 @@ class Analytics extends React.Component {
                 }
             }
             let keys = Object.keys(data.val());
-            for(let i = 0; i < keys.length; i++) {
+            for (let i = 0; i < keys.length; i++) {
                 dates.push(keys[i])
             }
             this.setState({
-                date:dates,
-                acne:acne,
-                health:health,
-                stain:stain,
-                isLoaded:true
+                date: dates,
+                acne: acne,
+                health: health,
+                stain: stain,
+                isLoaded: true
             });
         }
-    
+
         let errData = (err) => {
             console.log(err);
         }
-        const user = firebase.auth().currentUser.uid;
-        const ref = firebase.database().ref("users/" + user + '/Results');
-        ref.on("value", gotData, errData);
 
+        let user = 0;
+        if (firebase.auth().currentUser) {
+            user = firebase.auth().currentUser.uid;
+            const ref = firebase.database().ref("users/" + user + '/Results');
+            ref.on("value", gotData, errData);
+        }
     }
 
     render() {
@@ -64,7 +67,7 @@ class Analytics extends React.Component {
             datasets: [
                 {
                     label: 'Acne',
-                    fill:false,
+                    fill: false,
                     lineTension: 0.1,
                     backgroundColor: '#e74c3c',
                     borderColor: '#DE5134',
@@ -91,7 +94,7 @@ class Analytics extends React.Component {
             datasets: [
                 {
                     label: 'Skin Health',
-                    fill:false,
+                    fill: false,
                     lineTension: 0.1,
                     backgroundColor: '#6975A7',
                     borderColor: '#3498db',
@@ -118,7 +121,7 @@ class Analytics extends React.Component {
             datasets: [
                 {
                     label: 'Skin Stain',
-                    fill:false,
+                    fill: false,
                     lineTension: 0.1,
                     backgroundColor: '#e67e22',
                     borderColor: '#f39c12',

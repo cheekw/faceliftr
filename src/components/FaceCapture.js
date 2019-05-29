@@ -6,7 +6,9 @@ import firebase from './firebase.js';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
 import './Landing.css';
-
+import selfie from '../images/facecapture/selfie.png';
+import facialRecognition from '../images/facecapture/facial-recognition.png';
+import cloud from '../images/facecapture/cloud.png';
 
 
 class FaceCapture extends React.Component { 
@@ -248,7 +250,7 @@ class FaceCapture extends React.Component {
         </div>
         <div className="card-deck w-75 mx-auto" >
           <div className="card mb-2">
-            <img className="mx-auto" src="./assets/img/selfie.png" alt="Card image cap"/>
+            <img className="mx-auto" src={selfie} alt="Card image cap"/>
             <div className="card-body">
               <h5 className="card-title text-primary">Upload a picture</h5>
               <p className="card-text">
@@ -259,7 +261,7 @@ class FaceCapture extends React.Component {
             </div>
           </div>
           <div className="card mb-2">
-            <img className="mx-auto" src="./assets/img/facial-recognition.png" alt="Card image cap"/>
+            <img className="mx-auto" src={facialRecognition} alt="Card image cap"/>
             <div className="card-body">
               <h5 className="card-title text-primary">Facial recognition scan</h5>
               <p className="card-text">Using the Face++ API, your uploaded picture will be scanned to get skin-health data.
@@ -268,7 +270,7 @@ class FaceCapture extends React.Component {
             </div>
           </div>
           <div className="card mb-2">
-            <img className="mx-auto" src="./assets/img/cloud.png" alt="Card image cap"/>
+            <img className="mx-auto" src={cloud} alt="Card image cap"/>
             <div className="card-body">
               <h5 className="card-title text-primary">Push to our database</h5>
               <p className="card-text">
