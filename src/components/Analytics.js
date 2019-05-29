@@ -165,27 +165,27 @@ class Analytics extends React.Component {
         let stainImg = "";
         if(this.state.isLoaded) {
             if(this.state.acneDiff > 0) {
-                acneImg = this.state.avgImg[0];
+                acneImg = this.state.avgImg[2];
             } else if (this.state.acneDiff == 0) {
                 acneImg = this.state.avgImg[1];
             } else if (this.state.acneDiff < 0) {
-                acneImg = this.state.avgImg[2];
+                acneImg = this.state.avgImg[0];
             }
 
             if(this.state.healthDiff > 0) {
-                healthImg = this.state.avgImg[0];
+                healthImg = this.state.avgImg[2];
             } else if (this.state.healthDiff == 0) {
                 healthImg = this.state.avgImg[1];
             } else if (this.state.healthDiff < 0) {
-                healthImg = this.state.avgImg[2];
+                healthImg = this.state.avgImg[0];
             }
 
             if(this.state.stainDiff > 0) {
-                stainImg = this.state.avgImg[0];
+                stainImg = this.state.avgImg[2];
             } else if (this.state.stainDiff == 0) {
                 stainImg = this.state.avgImg[1];
             } else if (this.state.stainDiff < 0) {
-                stainImg = this.state.avgImg[2];
+                stainImg = this.state.avgImg[0];
             }
         }
 
