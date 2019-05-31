@@ -3,8 +3,7 @@ import questions from '../questions/questions.json'
 import 'bootstrap/dist/css/bootstrap.css';
 import './Questionnaire.css'
 import firebase from './firebase'
-import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
+import {Button, Modal} from 'react-bootstrap'
 
 class Questionnaire extends Component {
     constructor(props) {
@@ -12,7 +11,8 @@ class Questionnaire extends Component {
         this.state = {
             questionTemplate:questions.questionTemplate,
             answer:[],
-            index:0
+            index:0,
+            sentDB:false
         }
     }
 
@@ -49,17 +49,42 @@ class Questionnaire extends Component {
                 data["question " + i] = this.state.answer[i];
             }
             ref.set(data);
-            window.confirm("Sent to database.")
+            this.setState({
+                sentDB:true
+            });
         }
     }
-
 
     render() {
         let obj = this.state.questionTemplate[this.state.index];
         let questionItems = <QuestionnaireBody sendData={this.getData} questionItem={obj}/>;
+        let handleClose = () => {
+            this.setState({
+                sentDB:false
+            });
+        }
+
+        let faceCapture = () => {
+            this.props.history.push('/facecapture');
+        }
 
         return(
             <div className="QuestionnaireContainer">
+                <DialogBox />
+                <Modal show={this.state.sentDB} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Questionnaire</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        Thank you for taking the questionnaire, and your responses have been saved.
+                        Please visit the next stage: <strong>Face Capture.</strong>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={faceCapture}>
+                            Go to Face Capture
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
                 <div className="Questionnaire">
                     {questionItems}
                 </div>
@@ -134,6 +159,42 @@ class QuestionnaireItem extends Component {
             <div id={this.props.choice.title} onClick={this.sendData} className="QuestionnaireItem">
                 <img alt="Choice" src={image} />
                 <h3>{this.props.choice.title}</h3>
+            </div>
+        );
+    }
+}
+
+class DialogBox extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            show:true
+        }
+    }
+
+    render() {
+        let handleClose = () => {
+            this.setState({
+                show:false
+            });
+        }
+
+        return(
+            <div className="dialogBox">
+                <Modal show={this.state.show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Questionnaire</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        Please answer this questionnaire to the best of your ability. 
+                        The answers you provide will help determine the best products for your skin.
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
         );
     }

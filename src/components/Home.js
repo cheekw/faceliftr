@@ -5,8 +5,9 @@ import Navbar from './Navbar';
 import Analytics from './Analytics';
 import FaceCapture from './FaceCapture';
 import Settings from './Settings';
-import Questionnaire from './Questionnaire'
-import * as ROUTES from '../constants/routes'
+import Questionnaire from './Questionnaire';
+import * as ROUTES from '../constants/routes';
+import './Home.css';
 
 class Home extends Component {
 
