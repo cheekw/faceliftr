@@ -47,10 +47,14 @@ div.customizationContainer div ul.productsList {
     flex-direction:row;
     justify-content: center;
     align-items: center;
+    width:60vw;
+    height:500px;
+    overflow:auto;
 }
 
 div.customizationContainer div ul.productsList li {
-    display:inline;
+    height:200px;
+    width:100%;
 }
 
 div.customizationContainer div ul.productsList li.addContainer {
@@ -61,9 +65,63 @@ div.customizationContainer div ul.productsList li div.productItemContainer:hover
     cursor: pointer;
 }
 
-div.customizationContainer div ul.productsList li div.productItemContainer img {
-    height:200px;
-    width:200px;
+div.customizationContainer div ul.productsList li div.productItemContainer {
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:row;
+    border-top:2px #6975A7 solid;
+    padding-top:2rem;
+    padding-bottom:2rem;
+}
+
+div.customizationContainer div ul.productsList li div.productItemContainer div.imgContainer {
+    width:25%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.imgContainer img {
+    flex-shrink:1;
+    height:150px;
+    width:150px;
+}
+
+div.customizationContainer div ul.productsList li div.productItemContainer div.productContent {
+    width:50%;
+    display:flex;
+    justify-content: flex-start;
+    flex-direction:column;
+}
+
+div.customizationContainer div ul.productsList li div.productItemContainer div.productContent h3, 
+div.customizationContainer div ul.productsList li div.productItemContainer div.productContent button,
+div.customizationContainer div ul.productsList li div.productItemContainer div.productContent button {
+    float:left;
+    flex-shrink:1;
+}
+div.customizationContainer div div.addContainer {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.customizationContainer div div.addContainer div.addButton {
+    border: 2px solid #2ecc71;
+    background-color:white;
+    color:#2ecc71;
+    border-radius:4px;
+    padding-left:1.5rem;
+    padding-right:1.5rem;
+    padding-top:1rem;
+    padding-bottom:1rem;
+}
+
+div.customizationContainer div div.addContainer div.addButton:hover {
+    background-color:#2ecc71;
+    color:white;
+    cursor: pointer;
 }
 
 div.customizationContainer div ul.productsList li div.productItemContainer div.productBox {
@@ -82,19 +140,25 @@ div.customizationContainer div ul.productsList li div.productItemContainer h6 {
     font-size:1.2rem;;
 }
 
-div.customizationContainer div ul.productsList li div.productItemContainer div.productBox div.remove {
-    height:40px;
-    width:40px;
+div.customizationContainer div ul.productsList li div.productItemContainer div.removeContainer {
+    height:100%;
+    width:25%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    padding:3rem;
+}
+
+div.customizationContainer div ul.productsList li div.productItemContainer div.removeContainer div.remove {
     border-radius:50%;
     background-color:#e74c3c;
     border:4px solid white;
-    position:absolute;
-    top:-20px;
-    left:-20px;
     display:flex;
     justify-content:center;
     align-items: center;
     color:white;
+    height:40px;
+    width:40px;
 }
 
 /*Modal Product Info*/
@@ -108,7 +172,7 @@ div.prodInfo div.prodContent p {
     font-weight:lighter;
 }
 
-div.customizationContainer div ul.productsList li div.productItemContainer div.productBox div.remove:hover {
+div.customizationContainer div ul.productsList li div.productItemContainer div.removeContainer div.remove:hover {
     cursor:pointer;
     animation:scale 1s ease-in-out forwards;
 }
@@ -131,7 +195,7 @@ div.customizationContainer div ul.productsList li.addContainer div.addButton {
     align-items: center;
 }
 
-div.customizationContainer div ul.productsList li.addContainer div.addButton:hover {
+div.customizationContainer div ul.productsList li.addContainer div.addButton:hover, div.addSearchContainer div.addSearchButton:hover {
     cursor:pointer;
     animation:scale 1s ease-in-out forwards;
 }
@@ -174,3 +238,86 @@ div.customizationContainer div ul.productsList li.addContainer div.addButton:hov
 div.customizationContainer div ul.productsList li.addContainer div.addButton h6 {
     font-size:3rem;
 }
+
+div.searchBar {
+    display:flex;
+}
+
+div.searchBar input {
+    flex-grow:7;
+    margin-top:1rem;
+    margin-bottom:1rem;
+    margin-left:1rem;
+    margin-right:.5rem;
+    padding:.5rem;
+}
+
+div.searchBar button {
+    flex-grow:1;
+    margin-top:1rem;
+    margin-bottom:1rem;
+    margin-right:1rem;
+}
+
+div.addProductContainer{
+    height:70vh;
+}
+
+div.infiniteList {
+    max-height:400px;
+    overflow:auto;
+}
+
+div.listRow {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap:wrap;
+    width:100%;
+}
+
+div.searchItem {
+    display:flex;
+    flex-direction:row;
+    height:250px;
+    padding-bottom:3rem;
+}
+
+div.searchItem div.leftContainer img, div.searchItem div.leftContainer {
+    width:60%;
+}
+
+div.searchItem div.leftContainer img {
+    margin:1rem;
+}
+
+div.searchItem div.leftContainer {
+    padding:1rem;
+}
+
+div.addSearchContainer {
+    width:40%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.addSearchContainer div.addSearchButton {
+    background-color:#2ecc71;
+    color:white;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    height:80px;
+    width:80px;
+}
+
+div.addSearchContainer div.addSearchButton h6 {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size:3rem;
+}
+
