@@ -64,8 +64,8 @@ class Questionnaire extends Component {
             });
         }
 
-        let faceCapture = () => {
-            this.props.history.push('/facecapture');
+        let analytics = () => {
+            this.props.history.push('/home/analytics');
         }
 
         return(
@@ -77,11 +77,11 @@ class Questionnaire extends Component {
                     </Modal.Header>
                     <Modal.Body>
                         Thank you for taking the questionnaire, and your responses have been saved.
-                        Please visit the next stage: <strong>Face Capture.</strong>
+                        Please visit the next stage: <strong>Analytics</strong>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={faceCapture}>
-                            Go to Face Capture
+                        <Button variant="secondary" onClick={analytics}>
+                            Go to Analytics
                         </Button>
                     </Modal.Footer>
                 </Modal>
