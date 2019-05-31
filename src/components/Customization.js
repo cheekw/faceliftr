@@ -52,13 +52,16 @@ class Customization extends Component {
 
     render() {
         let getData = (name) => {
+            console.log(name);
+            
             let update = this.state.regimen;
             let keys = Object.keys(update);
+            console.log(keys);
             for (let key in keys) {
-                if (name == update[key].name) {
-                    delete update[key];
+                if (name == update[keys[key]].name) {
+                    delete update[keys[key]];
                     break;
-                }
+                } 
             }
             let gotData = (data) => {
                 if (this.state.removed == false) {
@@ -199,13 +202,28 @@ class AddProduct extends Component {
             show: true,
             results:[],
             isLoaded:false,
-            marker:""
+            marker:"",
+            categories:[],
+            choice:"Cleansers",
+            catIsLoaded:false
         }
     }
 
     async componentDidMount() {
         let marker;
-        const ref = firebase.database().ref('skincare_products/Cleansers');
+        const ref2 = firebase.database().ref("skincare_products");
+        let gotData = (data) => {
+            let categories = data.val();
+            for(let category in categories) {
+                this.state.categories.push(category);
+            }
+            this.setState({
+                catIsLoaded:true
+            });
+        }
+        await ref2.on("value", gotData);
+        let choice = this.state.choice
+        const ref = firebase.database().ref('skincare_products/' + choice);
         let counter = 0;
         let paginate = (snapshot, prevKey) => {
             counter++;
@@ -214,6 +232,7 @@ class AddProduct extends Component {
             }
             let dict = {};
             dict["key"] = snapshot.key;
+            dict["category"] = snapshot.child("category").val();
             dict["brand"] = snapshot.child("brand").val();
             dict["image_url"] = snapshot.child("image_url").val();
             dict["ingredients"] = snapshot.child("ingredients").val();
@@ -255,7 +274,8 @@ class AddProduct extends Component {
 
         let loadFunc = async (page) => {
             let marker;
-            const ref = firebase.database().ref('skincare_products/Cleansers');
+            console.log(this.state.choice);
+            const ref = firebase.database().ref('skincare_products/' + this.state.choice);
             let counter = 0;
             let paginate = (snapshot, prevKey) => {
                 counter++;
@@ -264,6 +284,7 @@ class AddProduct extends Component {
                 }
                 let dict = {};
                 dict["key"] = snapshot.key;
+                dict["category"] = snapshot.child("category").val();
                 dict["brand"] = snapshot.child("brand").val();
                 dict["image_url"] = snapshot.child("image_url").val();
                 dict["ingredients"] = snapshot.child("ingredients").val();
@@ -284,6 +305,20 @@ class AddProduct extends Component {
             let results = await ref.orderByKey().endAt(this.state.marker).limitToLast(10).on("child_added", paginate);
             console.log(results);
         }
+
+        let handleCategory = (category) => {
+            this.setState({
+                choice:category,
+                results:[]
+            });
+        }
+
+        let dropDownItems = this.state.categories.map((category) => {
+            return(
+                <Dropdown.Item onClick={() => handleCategory(category)}>{category}</Dropdown.Item>
+            );
+        });
+
         return(
             <div>
                 <Modal show={this.state.show} onHide={handleClose}>
@@ -297,17 +332,15 @@ class AddProduct extends Component {
                                 <Button variant="secondary">
                                     <FontAwesomeIcon icon={faSearch}/>
                                 </Button>
-                                {/* <Dropdown>
-                                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                        Dropdown Button
+                                <Dropdown>
+                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                                        {this.state.choice}
                                     </Dropdown.Toggle>
 
                                     <Dropdown.Menu>
-                                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                                        {this.state.catIsLoaded && dropDownItems}
                                     </Dropdown.Menu>
-                                </Dropdown> */}
+                                </Dropdown>
                             </div>
                             <div className="searchResults">
                                 <div className="searchList">
@@ -441,8 +474,8 @@ class ProductItem extends Component {
                     <img src={product.image_url} />
                 </div>
                 <div className="productContent">
-                    <h3>{product.brand}</h3>
-                    <p>{product.name}</p>
+                    <h3>{product.category}</h3>
+                    <h5><strong>{product.brand}:</strong> {product.name}</h5>
                     <Button onClick={openIngredients} variant="link">
                         Show Ingredients
                     </Button>

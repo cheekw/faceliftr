@@ -97,7 +97,7 @@ div.customizationContainer div ul.productsList li div.productItemContainer div.p
 
 div.customizationContainer div ul.productsList li div.productItemContainer div.productContent h3, 
 div.customizationContainer div ul.productsList li div.productItemContainer div.productContent button,
-div.customizationContainer div ul.productsList li div.productItemContainer div.productContent button {
+div.customizationContainer div ul.productsList li div.productItemContainer div.productContent h5 {
     float:left;
     flex-shrink:1;
 }
@@ -264,7 +264,7 @@ div.addProductContainer{
 }
 
 div.infiniteList {
-    max-height:400px;
+    max-height:60vh;
     overflow:auto;
 }
 
