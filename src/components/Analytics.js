@@ -3,7 +3,6 @@ import Recommend from './Recommend';
 import {Line, Doughnut} from 'react-chartjs-2';
 import firebase from './firebase.js';
 import Customization from './Customization';
-import { Spinner } from 'react-bootstrap';
 import './Analytics.css';
 import growth from '../images/analytics_img/growth.png';
 import decrease from '../images/analytics_img/statistics.png';

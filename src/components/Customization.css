@@ -200,6 +200,12 @@ div.customizationContainer div ul.productsList li.addContainer div.addButton:hov
     animation:scale 1s ease-in-out forwards;
 }
 
+div.searchList {
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+
 /* div.customizationContainer div ul.productsList li.addContainer div.addButton:hover h6 {
     transform-origin: center;
     animation:rotate 1s ease-in-out forwards;
