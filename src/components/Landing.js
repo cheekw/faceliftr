@@ -20,7 +20,8 @@ class Landing extends Component {
     super();
     this.state = {
       buttonText : '',
-      signedIn:false
+      signedIn:false,
+      historyPushed:false
     };
   }
 
@@ -44,6 +45,9 @@ class Landing extends Component {
 
   render() {
     let goHome = () => {
+      this.setState({
+        historyPushed:true
+      });
       if(this.state.signedIn) {
         this.props.history.push('/home');
       } else {
@@ -56,15 +60,19 @@ class Landing extends Component {
       document.documentElement.scrollTop = 0;
     }
 
-    function scrollFunction() {
-      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        document.getElementById("top").style.display = "flex";
-      } else {
-        document.getElementById("top").style.display = "none";
-      }
-    }
+    // function scrollFunction() {
+    //   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    //     document.getElementById("top").style.display = "flex";
+    //   } else {
+    //     document.getElementById("top").style.display = "none";
+    //   }
+    // }
 
-    window.onscroll = function(){scrollFunction()};
+    // function scrolling() {
+    //   window.onscroll = function(){scrollFunction()};
+    // }
+
+    // {!this.state.historyPushed && scrolling()}
     return (
       // illustration by Ouch.pics
       <div className="landing">
