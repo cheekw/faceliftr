@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import firebase from './firebase.js';
 import './Customization.css';
-import {Modal, Button, Collapse, Dropdown, Spinner} from 'react-bootstrap';
+import { Modal, Button, Collapse, Dropdown, Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import InfiniteScroll from 'react-infinite-scroller';
@@ -10,12 +10,12 @@ class Customization extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            regimen:[],
-            isLoaded:false,
-            show:false,
-            removed:false,
-            showDeleteConfirmation:false,
-            noProd:true
+            regimen: [],
+            isLoaded: false,
+            show: false,
+            removed: false,
+            showDeleteConfirmation: false,
+            noProd: true
         }
     }
 
@@ -53,7 +53,7 @@ class Customization extends Component {
     render() {
         let getData = (name) => {
             console.log(name);
-            
+
             let update = this.state.regimen;
             let keys = Object.keys(update);
             console.log(keys);
@@ -61,15 +61,15 @@ class Customization extends Component {
                 if (name == update[keys[key]].name) {
                     delete update[keys[key]];
                     break;
-                } 
+                }
             }
             let gotData = (data) => {
                 if (this.state.removed == false) {
                     let routine = data.val();
                     console.log(routine);
                     let removalKey = "";
-                    for(let product in routine) {
-                        if(name == routine[product].name) {
+                    for (let product in routine) {
+                        if (name == routine[product].name) {
                             console.log(product);
                             removalKey = product;
                         }
@@ -82,7 +82,7 @@ class Customization extends Component {
                             removed: true
                         });
                         ref.off();
-                    } catch(e) {
+                    } catch (e) {
                         console.log("error caught: " + e);
                     }
                     // let routine = data.val();
@@ -118,13 +118,13 @@ class Customization extends Component {
         }
 
         let products = this.state.regimen.map((product) => {
-            if(this.state.noProd) {
+            if (this.state.noProd) {
                 this.setState({
-                    noProd:false
+                    noProd: false
                 });
             }
-            return(
-                <li><ProductItem sendData={getData} productData={product}/></li>
+            return (
+                <li><ProductItem sendData={getData} productData={product} /></li>
             );
         });
 
@@ -149,7 +149,7 @@ class Customization extends Component {
             console.log("updated");
             console.log(product);
             this.setState({
-                regimen:update
+                regimen: update
             });
         }
 
@@ -160,7 +160,7 @@ class Customization extends Component {
         }
         return (
             <div className="customizationContainer">
-                {this.state.show && <AddProduct getAdd={handleAdd} close={handleClose}/>}
+                {this.state.show && <AddProduct getAdd={handleAdd} close={handleClose} />}
                 <Modal show={this.state.showDeleteConfirmation} onHide={handleCloseDeleteConfirm}>
                     <Modal.Header closeButton>
                         <Modal.Title>Customization</Modal.Title>
@@ -200,12 +200,12 @@ class AddProduct extends Component {
         super(props);
         this.state = {
             show: true,
-            results:[],
-            isLoaded:false,
-            marker:"",
-            categories:[],
-            choice:"Cleansers",
-            catIsLoaded:false
+            results: [],
+            isLoaded: false,
+            marker: "",
+            categories: [],
+            choice: "Cleansers",
+            catIsLoaded: false
         }
     }
 
@@ -214,11 +214,11 @@ class AddProduct extends Component {
         const ref2 = firebase.database().ref("skincare_products");
         let gotData = (data) => {
             let categories = data.val();
-            for(let category in categories) {
+            for (let category in categories) {
                 this.state.categories.push(category);
             }
             this.setState({
-                catIsLoaded:true
+                catIsLoaded: true
             });
         }
         await ref2.on("value", gotData);
@@ -227,7 +227,7 @@ class AddProduct extends Component {
         let counter = 0;
         let paginate = (snapshot, prevKey) => {
             counter++;
-            if(!marker) {
+            if (!marker) {
                 marker = snapshot.key;
             }
             let dict = {};
@@ -243,10 +243,10 @@ class AddProduct extends Component {
             dict["rating"] = snapshot.child("rating").val();
             dict["skin_types"] = snapshot.child("skin_types").val();
             this.state.results.push(dict);
-            if(counter == 10) {
+            if (counter == 10) {
                 this.setState({
-                    isLoaded:true,
-                    marker:marker
+                    isLoaded: true,
+                    marker: marker
                 });
             }
         }
@@ -257,18 +257,18 @@ class AddProduct extends Component {
     render() {
         let handleClose = () => {
             this.setState({
-                show:!this.state.show
+                show: !this.state.show
             });
             this.props.close(false);
         }
-        
+
         let handleAdd = (product) => {
             this.props.getAdd(product);
         }
 
         let list = this.state.results.map((obj) => {
-            return(
-                <SearchItem getAdd={handleAdd} product={obj}/>
+            return (
+                <SearchItem getAdd={handleAdd} product={obj} />
             );
         });
 
@@ -279,7 +279,7 @@ class AddProduct extends Component {
             let counter = 0;
             let paginate = (snapshot, prevKey) => {
                 counter++;
-                if(!marker) {
+                if (!marker) {
                     marker = snapshot.key;
                 }
                 let dict = {};
@@ -295,10 +295,10 @@ class AddProduct extends Component {
                 dict["rating"] = snapshot.child("rating").val();
                 dict["skin_types"] = snapshot.child("skin_types").val();
                 this.state.results.push(dict);
-                if(counter == 10) {
+                if (counter == 10) {
                     this.setState({
-                        isLoaded:true,
-                        marker:marker
+                        isLoaded: true,
+                        marker: marker
                     });
                 }
             }
@@ -308,18 +308,18 @@ class AddProduct extends Component {
 
         let handleCategory = (category) => {
             this.setState({
-                choice:category,
-                results:[]
+                choice: category,
+                results: []
             });
         }
 
         let dropDownItems = this.state.categories.map((category) => {
-            return(
+            return (
                 <Dropdown.Item onClick={() => handleCategory(category)}>{category}</Dropdown.Item>
             );
         });
 
-        return(
+        return (
             <div>
                 <Modal show={this.state.show} onHide={handleClose}>
                     <Modal.Header closeButton>
@@ -328,9 +328,9 @@ class AddProduct extends Component {
                     <Modal.Body>
                         <div className="addProductContainer">
                             <div className="searchBar">
-                                <input placeholder="Search for your product" type="text"/>
+                                <input placeholder="Search for your product" type="text" />
                                 <Button variant="secondary">
-                                    <FontAwesomeIcon icon={faSearch}/>
+                                    <FontAwesomeIcon icon={faSearch} />
                                 </Button>
                                 <Dropdown>
                                     <Dropdown.Toggle variant="secondary" id="dropdown-basic">
@@ -345,18 +345,18 @@ class AddProduct extends Component {
                             <div className="searchResults">
                                 <div className="searchList">
                                     {
-                                        this.state.isLoaded && 
-                                       
-                                            <div className="infiniteList">
-                                                <InfiniteScroll 
-                                                    pageStart={0}
-                                                    loadMore={loadFunc}
-                                                    hasMore={true}
-                                                    useWindow={false}
-                                                >
-                                                    {list}
-                                                </InfiniteScroll>
-                                            </div>
+                                        this.state.isLoaded &&
+
+                                        <div className="infiniteList">
+                                            <InfiniteScroll
+                                                pageStart={0}
+                                                loadMore={loadFunc}
+                                                hasMore={true}
+                                                useWindow={false}
+                                            >
+                                                {list}
+                                            </InfiniteScroll>
+                                        </div>
                                     }
                                 </div>
                             </div>
@@ -372,14 +372,14 @@ class SearchItem extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            product:{}
+            product: {}
         };
     }
 
     componentDidMount() {
         this.setState({
-            product:this.props.product,
-            open:false
+            product: this.props.product,
+            open: false
         });
     }
 
@@ -387,34 +387,34 @@ class SearchItem extends Component {
         let handleAdd = () => {
             this.props.getAdd(this.state.product);
             this.setState({
-                open:!this.state.open
+                open: !this.state.open
             });
         };
 
         let handleClose = () => {
             this.setState({
-                open:!this.state.open
+                open: !this.state.open
             });
         };
 
-        return(
+        return (
             <div>
                 <Modal show={this.state.open} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Customization: Add Product</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    Product has been added to your current skincare routine!
+                    <Modal.Header closeButton>
+                        <Modal.Title>Customization: Add Product</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        Product has been added to your current skincare routine!
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
                     </Button>
-                </Modal.Footer>
-            </Modal>
+                    </Modal.Footer>
+                </Modal>
                 <div className="searchItem">
                     <div className="leftContainer">
-                        <img src={this.state.product.image_url}/>
+                        <img src={this.state.product.image_url} />
                         <h6>{this.state.product.brand + ": " + this.state.product.name}</h6>
                     </div>
                     <div className="addSearchContainer">
@@ -431,7 +431,7 @@ class ProductItem extends Component {
         super(props);
         this.state = {
             showInfo: false,
-            open:false
+            open: false
         }
     }
     render() {
@@ -455,7 +455,7 @@ class ProductItem extends Component {
 
         let openIngredients = () => {
             this.setState({
-                open:!this.state.open
+                open: !this.state.open
             });
         }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Recommend from './Recommend';
-import {Line, Doughnut} from 'react-chartjs-2';
+import { Line, Doughnut } from 'react-chartjs-2';
 import firebase from './firebase.js';
 import Customization from './Customization';
 import { Spinner } from 'react-bootstrap';
@@ -13,16 +13,16 @@ class Analytics extends React.Component {
     constructor() {
         super();
         this.state = {
-            regimen:[],
-            date:['05/10/19', '05/11/19', '05/12/19', '05/13/19', '05/14/19', '05/15/19'],
-            acne:[2, 2.2, 2.1, 1.8, 1.76, 1.65],
-            health:[12.3, 10.2, 11, 9.34, 7.75, 8.2],
-            stain:[37.2, 37.54, 37.13, 38, 37.2, 38.42],
-            isLoaded:false,
-            acneDiff:0,
-            healthDiff:0,
-            stainDiff:0,
-            avgImg:[growth, noChange, decrease]
+            regimen: [],
+            date: ['05/10/19', '05/11/19', '05/12/19', '05/13/19', '05/14/19', '05/15/19'],
+            acne: [2, 2.2, 2.1, 1.8, 1.76, 1.65],
+            health: [12.3, 10.2, 11, 9.34, 7.75, 8.2],
+            stain: [37.2, 37.54, 37.13, 38, 37.2, 38.42],
+            isLoaded: false,
+            acneDiff: 0,
+            healthDiff: 0,
+            stainDiff: 0,
+            avgImg: [growth, noChange, decrease]
         }
     }
 
@@ -51,22 +51,22 @@ class Analytics extends React.Component {
             stainDiff = stainDiff.toFixed(2);
             try {
                 let keys = Object.keys(data.val());
-                for(let i = 0; i < keys.length; i++) {
+                for (let i = 0; i < keys.length; i++) {
                     dates.push(keys[i])
                 }
-            }   
-            catch(err) {
+            }
+            catch (err) {
 
             }
             this.setState({
-                date:dates,
-                acne:acne,
-                health:health,
-                stain:stain,
-                isLoaded:true,
-                acneDiff:acneDiff,
-                healthDiff:healthDiff,
-                stainDiff:stainDiff
+                date: dates,
+                acne: acne,
+                health: health,
+                stain: stain,
+                isLoaded: true,
+                acneDiff: acneDiff,
+                healthDiff: healthDiff,
+                stainDiff: stainDiff
             });
         }
 
@@ -166,8 +166,8 @@ class Analytics extends React.Component {
         let acneImg = "";
         let healthImg = "";
         let stainImg = "";
-        if(this.state.isLoaded) {
-            if(this.state.acneDiff > 0) {
+        if (this.state.isLoaded) {
+            if (this.state.acneDiff > 0) {
                 acneImg = this.state.avgImg[2];
             } else if (this.state.acneDiff == 0) {
                 acneImg = this.state.avgImg[1];
@@ -175,7 +175,7 @@ class Analytics extends React.Component {
                 acneImg = this.state.avgImg[0];
             }
 
-            if(this.state.healthDiff > 0) {
+            if (this.state.healthDiff > 0) {
                 healthImg = this.state.avgImg[2];
             } else if (this.state.healthDiff == 0) {
                 healthImg = this.state.avgImg[1];
@@ -183,7 +183,7 @@ class Analytics extends React.Component {
                 healthImg = this.state.avgImg[0];
             }
 
-            if(this.state.stainDiff > 0) {
+            if (this.state.stainDiff > 0) {
                 stainImg = this.state.avgImg[2];
             } else if (this.state.stainDiff == 0) {
                 stainImg = this.state.avgImg[1];
@@ -197,21 +197,21 @@ class Analytics extends React.Component {
                 <Customization />
                 <div className="headerContainer">
                     <h3>Skin Progress</h3>
-                    {   
+                    {
                         this.state.isLoaded &&
                         <div className="avgContainer">
                             <div className="avg">
-                                <img src={acneImg}/>
+                                <img src={acneImg} />
                                 <h4>Acne Change</h4>
                                 <h4>{this.state.acneDiff}</h4>
                             </div>
                             <div className="avg">
-                                <img src={healthImg}/>
+                                <img src={healthImg} />
                                 <h4>Health Change</h4>
                                 <h4>{this.state.healthDiff}</h4>
                             </div>
                             <div className="avg">
-                                <img src={stainImg}/>
+                                <img src={stainImg} />
                                 <h4>Stain Change</h4>
                                 <h4>{this.state.stainDiff}</h4>
                             </div>
