@@ -92,9 +92,9 @@ class Landing extends Component {
           <div className="landing-mission">find the perfect routine</div>
           <div className="landing-mission-subtitle">become your picture perfect</div>
           {/* <img src={circle}  data-aos="fade-left" className="circle-image" /> */}
-          <div className="landing-start-container"><div className="landing-start" onClick={goHome}>
+          <div className="landing-start" onClick={goHome}>
             Start
-          </div></div>
+          </div>
           <img src={skincare} data-aos="fade-left" className="mission-image" />
         </div>
 
