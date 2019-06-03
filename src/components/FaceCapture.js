@@ -9,7 +9,7 @@ import './FaceCapture.css';
 import selfie from '../images/facecapture/selfie.png';
 import event from '../images/facecapture/event.png';
 import flash from '../images/facecapture/flash.png';
-import {Button, Modal} from 'react-bootstrap';
+import {Button, Modal, Spinner} from 'react-bootstrap';
 import facialRecognition from '../images/facecapture/facial-recognition.png';
 import cloud from '../images/facecapture/cloud.png';
 
@@ -25,7 +25,8 @@ class FaceCapture extends React.Component {
     this.state={
       showScores:false,
       showDB:false,
-      showDisclaimer:false
+      showDisclaimer:false,
+      showSpinner:false
     }
   }
 
@@ -79,6 +80,9 @@ class FaceCapture extends React.Component {
     var snapBtn = document.getElementById('snap');
     cameraBtn.style.display = 'none';
     snapBtn.style.display = 'none';
+    this.setState({
+      showSpinner:true
+    });
     let base64Image = canvas.toDataURL('image/jpeg', 1.0);/*
     let imageView = document.getElementById('preview');
 
@@ -214,7 +218,8 @@ class FaceCapture extends React.Component {
             });
             // alert('Upload successful!');
             this.setState({
-              showScores:true
+              showScores:true,
+              showSpinner:false
             });
           }
           
@@ -390,6 +395,7 @@ class FaceCapture extends React.Component {
             </div>
           </div>
         </div>
+        {this.state.showSpinner && <Spinner animation="border"/>}
         <button id="cameraButton" type="button" onClick={this.snapPhoto} className="btn mx-auto w-25">Enable Camera</button>
         <div id="camera" className='row'>
           <video className='row' id="video" width="640" height="480" autoplay></video>

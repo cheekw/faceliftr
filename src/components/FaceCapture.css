@@ -1,12 +1,14 @@
 div.face-capture-container {
     width:60vw;
     padding:3rem;
+    font-family: Futura;
 }
 
 div.face-capture-container button {
     margin:1rem;
     background-color:#DE5134;
     color:white;
+    font-family:Roboto;
 }
 
 div.face-capture-container div.fcContainer h1 {
@@ -42,8 +44,8 @@ div#camera {
 
 div#camera canvas#creot {
     position:absolute;
-    top:0;
-    left:12.5%;
+    top:12vh;
+    left:11vw;
     animation:snap 3s ease-in-out forwards;
     z-index: -1;
 }
