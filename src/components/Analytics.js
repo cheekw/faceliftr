@@ -32,15 +32,13 @@ class Analytics extends React.Component {
         let stain = this.state.stain;
         let gotData = (data) => {
             let x = data.val();
+            console.log(x)
             for (let n in x) {
-                let date = x[n]
-                for (let key in date) {
-                    if (key != "questionnaire") {
-                        acne.push(date[key].acne);
-                        health.push(date[key].health);
-                        stain.push(date[key].stain);
-                    }
-                }
+                let scan = x[n]
+                acne.push(scan.acne);
+                health.push(scan.health);
+                stain.push(scan.stain);
+                
             }
             let acneDiff = acne[acne.length - 1] - acne[0];
             acneDiff = acneDiff.toFixed(2);
@@ -76,7 +74,7 @@ class Analytics extends React.Component {
         let user = 0;
         if (firebase.auth().currentUser) {
             user = firebase.auth().currentUser.uid;
-            const ref = firebase.database().ref("users/" + user + '/Results');
+            const ref = firebase.database().ref("users/" + user + '/Face Scans');
             ref.on("value", gotData, errData);
         }
     }
