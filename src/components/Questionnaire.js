@@ -31,28 +31,30 @@ class Questionnaire extends Component {
 
     next = () => {
         let update = this.state.index;
-        if(update + 1 < this.state.questionTemplate.length) {
-            this.setState({
-                index:update + 1
-            });
-        } else {
-            var database = firebase.database();
-            var today = new Date();
-            var dd = String(today.getDate()).padStart(2, '0');
-            var mm = String(today.getMonth() + 1).padStart(2, '0');
-            var yyyy = today.getFullYear();
-
-            today = mm + '\\' + dd + '\\' + yyyy;
-            var ref = database.ref('users/' + firebase.auth().currentUser.uid + '/Questionnaires/' + today);
-            var data = {};
-            for(let i = 0; i < this.state.answer.length; i++) {
-                data["question " + i] = this.state.answer[i];
+        if(this.state.answer[update] != null) {
+            if(update + 1 < this.state.questionTemplate.length) {
+                this.setState({
+                    index:update + 1
+                });
+            } else {
+                var database = firebase.database();
+                var today = new Date();
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0');
+                var yyyy = today.getFullYear();
+    
+                today = mm + '\\' + dd + '\\' + yyyy;
+                var ref = database.ref('users/' + firebase.auth().currentUser.uid + '/Questionnaires/' + today);
+                var data = {};
+                for(let i = 0; i < this.state.answer.length; i++) {
+                    data["question " + i] = this.state.answer[i];
+                }
+                console.log(data);
+                ref.set(data);
+                this.setState({
+                    sentDB:true
+                });
             }
-            console.log(data);
-            ref.set(data);
-            this.setState({
-                sentDB:true
-            });
         }
     }
 
@@ -90,8 +92,8 @@ class Questionnaire extends Component {
                     {questionItems}
                 </div>
                 <div className="row mx-auto self-center text-center btn-group btn-group-lg">
-                    <div onClick={this.previous} className="btn btn-primary btn-lg">Previous</div>
-                    <div onClick={this.next} className="btn btn-primary btn-lg">Next</div>
+                    <div onClick={this.previous} className="btn btn-danger btn-lg">Previous</div>
+                    <div onClick={this.next} className="btn btn-danger btn-lg">Next</div>
                 </div>
             </div>
         );

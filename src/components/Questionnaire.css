@@ -92,3 +92,11 @@ div.QuestionnaireContainer div.QuestionnaireButton div.Button:hover {
     background-color:white;
     cursor:pointer;
 }
+
+div.btn.btn-danger.btn-lg {
+    margin-bottom:2rem;
+}
+
+div.btn.btn-danger.btn-lg:hover {
+    cursor: pointer;
+}
