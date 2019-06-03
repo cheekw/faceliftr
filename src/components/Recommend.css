@@ -1,73 +1,44 @@
-.recommend-component h2 {
-	text-align: center;
- 	width: 200px;
-	margin: auto;
-	padding: auto;
-	color: OrangeRed;
-}
 
-.recommend-component img {
+.App .recommend-component img {
 	max-width: 175px;
 	max-height: 175px;
 	float: left;
-	margin: 2vw;
 }
 
-.recommend-component {
+.App .recommend-component {
 	margin: auto;
+	text-align: left;
 }
 
-.recommend-component h2 {
-	color:#6975A7;
+.App .recommend-component h4 {
+	font-weight: bolder;
+	color: #2CD6A9;
 }
 
-.regimen-box {
-	margin: auto;
-	padding: 3vw;
-	border: 3px solid #6975A7;
-	border-radius: 20px;
-	width: 60vw;
+.App .recommend-component h2 {
+	font-weight: bolder;
+	margin-top: 1em;
+	padding: auto;
+	color: #2CD6A9;
 }
 
-.product-details {
-	padding: 1vw;
+.App .product-card {
+	display: flex;
+	flex-direction: row;
+	align-content: center;
 }
 
-.product-divider { 
-	 border-top: 3px solid #6975A7;
-	 border-radius: 100%;
-	 margin: 2vw;
+.App .product-image, .product-details-content {
+	margin: 2em;
 }
 
-h1 { 
-	font-family: Futura, "Trebuchet MS", Arial, sans-serif; 
-	font-size: 24px; 
-	font-style: normal; 
-	font-variant: normal; 
-	font-weight: bold; 
-	line-height: 26px; 
-} 
-h3 { 
-	font-family: Futura, "Trebuchet MS", Arial, sans-serif; 
-	font-size: 14px; 
-	font-style: normal; 
-	font-variant: normal; 
-	font-weight: bold; 
-	line-height: 15px; 
-} 
-p { 
-	font-family: Futura, "Trebuchet MS", Arial, sans-serif; 
-	font-size: 14px; 
-	font-style: normal; 
-	font-variant: normal; 
-	font-weight: 400; 
-	line-height: 20px; 
-} 
-.tx { 
-	font-family: Futura, "Trebuchet MS", Arial, sans-serif; 
-	font-size: 14px; 
-	font-style: normal; 
-	font-variant: normal; 
-	font-weight: 400; 
-	line-height: 20px; 
-} 
+.App .product-divider {
+	border: 2px #2CD6A9 solid;
+	width: 150px;
+	margin-top: 1em;
+}
+
+.App .recommend-component .product {
+	display: flex;
+	flex-direction: column;
+}

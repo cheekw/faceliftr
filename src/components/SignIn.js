@@ -47,7 +47,7 @@ class SignIn extends Component {
   render() {
     return (
       <div className="account">
-        <h1>faceliftr.</h1>
+        <h1><Link to={ROUTES.LANDING} style={{color: "#2CD6A9"}} >faceliftr.</Link></h1>
         <form onSubmit={this.handleSubmit}>
           <div className="container">
             <input id="user" type="Email" placeholder="Email" autoComplete="off" required

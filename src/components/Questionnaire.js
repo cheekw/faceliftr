@@ -43,7 +43,7 @@ class Questionnaire extends Component {
             var yyyy = today.getFullYear();
 
             today = mm + '\\' + dd + '\\' + yyyy;
-            var ref = database.ref('users/' + firebase.auth().currentUser.uid + "/Results/" + today + "/questionnaire");
+            var ref = database.ref('users/' + firebase.auth().currentUser.uid + "/Questionnaires" + today);
             var data = {};
             for(let i = 0; i < this.state.answer.length; i++) {
                 data["question " + i] = this.state.answer[i];

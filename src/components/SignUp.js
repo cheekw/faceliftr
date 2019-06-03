@@ -62,7 +62,7 @@ class SignUp extends Component {
     render() {
         return (
             <div className="account">
-                <h1>faceliftr.</h1>
+                <h1><Link to={ROUTES.LANDING} style={{color: "#2CD6A9"}} >faceliftr.</Link></h1>
                 <p className="error-message">{this.state.errorMessage}</p>
                 <form onSubmit={event => this.handleSubmitForm(event)}>
                     <div className="container">

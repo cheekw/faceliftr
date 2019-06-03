@@ -15,12 +15,12 @@
 }
 
 .account .a {
-    color: #2CD6A9;
+    color: #2CD6A9 !important;
     font-weight: bold;
 }
 
 .account .a:hover {
-    color: #26B790;
+    color: #26B790 !important;
 }
 
 .account .btn {
