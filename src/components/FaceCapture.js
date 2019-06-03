@@ -211,7 +211,7 @@ class FaceCapture extends React.Component {
             var yyyy = today.getFullYear();
         
             today = mm + '\\' + dd + '\\' + yyyy;
-            firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/Face Scans' + today).set({
+            firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/Face Scans/' + today).set({
               acne: window.acne,
               stain: window.stain,
               health: window.health
@@ -255,11 +255,12 @@ class FaceCapture extends React.Component {
     var yyyy = today.getFullYear();
 
     today = mm + '\\' + dd + '\\' + yyyy;
-    firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/Results/Face Scans/' + today).set({
+    let data = {
       acne: window.acne,
       stain: window.stain,
       health: window.health
-    });
+    };
+    firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/Face Scans/' + today).set(data);
     alert('Upload successful!');
   }
 
