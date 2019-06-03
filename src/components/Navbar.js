@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
 import * as ROUTES from '../constants/routes';
+import './Navbar.css';
 
 class Navbar extends React.Component {
   constructor() {
@@ -10,7 +11,7 @@ class Navbar extends React.Component {
     return (
       <div className="container">
         <div className="title">
-          <strong>FACE</strong>LIFTR
+          faceliftr.
                 </div>
         <ul>
           <li><NavLink to={ROUTES.FACECAPTURE}><div className="circle one"></div></NavLink></li>

@@ -104,6 +104,13 @@ div.customizationContainer div ul.productsList li div.productItemContainer div.p
     float:left;
     flex-shrink:1;
 }
+
+div.customizationContainer div ul.productsList li div.productItemContainer div.productContent button,
+div.customizationContainer div ul.productsList li div.productItemContainer div.productContent h5 {
+    font-family:Roboto;
+    font-weight:lighter;
+}
+
 div.customizationContainer div div.addContainer {
     display:flex;
     justify-content: center;
