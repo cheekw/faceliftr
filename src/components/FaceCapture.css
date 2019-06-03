@@ -1,0 +1,74 @@
+div.face-capture-container {
+    width:60vw;
+    padding:3rem;
+}
+
+div.face-capture-container button {
+    margin:1rem;
+    background-color:#DE5134;
+    color:white;
+}
+
+div.face-capture-container div.fcContainer h1 {
+    color:#DE5134;
+}
+
+div.face-capture-container div.fcContainer div.requirements {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+div.face-capture-container div.fcContainer div.requirements div.requirement {
+    flex-shrink:1;
+    padding:2rem;
+    z-index:-1;
+}
+
+div.face-capture-container div.fcContainer div.requirements div.requirement h4 {
+    font-family:futura;
+    color:#bdc3c7;
+    font-weight:lighter;
+}
+
+div#camera {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position:relative;
+}
+
+div#camera canvas#creot {
+    position:absolute;
+    top:0;
+    left:12.5%;
+    animation:snap 3s ease-in-out forwards;
+    z-index: -1;
+}
+
+div.modal-body p {
+    font-family:roboto;
+}
+
+@keyframes snap {
+    0% {
+        filter: opacity(0);
+        filter:brightness(0);
+        filter:invert(1);
+        transform:scale(1);
+    } 50% {
+        filter:brightness(1);
+        filter:invert(0);
+    } 75% {
+        transform:scale(.75);
+    } 100% {
+        filter:opacity(1);
+        transform:scale(1.3);
+    }
+}
+
+/* video#video {
+    border: 2px solid #DE5134;
+} */

@@ -5,8 +5,11 @@ import $ from 'jquery';
 import firebase from './firebase.js';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import * as ROUTES from '../constants/routes';
-import './Landing.css';
+import './FaceCapture.css';
 import selfie from '../images/facecapture/selfie.png';
+import event from '../images/facecapture/event.png';
+import flash from '../images/facecapture/flash.png';
+import {Button, Modal} from 'react-bootstrap';
 import facialRecognition from '../images/facecapture/facial-recognition.png';
 import cloud from '../images/facecapture/cloud.png';
 
@@ -19,13 +22,26 @@ class FaceCapture extends React.Component {
     window.darkCircles = 0;
     window.health = 0;
     window.isHidden = true;
+    this.state={
+      showScores:false,
+      showDB:false,
+      showDisclaimer:false
+    }
   }
 
-  componentWillMount() {
-    
+  componentDidMount() {
+    let camera = document.getElementById("camera");
+    camera.style.display = 'none';
+    let canvas = document.getElementById("creot");
+    this.setState({
+      showDisclaimer:true
+    });
+    //canvas.style.display = 'none';
   }
 
   snapPhoto = () => {
+    let camera = document.getElementById("camera");
+    camera.style.display = 'flex';
     var video = document.getElementById('video');
     // Get access to the camera!
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -44,6 +60,9 @@ class FaceCapture extends React.Component {
       document.getElementById("snap").addEventListener("click", function() {
         context.drawImage(video, 0, 0, 640, 480);
       });
+      this.setState({
+        showCamera:true
+      });
   } 
 
  clickInput = e => {
@@ -53,7 +72,13 @@ class FaceCapture extends React.Component {
 
 
   selectImage = input => {
+    var video = document.getElementById('video');
+    video.style.display = 'none';
     let canvas = document.getElementById('creot');
+    var cameraBtn = document.getElementById('cameraButton');
+    var snapBtn = document.getElementById('snap');
+    cameraBtn.style.display = 'none';
+    snapBtn.style.display = 'none';
     let base64Image = canvas.toDataURL('image/jpeg', 1.0);/*
     let imageView = document.getElementById('preview');
 
@@ -168,10 +193,10 @@ class FaceCapture extends React.Component {
             window.acne= e['faces'][0]['attributes']['skinstatus']['acne'];
             window.stain= e['faces'][0]['attributes']['skinstatus']['stain'];
             window.health= e['faces'][0]['attributes']['skinstatus']['health'];
-            alert('dark circles: ' + window.darkCircles +
-            ' acne: ' + window.acne +
-            ' stain: ' + window.stain + 
-            ' health ' + window.health);   
+            // alert('dark circles: ' + window.darkCircles +
+            // ' acne: ' + window.acne +
+            // ' stain: ' + window.stain + 
+            // ' health ' + window.health);   
             if(window.acne == 0 && window.stain == 0 && window.health == 0) {
               alert("Must successfully upload picture first");
               return;
@@ -187,8 +212,10 @@ class FaceCapture extends React.Component {
               stain: window.stain,
               health: window.health
             });
-            alert('Upload successful!');
-            this.props.history.push('/questionnaire');
+            // alert('Upload successful!');
+            this.setState({
+              showScores:true
+            });
           }
           
         let failed =  e => {
@@ -231,11 +258,22 @@ class FaceCapture extends React.Component {
     alert('Upload successful!');
   }
 
+  handleClose = () => {
+    this.props.history.push('/questionnaire');
+  }
+
+  handleCloseDisclaimer = () => {
+    this.setState({
+      showDisclaimer:false
+    });
+  }
+
   
   render() {
+    console.log(this.state.showScores);
     return (
       <div className='face-capture-container'>
-        <div className='align-self-center col-sm face-capture-container'>
+        {/* <div className='align-self-center col-sm face-capture-container'>
           <h1>
             Take a picture and get instant results!
           </h1>
@@ -246,8 +284,8 @@ class FaceCapture extends React.Component {
             take this visual assesment, as it allows us to use historical data to asses your progress and your currrent skincare
             routine. Below is a break down of this process:
           </p>
-        </div>
-        <div className="card-deck w-75 mx-auto" >
+        </div> */}
+        {/* <div className="card-deck w-75 mx-auto" >
           <div className="card mb-2">
             <img className="mx-auto" src={selfie} alt="Card image cap"/>
             <div className="card-body">
@@ -281,25 +319,84 @@ class FaceCapture extends React.Component {
           </div>
         </div>
         <br/>
-        <div className="mx-auto w-50">
-          <p>
+        <div className="mx-auto w-50"> */}
+          {/* <p>
             Upload your own picture below, and press upload image once you're happy with the submission!
-          </p>
-          <div className="custom-file">
+          </p> */}
+          {/* <div className="custom-file">
             <input id="inputGroupFile01" className="custom-file-input" type="file" accept="image/*" name="xaunz" onChange={this.selectImage.bind(this)}/>
             <label className="custom-file-label" for="inputGroupFile01">Choose file</label>
-          </div>
-        </div> {/*
-        <div id="facesContainer" className='media'>
+          </div> */}
+        {/* </div> {/* */}
+        {/* <div id="facesContainer" className='media'>
           <img id="preview" className="border mw-100 mh-100 rounded mx-auto d-block"/>
         </div>*/}
-        <button type="button" onClick={this.snapPhoto} className="btn btn-success mx-auto w-25">Upload image</button>
-        <div className='row'>
+        <Modal show={this.state.showDisclaimer} onHide={this.handleCloseDisclaimer}>
+          <Modal.Header closeButton>
+            <Modal.Title>Face Capture: Disclaimer</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>
+              We will always ask for your permission before uploading your images to our database. It is important for us to store 
+              this information as it allows us to look back on your skin health, and make better suggestions to your skincare routine.
+              You will alwyas be in the driver's seat when it comes to what we store, as you have the ability to clear your data.
+            </p>
+            <p>
+              Using the Face++ API, your uploaded picture will be scanned to get skin-health data.
+              The scan will give us information related to the levels of acne, blemishes, dark circles, and general skin health.
+            </p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.handleCloseDisclaimer}>
+              OK
+            </Button>
+          </Modal.Footer>
+        </Modal>    
+
+        <Modal show={this.state.showScores} onHide={this.handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Face Capture: Skin Scores</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <h4>dark circles: {window.darkCircles}</h4>
+            <h4>acne: {window.acne}</h4>
+            <h4>stain: {window.stain}</h4>
+            <h4>health: {window.health}</h4>
+            <p>
+              Each score shows the probability of you having the specified skin issue,
+              so having a <strong>LOWER</strong> score equates to better skin.
+            </p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.handleClose}>
+              Go to <strong>Questionnaire</strong>
+            </Button>
+          </Modal.Footer>
+        </Modal>
+        <div className="fcContainer">
+          <h1>take a snapshot...</h1>
+          <div className="requirements">
+            <div className="requirement">
+              <img src={flash}/>
+              <h4>in consistent lighting</h4>
+            </div>
+            <div className="requirement">
+              <img src={selfie} />
+              <h4>at a consistent angle</h4>
+            </div>
+            <div className="requirement">
+              <img src={event} />
+              <h4>on a frequent basis</h4>
+            </div>
+          </div>
+        </div>
+        <button id="cameraButton" type="button" onClick={this.snapPhoto} className="btn mx-auto w-25">Enable Camera</button>
+        <div id="camera" className='row'>
           <video className='row' id="video" width="640" height="480" autoplay></video>
           <canvas id="creot" width="640" height="480"></canvas>
         </div>
         <br></br>
-        <button className="btn btn-success mx-auto w-25" onClick = {this.selectImage.bind(this)} id="snap">Snap Photo</button>
+        <button id="snapBtn" className="btn mx-auto w-25" onClick = {this.selectImage.bind(this)} id="snap">Snap Photo</button>
       </div>
     )
   } 

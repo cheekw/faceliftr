@@ -15,6 +15,14 @@ div.analyticsContainer div.headerContainer {
     flex-wrap:wrap;
 }
 
+div.analyticsContainer div.headerContainer button.info {
+    border-radius:50%;
+    height:40px;
+    width:40px;
+    margin-left:30px;
+    font-style:italic;
+}
+
 div.analyticsContainer div.headerContainer h3 {
     color:#6975A7;
 }

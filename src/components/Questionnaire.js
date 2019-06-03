@@ -43,11 +43,12 @@ class Questionnaire extends Component {
             var yyyy = today.getFullYear();
 
             today = mm + '\\' + dd + '\\' + yyyy;
-            var ref = database.ref('users/' + firebase.auth().currentUser.uid + "/Questionnaires" + today);
+            var ref = database.ref('users/' + firebase.auth().currentUser.uid + '/Questionnaires/' + today);
             var data = {};
             for(let i = 0; i < this.state.answer.length; i++) {
                 data["question " + i] = this.state.answer[i];
             }
+            console.log(data);
             ref.set(data);
             this.setState({
                 sentDB:true
@@ -64,7 +65,7 @@ class Questionnaire extends Component {
             });
         }
 
-        let analytics = () => {
+        let faceCapture = () => {
             this.props.history.push('/home/analytics');
         }
 
@@ -77,10 +78,10 @@ class Questionnaire extends Component {
                     </Modal.Header>
                     <Modal.Body>
                         Thank you for taking the questionnaire, and your responses have been saved.
-                        Please visit the next stage: <strong>Analytics</strong>
+                        Please visit the next stage: <strong>Analytics.</strong>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={analytics}>
+                        <Button variant="secondary" onClick={faceCapture}>
                             Go to Analytics
                         </Button>
                     </Modal.Footer>

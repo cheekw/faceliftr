@@ -4,6 +4,9 @@ div.customizationContainer {
     width:60vw;
     height:100%;
     padding-bottom:40px;
+    margin-top:4rem;
+    margin-bottom:4rem;
+    font-family:Futura;
 }
 
 div.customizationContainer div div.noProd {
@@ -198,6 +201,12 @@ div.customizationContainer div ul.productsList li.addContainer div.addButton {
 div.customizationContainer div ul.productsList li.addContainer div.addButton:hover, div.addSearchContainer div.addSearchButton:hover {
     cursor:pointer;
     animation:scale 1s ease-in-out forwards;
+}
+
+div.searchList {
+    display:flex;
+    justify-content: center;
+    align-items:center;
 }
 
 /* div.customizationContainer div ul.productsList li.addContainer div.addButton:hover h6 {

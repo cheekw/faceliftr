@@ -177,10 +177,7 @@ class Customization extends Component {
                 <h3>Current Skincare Routine</h3>
                 <div>
                     {this.state.noProd && <div className="noProd"><h5>You have no current products in your skincare routine.</h5></div>}
-                    {/* <ul className="productsList">
-                        {this.state.isLoaded && products}
-                        <li className="addContainer"><div className="addButton" onClick={loadSearch}><h6>+</h6></div></li>
-                    </ul> */}
+                    {!this.state.isLoaded && <Spinner animation="border"/>}
                     <ul className="productsList">
                         {this.state.isLoaded && products}
                     </ul>
@@ -344,6 +341,7 @@ class AddProduct extends Component {
                             </div>
                             <div className="searchResults">
                                 <div className="searchList">
+                                    {!this.state.isLoaded && <Spinner animation="border"></Spinner>}
                                     {
                                         this.state.isLoaded &&
 

@@ -3,26 +3,27 @@ import Recommend from './Recommend';
 import { Line, Doughnut } from 'react-chartjs-2';
 import firebase from './firebase.js';
 import Customization from './Customization';
-import { Spinner } from 'react-bootstrap';
 import './Analytics.css';
 import growth from '../images/analytics_img/growth.png';
 import decrease from '../images/analytics_img/statistics.png';
 import noChange from '../images/analytics_img/minus.png';
+import {Button, Modal} from 'react-bootstrap';
 
 class Analytics extends React.Component {
     constructor() {
         super();
         this.state = {
-            regimen: [],
-            date: ['05/10/19', '05/11/19', '05/12/19', '05/13/19', '05/14/19', '05/15/19'],
-            acne: [2, 2.2, 2.1, 1.8, 1.76, 1.65],
-            health: [12.3, 10.2, 11, 9.34, 7.75, 8.2],
-            stain: [37.2, 37.54, 37.13, 38, 37.2, 38.42],
-            isLoaded: false,
-            acneDiff: 0,
-            healthDiff: 0,
-            stainDiff: 0,
-            avgImg: [growth, noChange, decrease]
+            regimen:[],
+            date:['05/10/19', '05/11/19', '05/12/19', '05/13/19', '05/14/19', '05/15/19'],
+            acne:[2, 2.2, 2.1, 1.8, 1.76, 1.65],
+            health:[12.3, 10.2, 11, 9.34, 7.75, 8.2],
+            stain:[37.2, 37.54, 37.13, 38, 37.2, 38.42],
+            isLoaded:false,
+            acneDiff:0,
+            healthDiff:0,
+            stainDiff:0,
+            avgImg:[growth, noChange, decrease],
+            showSkinModal:false
         }
     }
 
@@ -33,15 +34,13 @@ class Analytics extends React.Component {
         let stain = this.state.stain;
         let gotData = (data) => {
             let x = data.val();
+            console.log(x)
             for (let n in x) {
-                let date = x[n]
-                for (let key in date) {
-                    if (key != "questionnaire") {
-                        acne.push(date[key].acne);
-                        health.push(date[key].health);
-                        stain.push(date[key].stain);
-                    }
-                }
+                let scan = x[n]
+                acne.push(scan.acne);
+                health.push(scan.health);
+                stain.push(scan.stain);
+                
             }
             let acneDiff = acne[acne.length - 1] - acne[0];
             acneDiff = acneDiff.toFixed(2);
@@ -77,7 +76,7 @@ class Analytics extends React.Component {
         let user = 0;
         if (firebase.auth().currentUser) {
             user = firebase.auth().currentUser.uid;
-            const ref = firebase.database().ref("users/" + user + '/Results');
+            const ref = firebase.database().ref("users/" + user + '/Face Scans');
             ref.on("value", gotData, errData);
         }
     }
@@ -87,7 +86,7 @@ class Analytics extends React.Component {
             labels: this.state.date,
             datasets: [
                 {
-                    label: 'Acne',
+                    label: 'Acne Probability',
                     fill: false,
                     lineTension: 0.1,
                     backgroundColor: '#e74c3c',
@@ -114,7 +113,7 @@ class Analytics extends React.Component {
             labels: this.state.date,
             datasets: [
                 {
-                    label: 'Skin Health',
+                    label: 'Skin Health Abnormalities',
                     fill: false,
                     lineTension: 0.1,
                     backgroundColor: '#6975A7',
@@ -141,7 +140,7 @@ class Analytics extends React.Component {
             labels: this.state.date,
             datasets: [
                 {
-                    label: 'Skin Stain',
+                    label: 'Skin Stain Probability',
                     fill: false,
                     lineTension: 0.1,
                     backgroundColor: '#e67e22',
@@ -192,12 +191,50 @@ class Analytics extends React.Component {
             }
         }
 
+        let openSkinInfo = () => {
+            this.setState({
+                showSkinModal:true
+            });
+        }
+
+        let handleCloseModal = () => {
+            this.setState({
+                showSkinModal:false
+            });
+        }
+
         return (
             <div className="analyticsContainer">
+                {this.state.showSkinModal && <Modal show={this.state.showSkinModal} onHide={handleCloseModal}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Analytics: Skin Progress Information</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <h4>Change in scores</h4>
+                        <p>
+                            <strong>The LOWER your score the better your skin is. </strong>
+                            The up or down arrows are determined by the change from your first face capture
+                            to your most recent face capture.
+                        </p>
+                        <h4>Graphs</h4>
+                        <p>
+                            The graphs visually communicate your skin progress for each day you face captured. These
+                            graphs represent acne probability, skin health abnormalities, and skin stain probability.
+                        </p>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button onClick={handleCloseModal}>
+                            OK
+                        </Button>
+                    </Modal.Footer>
+                </Modal>   }
+                <Recommend />
+                <br />
                 <Customization />
                 <div className="headerContainer">
                     <h3>Skin Progress</h3>
-                    {
+                    <Button className="info" variant="secondary" onClick={openSkinInfo}>i</Button>
+                    {   
                         this.state.isLoaded &&
                         <div className="avgContainer">
                             <div className="avg">
@@ -227,7 +264,6 @@ class Analytics extends React.Component {
                 <div>
                     {this.state.isLoaded && <Line data={dataStain} />}
                 </div>
-                <Recommend />
             </div>
         );
     }
