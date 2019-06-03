@@ -53,11 +53,11 @@ class Home extends Component {
     return (
       <Router>
         <div id="appContainer" className="appContainer">
-          <div className="sign-out">
+          {/* <div className="sign-out">
             <Link to={ROUTES.LANDING} onClick={() => this.handleSignOut()}>
               Sign out
               </Link>
-          </div>
+          </div> */}
           <div className="mainNav">
           <Navbar />
             <Switch>

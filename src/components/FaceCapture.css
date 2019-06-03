@@ -6,13 +6,13 @@ div.face-capture-container {
 
 div.face-capture-container button {
     margin:1rem;
-    background-color:#DE5134;
+    background-color:#ff6347;
     color:white;
     font-family:Roboto;
 }
 
 div.face-capture-container div.fcContainer h1 {
-    color:#DE5134;
+    color:#ff6347;
 }
 
 div.face-capture-container div.fcContainer div.requirements {

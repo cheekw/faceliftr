@@ -24,7 +24,8 @@ div.analyticsContainer div.headerContainer button.info {
 }
 
 div.analyticsContainer div.headerContainer h3 {
-    color:#6975A7;
+    color:#2CD6A9;
+    font-family:Futura;
 }
 
 div.analyticsContainer div.avgContainer {
@@ -43,7 +44,7 @@ div.analyticsContainer div.avgContainer div.avg {
 }
 
 div.analyticsContainer div.avgContainer div.avg h4 {
-    color:#95a5a6;
+    color:#2CD6A9;
 }
 
 div.analyticsContainer div.avgContainer div.avg img {

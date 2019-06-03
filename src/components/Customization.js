@@ -174,7 +174,7 @@ class Customization extends Component {
                         </Button>
                     </Modal.Footer>
                 </Modal>
-                <h3>Current Skincare Routine</h3>
+                <h3>current skincare routine</h3>
                 <div>
                     {this.state.noProd && <div className="noProd"><h5>You have no current products in your skincare routine.</h5></div>}
                     {!this.state.isLoaded && <Spinner animation="border"/>}
@@ -183,7 +183,7 @@ class Customization extends Component {
                     </ul>
                     <div className="addContainer">
                         <div className="addButton" onClick={openAddProduct}>
-                            Add Product
+                            add product
                         </div>
                     </div>
                 </div>

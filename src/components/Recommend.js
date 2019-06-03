@@ -22,7 +22,7 @@ class Recommend extends Component {
     render() {
         return (
             <div className='recommend-component'>
-                <h2>Recommended Routine</h2>
+                <h2>recommended routine</h2>
                 <div className='regimen-box'>
                     {this.state.showSpinner && <Spinner animation="border"/>}
                     {

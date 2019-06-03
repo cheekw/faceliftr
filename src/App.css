@@ -85,19 +85,19 @@ div.appContainer {
 }
 
 .mainNav div.container ul li a div.circle.one {
-  background-color:#DE5134;
+  background-color:#ff6347;
   background-size:contain;
   background-image:url('./images/icon_camera.png');
 }
 
 .mainNav div.container ul li a div.circle.two {
-  background-color:#6975A7;
+  background-color:#2CD6A9;
   background-size:contain;
   background-image:url('./images/icon_analytics.png');
 }
 
 .mainNav div.container ul li a div.circle.three {
-  background-color:#F3EA6B;
+  background-color:#29339B;
   background-size:contain;
   background-image:url('./images/icon_settings.png');
 }
@@ -131,7 +131,7 @@ div.appContainer {
 
 .mainNav div.settingsContainer {
   width:50rem;
-  border:5px solid #F3EA6B;
+  border:5px solid #29339B;
   border-radius:.5rem;
   margin:50px;
 }
@@ -140,7 +140,8 @@ div.appContainer {
   font-size:1.5rem;
   padding-bottom:2rem;
   padding-top:2rem;
-  border-bottom:2px solid #F3EA6B;
+  border-bottom:2px solid #29339B;
+  font-family:Futura;
 }
 
 .mainNav div.settingsContainer ul a {
@@ -149,6 +150,8 @@ div.appContainer {
 }
 
 .mainNav div.settingsContainer ul li:hover {
-  background-color:#F3EA6B;
+  background-color:#29339B;
+  color:white;
+  cursor: pointer;
 }
 

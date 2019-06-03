@@ -15,12 +15,12 @@ div.customizationContainer div div.noProd {
     display:flex;
     justify-content: center;
     align-items: center;
-    border: 7px solid #6975A7;
+    border: 7px solid #2CD6A9;
 }
 
 div.customizationContainer div div.noProd h5 {
     font-style:italic;
-    color:#6975A7;
+    color:#2CD6A9;
 }
 
 /*Modal Search Bar*/
@@ -40,7 +40,7 @@ div.customizationContainer div.searchBar button.searchBtn {
 div.customizationContainer h3 {
     display:flex;
     justify-content:left;
-    color:#6975A7;
+    color:#2CD6A9;
 }
 
 div.customizationContainer div ul.productsList {
@@ -73,7 +73,7 @@ div.customizationContainer div ul.productsList li div.productItemContainer {
     height:100%;
     display:flex;
     flex-direction:row;
-    border-top:2px #6975A7 solid;
+    border-top:2px #2CD6A9 solid;
     padding-top:2rem;
     padding-bottom:2rem;
 }
@@ -128,7 +128,7 @@ div.customizationContainer div div.addContainer div.addButton:hover {
 }
 
 div.customizationContainer div ul.productsList li div.productItemContainer div.productBox {
-    border:7px solid #6975A7;
+    border:7px solid #2CD6A9;
     border-radius:10px;
     margin:16px;
     position:relative;
@@ -139,7 +139,7 @@ div.customizationContainer div ul.productsList li div.productItemContainer div.p
 }
 
 div.customizationContainer div ul.productsList li div.productItemContainer h6 {
-    color:#6975A7;
+    color:#2CD6A9;
     font-size:1.2rem;;
 }
 

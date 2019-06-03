@@ -232,7 +232,7 @@ class Analytics extends React.Component {
                 <br />
                 <Customization />
                 <div className="headerContainer">
-                    <h3>Skin Progress</h3>
+                    <h3>skin progress</h3>
                     <Button className="info" variant="secondary" onClick={openSkinInfo}>i</Button>
                     {   
                         this.state.isLoaded &&
