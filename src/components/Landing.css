@@ -169,6 +169,30 @@ Link {
     left: 8vw;
 }
 
+.App div.landing-start-container {
+    margin-top:2vh;
+    margin-left:80px;
+}
+
+.App div.landing-start {
+    border:3px solid white;
+    color:white;
+    background-color:transparent;
+    border-radius: 10%;
+    padding:.7rem;
+    font-size:1.2rem;
+    width:10%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.App div.landing-start:hover {
+    cursor: pointer;
+    background-color:white;
+    color:#2CD6A9;
+}
+
 @media (min-width: 1024px) {
     .App .landing-mission {
         margin-top: 20vh;

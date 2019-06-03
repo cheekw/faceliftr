@@ -7,6 +7,7 @@ import './Analytics.css';
 import growth from '../images/analytics_img/growth.png';
 import decrease from '../images/analytics_img/statistics.png';
 import noChange from '../images/analytics_img/minus.png';
+import {Button, Modal} from 'react-bootstrap';
 
 class Analytics extends React.Component {
     constructor() {
@@ -21,7 +22,8 @@ class Analytics extends React.Component {
             acneDiff:0,
             healthDiff:0,
             stainDiff:0,
-            avgImg:[growth, noChange, decrease]
+            avgImg:[growth, noChange, decrease],
+            showSkinModal:false
         }
     }
 
@@ -84,7 +86,7 @@ class Analytics extends React.Component {
             labels: this.state.date,
             datasets: [
                 {
-                    label: 'Acne',
+                    label: 'Acne Probability',
                     fill: false,
                     lineTension: 0.1,
                     backgroundColor: '#e74c3c',
@@ -111,7 +113,7 @@ class Analytics extends React.Component {
             labels: this.state.date,
             datasets: [
                 {
-                    label: 'Skin Health',
+                    label: 'Skin Health Abnormalities',
                     fill: false,
                     lineTension: 0.1,
                     backgroundColor: '#6975A7',
@@ -138,7 +140,7 @@ class Analytics extends React.Component {
             labels: this.state.date,
             datasets: [
                 {
-                    label: 'Skin Stain',
+                    label: 'Skin Stain Probability',
                     fill: false,
                     lineTension: 0.1,
                     backgroundColor: '#e67e22',
@@ -189,11 +191,49 @@ class Analytics extends React.Component {
             }
         }
 
+        let openSkinInfo = () => {
+            this.setState({
+                showSkinModal:true
+            });
+        }
+
+        let handleCloseModal = () => {
+            this.setState({
+                showSkinModal:false
+            });
+        }
+
         return (
             <div className="analyticsContainer">
+                {this.state.showSkinModal && <Modal show={this.state.showSkinModal} onHide={handleCloseModal}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Analytics: Skin Progress Information</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <h4>Change in scores</h4>
+                        <p>
+                            <strong>The LOWER your score the better your skin is. </strong>
+                            The up or down arrows are determined by the change from your first face capture
+                            to your most recent face capture.
+                        </p>
+                        <h4>Graphs</h4>
+                        <p>
+                            The graphs visually communicate your skin progress for each day you face captured. These
+                            graphs represent acne probability, skin health abnormalities, and skin stain probability.
+                        </p>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button onClick={handleCloseModal}>
+                            OK
+                        </Button>
+                    </Modal.Footer>
+                </Modal>   }
+                <Recommend />
+                <br />
                 <Customization />
                 <div className="headerContainer">
                     <h3>Skin Progress</h3>
+                    <Button className="info" variant="secondary" onClick={openSkinInfo}>i</Button>
                     {   
                         this.state.isLoaded &&
                         <div className="avgContainer">
@@ -224,7 +264,6 @@ class Analytics extends React.Component {
                 <div>
                     {this.state.isLoaded && <Line data={dataStain} />}
                 </div>
-                <Recommend />
             </div>
         );
     }

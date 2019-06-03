@@ -4,6 +4,8 @@ div.customizationContainer {
     width:60vw;
     height:100%;
     padding-bottom:40px;
+    margin-top:4rem;
+    margin-bottom:4rem;
 }
 
 div.customizationContainer div div.noProd {

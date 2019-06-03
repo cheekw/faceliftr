@@ -19,7 +19,8 @@ class Landing extends Component {
   constructor() {
     super();
     this.state = {
-      buttonText : ''
+      buttonText : '',
+      signedIn:false
     };
   }
 
@@ -28,9 +29,9 @@ class Landing extends Component {
 
     this.unsubscribe = firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.setState({ buttonText: 'Home' })
+        this.setState({ signedIn:true })
       } else {
-        this.setState({ buttonText: 'Sign In' })
+        this.setState({ signedIn:false })
       }
     });
 
@@ -42,6 +43,9 @@ class Landing extends Component {
   }
 
   render() {
+    let goHome = () => {
+      this.props.history.push('/home');
+    }
     return (
       // illustration by Ouch.pics
       <div className="landing">
@@ -49,14 +53,18 @@ class Landing extends Component {
           <div className="landing-header">
             <div className="landing-logo-text">faceliftr.</div>
             <Link to={ROUTES.SIGN_IN} style={{ textDecoration: 'none', color: 'white' }}>
-              <div className="landing-signin-button">
-              {this.state.buttonText}
-              </div>
+              {!this.state.signedIn && <div className="landing-signin-button">
+                Sign in
+              {/* {this.state.buttonText} */}
+              </div>}
             </Link>
           </div>
           <div className="landing-mission">find the perfect routine</div>
           <div className="landing-mission-subtitle">become your picture perfect</div>
           {/* <img src={circle}  data-aos="fade-left" className="circle-image" /> */}
+          {this.state.signedIn && <div className="landing-start-container"><div className="landing-start" onClick={goHome}>
+            Start
+          </div></div>}
           <img src={skincare} data-aos="fade-left" className="mission-image" />
         </div>
 
