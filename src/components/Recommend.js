@@ -4,12 +4,14 @@ import './Recommend.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import firebase from './firebase.js';
 import { Link } from 'react-router-dom';
+import {Spinner} from 'react-bootstrap'
 
 class Recommend extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            regimenProducts: []
+            regimenProducts: [],
+            showSpinner:true
         };
     }
 
@@ -22,6 +24,7 @@ class Recommend extends Component {
             <div className='recommend-component'>
                 <h2>Recommended Routine</h2>
                 <div className='regimen-box'>
+                    {this.state.showSpinner && <Spinner animation="border"/>}
                     {
                         this.state.regimenProducts.map((product, index) =>
                             product ?
@@ -100,7 +103,10 @@ class Recommend extends Component {
                             }
                         }
                     });
-                    this.setState({ regimenProducts: regimenProducts });
+                    this.setState({ 
+                        regimenProducts: regimenProducts,
+                        showSpinner:false
+                    });
                     console.log(regimenProducts);
                 });
             });
