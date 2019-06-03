@@ -44,27 +44,49 @@ class Landing extends Component {
 
   render() {
     let goHome = () => {
-      this.props.history.push('/home');
+      if(this.state.signedIn) {
+        this.props.history.push('/home');
+      } else {
+        this.props.history.push('/signup');
+      }
     }
+
+    let goTop = () => {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        document.getElementById("top").style.display = "flex";
+      } else {
+        document.getElementById("top").style.display = "none";
+      }
+    }
+
+    window.onscroll = function(){scrollFunction()};
     return (
       // illustration by Ouch.pics
       <div className="landing">
+        <div id="top" onClick={goTop} className="top-button">
+          ^
+        </div>
         <div className="landing-container mission">
           <div className="landing-header">
             <div className="landing-logo-text">faceliftr.</div>
-            <Link to={ROUTES.SIGN_IN} style={{ textDecoration: 'none', color: 'white' }}>
+            {/* <Link to={ROUTES.SIGN_IN} style={{ textDecoration: 'none', color: 'white' }}>
               {!this.state.signedIn && <div className="landing-signin-button">
                 Sign in
               {/* {this.state.buttonText} */}
-              </div>}
-            </Link>
+              {/* </div>}
+            </Link> */}
           </div>
           <div className="landing-mission">find the perfect routine</div>
           <div className="landing-mission-subtitle">become your picture perfect</div>
           {/* <img src={circle}  data-aos="fade-left" className="circle-image" /> */}
-          {this.state.signedIn && <div className="landing-start-container"><div className="landing-start" onClick={goHome}>
+          <div className="landing-start-container"><div className="landing-start" onClick={goHome}>
             Start
-          </div></div>}
+          </div></div>
           <img src={skincare} data-aos="fade-left" className="mission-image" />
         </div>
 
